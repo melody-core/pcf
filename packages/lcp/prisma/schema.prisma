@@ -1,0 +1,34 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model PageObject {
+  id        Int      @id @default(autoincrement())
+  status    String
+  base      String
+  effect    String
+  senior    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model TemplateObject {
+  id            Int      @id @default(autoincrement())
+  status        String
+  componentName String
+  title         String?
+  desc          String?
+  previewSrc    String?
+  docsSrc       String?
+  author        String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}

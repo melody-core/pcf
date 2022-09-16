@@ -1,0 +1,11 @@
+.user-icon-wrap {
+  color: #fff;
+}
+.user-center{
+  border: none;
+  color: #fff;
+}
+.user-name{
+  display: inline-block;
+  margin-left: 10px;
+}

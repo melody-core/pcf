@@ -1,0 +1,51 @@
+{
+  "name": "melody-template-core",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "typings": "./dist/components/index.d.ts",
+  "types": "./dist/components/index.d.ts",
+  "main": "./dist/components/index.js",
+  "module": "./dist/components/index.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/components/index.es.js",
+      "require": "./dist/components/index.js"
+    }
+  },
+  "scripts": {
+    "dev": "rollup -c -w",
+    "demo": "vite",
+    "build": "tsc && vite build",
+    "build:tem": "rollup -c",
+    "preview": "vite preview",
+    "f2elint-scan": "f2elint scan",
+    "f2elint-fix": "f2elint fix"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "f2elint commit-file-scan",
+      "commit-msg": "f2elint commit-msg-scan"
+    }
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.18.10",
+    "@rollup/plugin-babel": "^5.3.1",
+    "@rollup/plugin-typescript": "^8.4.0",
+    "autoprefixer": "^10.4.8",
+    "rollup-plugin-postcss": "^4.0.2"
+  },
+  "dependencies": {
+    "rollup-plugin-terser": "^7.0.2"
+  },
+  "peerDependencies": {
+    "@ant-design/icons": "^4.7.0",
+    "@ant-design/pro-components": "^1.1.20",
+    "antd": "^4.22.8",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}

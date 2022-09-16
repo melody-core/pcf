@@ -1,0 +1,47 @@
+<!--
+ * @Author: 六弦(melodyWxy)
+ * @Date: 2022-06-12 15:53:16
+ * @LastEditors: 六弦(melodyWxy)
+ * @LastEditTime: 2022-08-02 11:58:36
+ * @FilePath: /hooks-app/test.html
+ * @Description: update here
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  
+</head>
+<body>
+  <script>
+    const pipeline = async (fnList) => {
+        try {
+          let currentRes = null;
+          for( let fn of fnList) {
+            currentRes = await fn(currentRes);
+          }
+          return currentRes
+        } catch (error) {
+          return error;
+        }
+ 
+    }
+
+    // const fnArr = [()=>1, x => x+2, x=>Promise.resolve(x+2), x=>x+1];
+    // pipeline(fnArr)
+
+    pipeline([
+      () => 3000,
+      v => new Promise(resolve => setTimeout(() => { resolve('foo'); }, v)),
+    ])
+      .then(console.log)
+
+  </script>
+  
+</body>
+</html>
