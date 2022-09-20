@@ -2,8 +2,8 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-09-06 16:46:10
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-09-06 20:58:15
- * @FilePath: /melodyLCP/packages/lcp/src/api/templateApi.ts
+ * @LastEditTime: 2022-09-16 15:28:56
+ * @FilePath: /todoweb/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/api/templateApi.ts
  * @Description: update here
  */
 import { Api, Get, Post, Query, useContext, Validate } from "@midwayjs/hooks";

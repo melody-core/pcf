@@ -2,13 +2,13 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-06-06 16:58:35
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-06-06 17:01:26
- * @FilePath: /hooks-app/src/client/pages/Status/404/index.tsx
+ * @LastEditTime: 2022-09-19 11:51:14
+ * @FilePath: /todoweb/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/pages/Status/404/index.tsx
  * @Description: update here
  */
-import React from 'react';
-import { Link } from 'react-router-dom'
-import { Result } from 'antd';
+import React from "react";
+import { Link } from "react-router-dom";
+import { Result } from "antd";
 
 const Page404: React.FC = () => (
   <Result
@@ -19,4 +19,4 @@ const Page404: React.FC = () => (
   />
 );
 
-export default Page404
+export default Page404;

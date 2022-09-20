@@ -2,15 +2,15 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-06-06 16:46:18
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-09-08 11:47:12
- * @FilePath: /melodyLCP/packages/lcp/src/App.tsx
+ * @LastEditTime: 2022-09-19 13:58:46
+ * @FilePath: /todoweb/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/App.tsx
  * @Description: update here
  */
 import React from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { Layout, Menu } from "antd";
 import NavConfig from "./client/config/nav.config";
-import UserIcon from "./client/components/UserIcon";
+// import UserIcon from "./client/components/UserIcon";
 
 import "antd/dist/antd.css";
 import "./index.css";

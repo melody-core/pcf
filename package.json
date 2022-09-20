@@ -17,7 +17,8 @@
     "dev": "yarn workspace melody-template-core run dev & yarn workspace melody-lcp run dev",
     "docs:tem": "yarn workspace melody-template-core run demo",
     "f2elint-scan": "f2elint scan",
-    "f2elint-fix": "f2elint fix"
+    "f2elint-fix": "f2elint fix",
+    "studio": "yarn workspace melody-lcp run studio"
   },
   "husky": {
     "hooks": {
@@ -49,5 +50,8 @@
     "less-loader": "^11.0.0",
     "ts-node": "^10.9.1",
     "typescript": "^4.8.2"
+  },
+  "engines": {
+    "node": ">=16"
   }
 }

@@ -2,14 +2,14 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-09-06 11:41:05
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-09-06 21:01:01
- * @FilePath: /melodyLCP/packages/lcp/src/client/pages/pageObject/components/TemplateList/effects/const.tsx
+ * @LastEditTime: 2022-09-16 14:23:07
+ * @FilePath: /todoweb/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/pages/pageObject/components/TemplateList/effects/const.tsx
  * @Description: update here
  */
 
 import { FundOutlined, UserOutlined } from "@ant-design/icons";
 import {
-  ProColumns,
+  // ProColumns,
   ProFormColumnsType,
   ProListMetas,
 } from "@ant-design/pro-components";

@@ -2,15 +2,15 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-07-28 19:02:59
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-09-19 16:59:45
- * @FilePath: /todoweb/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/pages/pageObject/components/PageList/index.tsx
+ * @LastEditTime: 2022-09-19 17:04:47
+ * @FilePath: /todoweb/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/pages/modelObject/components/ModelList/index.tsx
  * @Description: update here
  */
 
 import React, { FC, useRef } from "react";
 import { observer } from "mobx-react";
 import { ProTable, BetaSchemaForm } from "@ant-design/pro-components";
-import pageObjectStore from "../../../../store/pageObject";
+import modelObjectStore from "../../../../store/modelObject";
 import {
   useColumnProps,
   useEditableProps,
@@ -22,10 +22,10 @@ import { INIT_COLUMN_LIST } from "./effects/const";
 import { useNavigate } from "react-router-dom";
 import Bread from "../../../../components/Bread";
 
-export const PageList = observer(
+export const ModelList = observer(
   ({
     store: {
-      pageObject: { selectedKeys },
+      modelObject: { selectedKeys },
       // setSelectedDetail,
     },
   }) => {
@@ -43,15 +43,15 @@ export const PageList = observer(
     return (
       <>
         <ProTable
-          title={() => <Bread lvs={["页面管理", "页面列表"]} />}
+          title={() => <Bread lvs={["模型管理", "模型列表"]} />}
           actionRef={tableActionRef}
           columns={mergeColumns}
-          rowKey="hash"
           dateFormatter="string"
           request={mergeRequest}
           scroll={{
             x: "max-content",
           }}
+          rowKey="name"
           pagination={{}}
           editable={mergeEditable}
           toolBarRender={mergeToolBarRender}
@@ -91,4 +91,4 @@ export const PageList = observer(
   }
 );
 
-export default () => <PageList store={pageObjectStore} />;
+export default () => <ModelList store={modelObjectStore} />;
