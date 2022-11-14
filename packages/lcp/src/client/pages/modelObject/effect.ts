@@ -2,10 +2,12 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-07-28 17:42:36
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-09-19 10:18:32
- * @FilePath: /todoweb/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/pages/modelObject/effect.ts
+ * @LastEditTime: 2022-10-01 19:35:38
+ * @FilePath: /melodyLCP/packages/lcp/src/client/pages/modelObject/effect.ts
  * @Description: update here
  */
+
+import { useEffect } from "react";
 
 export enum MODEL_MENU_KEYS {
   MODEL_LIST = "model_list",
@@ -30,3 +32,13 @@ export const MODEL_MENU_CONFIG = [
     label: MODEL_MENU_LABEL_MAP.get(MODEL_MENU_KEYS.MODEL_LIST),
   },
 ];
+
+export const useInitMenuSelected = ({ setSelectedKeys }) => {
+  useEffect(() => {
+    const targetKey = (
+      MODEL_MENU_CONFIG.find((item) => location.pathname.match(item.value)) ||
+      MODEL_MENU_CONFIG[0]
+    ).value;
+    setSelectedKeys(targetKey);
+  });
+};

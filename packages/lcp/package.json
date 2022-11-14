@@ -5,15 +5,9 @@
   "scripts": {
     "start": "hooks start",
     "dev": "hooks dev",
-    "studio": "prisma studio",
-    "migrate": "prisma migrate dev",
-    "init:lcp": "prisma migrate dev --name init",
     "build": "hooks build",
     "f2elint-scan": "f2elint scan",
     "f2elint-fix": "f2elint fix"
-  },
-  "prisma": {
-    "seed": "esno prisma/seed.ts"
   },
   "husky": {
     "hooks": {
@@ -27,10 +21,9 @@
     "@midwayjs/hooks-kit": "^3.0.1",
     "@midwayjs/koa": "^3.4.13",
     "@midwayjs/rpc": "^3.0.1",
-    "@prisma/client": "^4.2.1",
     "isomorphic-unfetch": "^3.1.0",
+    "mongoose": "^6.7.1",
     "node-fetch": "2.6",
-    "prisma": "^4.2.1",
     "zod": "^3.18.0"
   },
   "engines": {

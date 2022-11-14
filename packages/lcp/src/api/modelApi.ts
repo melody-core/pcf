@@ -2,14 +2,31 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-09-16 16:15:00
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-09-19 16:52:43
- * @FilePath: /todoweb/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/api/modelApi.ts
+ * @LastEditTime: 2022-11-11 16:39:32
+ * @FilePath: /melodyLCP/packages/lcp/src/api/modelApi.ts
  * @Description: update here
  */
 
 import { Api, Get, Post, Query, useContext, Validate } from "@midwayjs/hooks";
+import mongoose from "mongoose";
 import { z } from "zod";
-import { prisma } from "./prisma";
+import { MODEL_FIELD_TYPE_MAP } from "./const";
+import { createCollection, dropCollection } from "./lib";
+
+const MODEL_MODEL_SCHEMA = {
+  name: String,
+  title: String,
+  author: String,
+  desc: String,
+  type: String,
+  effects: Object,
+  fields: [Object],
+};
+const modelSchema = new mongoose.Schema(MODEL_MODEL_SCHEMA, {
+  timestamps: true,
+});
+
+const modelModel = mongoose.model("modelObject", modelSchema, "modelObject");
 
 // 单条存储
 const CreateModel = z
@@ -36,14 +53,18 @@ const CreateModel = z
 export const createModel = Api(
   Post("/api/modelConfig/create"),
   Validate(CreateModel),
-  async ({ fields, effects, ...others }) => {
-    const result = await prisma.modelObject.create({
-      data: {
-        fields: JSON.stringify(fields || []),
-        effects: JSON.stringify(effects || {}),
-        ...others,
-      },
+  async (createItemParams) => {
+    const { name, fields } = createItemParams || {};
+    const modelSchema = {};
+    fields.forEach((fieldOptions) => {
+      const { fieldName, type } = fieldOptions || {};
+      modelSchema[fieldName] = MODEL_FIELD_TYPE_MAP.get(type) || String;
     });
+    await createCollection({
+      modelSchema,
+      modelName: name,
+    });
+    const result = await modelModel.create(createItemParams);
     return result;
   }
 );
@@ -68,35 +89,50 @@ export const getModelList = Api(
   async (paramsWithSort) => {
     const { params, sort } = paramsWithSort;
     const { pageSize = 20, current = 1, title, desc, name, ...others } = params;
-    const total = await prisma.modelObject.count();
-    const findParams = {
-      where: {
-        ...others,
-      },
-      skip: pageSize * (current - 1),
-      take: pageSize,
-      orderBy: sort,
+    const total = await modelModel.count();
+    const findWhereParams = {
+      ...others,
     };
-    if (title) {
-      findParams.where.title = {
-        contains: title,
-      };
+    for (const key in others) {
+      if (typeof others[key] === "string") {
+        findWhereParams[key] = {
+          $regex: others[key],
+        };
+      }
     }
-    if (name) {
-      findParams.where.name = {
-        contains: name,
-      };
-    }
-    if (desc) {
-      findParams.where.desc = {
-        contains: desc,
-      };
-    }
-    const result = await prisma.modelObject.findMany(findParams);
+    const result = await modelModel
+      .find(findWhereParams)
+      .skip(pageSize * (current - 1))
+      .limit(pageSize)
+      .sort(sort);
     return {
       data: result,
       total,
-      success: true,
     };
+  }
+);
+
+// 删除单条
+// 删除一条
+const DeleteTem = z.object({
+  _id: z.string(),
+});
+
+export const deleteModelById = Api(
+  Post("/api/modelConfig/deleteModelById"),
+  Validate(DeleteTem),
+  async (modelConfig) => {
+    const { _id } = modelConfig;
+    const findItem = await modelModel.findById(_id);
+    if (!findItem) {
+      throw new Error("没有这个模型!");
+    }
+    await dropCollection({
+      modelName: findItem.name,
+    });
+    const result = await modelModel.deleteOne({
+      _id,
+    });
+    return result;
   }
 );

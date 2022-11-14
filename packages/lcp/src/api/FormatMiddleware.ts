@@ -2,8 +2,8 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-06-10 14:19:05
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-09-19 16:56:44
- * @FilePath: /todoweb/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/api/FormatMiddleware.ts
+ * @LastEditTime: 2022-11-11 16:13:39
+ * @FilePath: /melodyLCP/packages/lcp/src/api/FormatMiddleware.ts
  * @Description: update here
  */
 import { IMiddleware } from "@midwayjs/core";
@@ -32,11 +32,10 @@ export class FormatMiddleware implements IMiddleware<Context, NextFunction> {
           success: true,
         };
       } catch (error) {
-        const { status, name, code } = error;
-        console.log(error);
+        const { name, message } = error;
         return {
-          code: status,
-          msg: `${code}: ${name}`,
+          code: 500,
+          msg: error.toString ? error.toString() : `${name}: ${message}`,
           error,
           success: false,
         };

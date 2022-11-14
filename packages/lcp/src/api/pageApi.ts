@@ -2,31 +2,39 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-09-05 11:37:12
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-09-06 16:45:54
+ * @LastEditTime: 2022-11-11 16:24:33
  * @FilePath: /melodyLCP/packages/lcp/src/api/pageApi.ts
  * @Description: update here
  */
 
 import { Api, Get, Post, Query, useContext, Validate } from "@midwayjs/hooks";
+import mongoose from "mongoose";
 import { z } from "zod";
-import { prisma } from "./prisma";
 
 // 单条存储
+
+const PAGE_MODEL_SCHEMA = {
+  status: "string",
+  componentName: "string",
+  title: "string",
+  desc: "string",
+  previewSrc: "string",
+  docsSrc: "string",
+  author: "string",
+};
+
+const pageSchema = new mongoose.Schema(PAGE_MODEL_SCHEMA, {
+  timestamps: true,
+});
+
+const pageModel = mongoose.model("pageObject", pageSchema, "pageObject");
 
 export const createPage = Api(
   Post("/api/pageConfig/create"),
   async (pageConfig) => {
-    // const result = await prisma.errorObject.findUnique({
-    //   where: {
-    //     id: errorObj.id,
-    //   },
-    // });
-    // return result;
-    return {
-      code: 200,
-      success: true,
-      data: true,
-      massage: "",
-    };
+    const result = await pageModel.create({
+      ...pageConfig,
+    });
+    return result;
   }
 );

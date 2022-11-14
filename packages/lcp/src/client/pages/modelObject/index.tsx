@@ -2,8 +2,8 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-09-16 16:16:07
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-09-19 10:42:46
- * @FilePath: /todoweb/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/pages/modelObject/index.tsx
+ * @LastEditTime: 2022-10-01 19:51:39
+ * @FilePath: /melodyLCP/packages/lcp/src/client/pages/modelObject/index.tsx
  * @Description: update here
  */
 
@@ -14,7 +14,7 @@ import { observer } from "mobx-react";
 
 import modelObjectStore from "../../store/modelObject";
 import { Outlet, useNavigate } from "react-router-dom";
-import { MODEL_MENU_CONFIG } from "./effect";
+import { MODEL_MENU_CONFIG, useInitMenuSelected } from "./effect";
 
 import styles from "./index.module.css";
 
@@ -29,6 +29,7 @@ export const ModelObject = observer(
   }) => {
     const [collapsed, setCollapsed] = useState(false);
     const navigate = useNavigate();
+    useInitMenuSelected({ setSelectedKeys });
     return (
       <Layout className={styles["catalogue-wrap"]}>
         <Sider trigger={null} collapsible collapsed={collapsed}>

@@ -2,8 +2,8 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-09-19 13:51:52
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-09-19 13:58:11
- * @FilePath: /todoweb/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/store/global.ts
+ * @LastEditTime: 2022-10-01 18:56:44
+ * @FilePath: /melodyLCP/packages/lcp/src/client/store/global.ts
  * @Description: update here
  */
 import { makeAutoObservable } from "mobx";
@@ -14,21 +14,15 @@ import NavConfig from "../config/nav.config";
 export class GlobalStoreConstructor {
   globalObject = {
     // top菜单选项
-    selectedMenuItem: NavConfig[0].to,
-    // 选择的左侧菜单
-    selectedKeys: [
-      (
-        MODEL_MENU_CONFIG.find((item) => location.pathname.match(item.value)) ||
-        MODEL_MENU_CONFIG[0]
-      ).value,
-    ],
-    // 当前详情
-    errorObjectList: [],
+    selectedMenuItem: (
+      NavConfig.find((item) => location.pathname.match(item.to)) || NavConfig[0]
+    ).key,
   };
-  setSelectedKeys = (key) => {
+
+  setSelectedKey = (key) => {
     this.globalObject = {
       ...this.globalObject,
-      selectedKeys: [key],
+      selectedMenuItem: key,
     };
     // TODO sth
   };

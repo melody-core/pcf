@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-07-28 17:42:04
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-09-05 14:34:47
+ * @LastEditTime: 2022-10-01 19:51:45
  * @FilePath: /melodyLCP/packages/lcp/src/client/pages/pageObject/index.tsx
  * @Description: update here
  */
@@ -16,11 +16,11 @@ import pageObjectStore from "../../store/pageObject";
 import { Outlet, useNavigate } from "react-router-dom";
 
 import styles from "./index.module.css";
-import { PAGE_MENU_CONFIG } from "./effect";
+import { PAGE_MENU_CONFIG, useInitMenuSelected } from "./effect";
 
 const { Header, Sider, Content } = Layout;
 
-export const ErrorObject = observer(
+export const PageObject = observer(
   ({
     store: {
       pageObject: { selectedKeys },
@@ -29,13 +29,13 @@ export const ErrorObject = observer(
   }) => {
     const [collapsed, setCollapsed] = useState(false);
     const navigate = useNavigate();
+    useInitMenuSelected({ setSelectedKeys });
     return (
       <Layout className={styles["catalogue-wrap"]}>
         <Sider trigger={null} collapsible collapsed={collapsed}>
           <Menu
             style={{ height: "100%" }}
             mode="inline"
-            defaultOpenKeys={[PAGE_MENU_CONFIG[0].value]}
             selectedKeys={selectedKeys}
             items={PAGE_MENU_CONFIG}
             onClick={(item) => {
@@ -79,4 +79,4 @@ export const ErrorObject = observer(
   }
 );
 
-export default () => <ErrorObject store={pageObjectStore} />;
+export default () => <PageObject store={pageObjectStore} />;

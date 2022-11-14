@@ -10,15 +10,12 @@
   ],
   "private": "true",
   "scripts": {
-    "init:lcp": "yarn workspace melody-lcp run init:lcp",
     "build": "yarn workspace melody-lcp run build",
-    "migrate": "yarn workspace melody-lcp run migrate",
     "build:tem": "yarn workspace melody-template-core run build:tem",
     "dev": "yarn workspace melody-template-core run dev & yarn workspace melody-lcp run dev",
     "docs:tem": "yarn workspace melody-template-core run demo",
     "f2elint-scan": "f2elint scan",
-    "f2elint-fix": "f2elint fix",
-    "studio": "yarn workspace melody-lcp run studio"
+    "f2elint-fix": "f2elint fix"
   },
   "husky": {
     "hooks": {

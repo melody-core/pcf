@@ -2,10 +2,12 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-07-28 17:42:36
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-09-05 17:49:10
+ * @LastEditTime: 2022-10-01 19:34:46
  * @FilePath: /melodyLCP/packages/lcp/src/client/pages/pageObject/effect.ts
  * @Description: update here
  */
+
+import { useEffect } from "react";
 
 export enum PAGE_MENU_KEYS {
   PAGE_LIST = "page_list",
@@ -62,3 +64,13 @@ export const PAGE_MENU_CONFIG = [
     label: PAGE_MENU_LABEL_MAP.get(PAGE_MENU_KEYS.TEMPLATE_LIST),
   },
 ];
+
+export const useInitMenuSelected = ({ setSelectedKeys }) => {
+  useEffect(() => {
+    const targetKey = (
+      PAGE_MENU_CONFIG.find((item) => location.pathname.match(item.value)) ||
+      PAGE_MENU_CONFIG[0]
+    ).value;
+    setSelectedKeys(targetKey);
+  });
+};

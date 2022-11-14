@@ -2,13 +2,33 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-09-06 16:46:10
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-09-16 15:28:56
- * @FilePath: /todoweb/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/api/templateApi.ts
+ * @LastEditTime: 2022-11-11 16:24:46
+ * @FilePath: /melodyLCP/packages/lcp/src/api/templateApi.ts
  * @Description: update here
  */
-import { Api, Get, Post, Query, useContext, Validate } from "@midwayjs/hooks";
+import { Api, Get, Post, useContext, Validate } from "@midwayjs/hooks";
 import { z } from "zod";
-import { prisma } from "./prisma";
+import mongoose, { Query } from "mongoose";
+
+const TEMPLATE_MODEL_SCHEMA = {
+  status: "string",
+  componentName: "string",
+  title: "string",
+  desc: "string",
+  previewSrc: "string",
+  docsSrc: "string",
+  author: "string",
+};
+
+const templateSchema = new mongoose.Schema(TEMPLATE_MODEL_SCHEMA, {
+  timestamps: true,
+});
+
+const tamplateModel = mongoose.model(
+  "templateObject",
+  templateSchema,
+  "templateObject"
+);
 
 // 单条存储
 const CreateTem = z
@@ -30,9 +50,7 @@ export const createTemplate = Api(
   Post("/api/temConfig/createTem"),
   Validate(CreateTem),
   async (temConfig) => {
-    const result = await prisma.templateObject.create({
-      data: temConfig,
-    });
+    const result = await tamplateModel.create(temConfig);
     return result;
   }
 );
@@ -54,43 +72,27 @@ export const getTemplateList = Api(
   Validate(GetTemplateListParams),
   async (paramsWithSort) => {
     const { params, sort } = paramsWithSort;
-    const {
-      pageSize = 20,
-      current = 1,
-      componentName,
-      title,
-      desc,
-      ...others
-    } = params;
-    const total = await prisma.templateObject.count();
-    const findParams = {
-      where: {
-        ...others,
-      },
-      skip: pageSize * (current - 1),
-      take: pageSize,
-      orderBy: sort,
+    const { pageSize = 20, current = 1, ...others } = params;
+    const total = await tamplateModel.count();
+    // const total = await prisma.templateObject.count();
+    const findWhereParams = {
+      ...others,
     };
-    if (componentName) {
-      findParams.where.url = {
-        contains: componentName,
-      };
+    for (const key in others) {
+      if (typeof others[key] === "string") {
+        findWhereParams[key] = {
+          $regex: others[key],
+        };
+      }
     }
-    if (title) {
-      findParams.where.title = {
-        contains: title,
-      };
-    }
-    if (desc) {
-      findParams.where.desc = {
-        contains: desc,
-      };
-    }
-    const result = await prisma.templateObject.findMany(findParams);
+    const result = await tamplateModel
+      .find(findWhereParams)
+      .skip(pageSize * (current - 1))
+      .limit(pageSize)
+      .sort(sort);
     return {
       data: result,
       total,
-      success: true,
     };
   }
 );
@@ -99,7 +101,7 @@ export const getTemplateList = Api(
 
 const UpdateTem = z
   .object({
-    id: z.number(),
+    _id: z.string(),
     title: z.string(),
     desc: z.string(),
     status: z.string(),
@@ -116,33 +118,29 @@ export const updateTemplate = Api(
   Post("/api/temConfig/updateTem"),
   Validate(UpdateTem),
   async (temConfig) => {
-    const { id, ...others } = temConfig;
-    const result = await prisma.templateObject.update({
-      where: {
-        id: temConfig.id,
+    const { _id, ...others } = temConfig;
+    const result = await tamplateModel.updateOne(
+      {
+        _id,
       },
-      data: {
-        ...others,
-      },
-    });
+      others
+    );
     return result;
   }
 );
 
 // 删除一条
 const DeleteTem = z.object({
-  id: z.number(),
+  _id: z.string(),
 });
 
 export const deleteTemplateById = Api(
   Post("/api/temConfig/deleteTem"),
   Validate(DeleteTem),
   async (temConfig) => {
-    const { id } = temConfig;
-    const result = await prisma.templateObject.delete({
-      where: {
-        id: id,
-      },
+    const { _id } = temConfig;
+    const result = await tamplateModel.deleteOne({
+      _id,
     });
     return result;
   }

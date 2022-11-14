@@ -2,8 +2,8 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-09-16 16:17:25
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-09-19 10:12:57
- * @FilePath: /todoweb/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/store/modelObject.ts
+ * @LastEditTime: 2022-10-01 18:43:19
+ * @FilePath: /melodyLCP/packages/lcp/src/client/store/modelObject.ts
  * @Description: update here
  */
 import { makeAutoObservable } from "mobx";
@@ -18,8 +18,6 @@ export class ModelObjectStoreConstructor {
         MODEL_MENU_CONFIG[0]
       ).value,
     ],
-    // 当前详情
-    errorObjectList: [],
   };
   setSelectedKeys = (key) => {
     this.modelObject = {

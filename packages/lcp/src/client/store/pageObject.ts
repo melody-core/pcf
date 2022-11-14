@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-07-28 18:52:35
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-09-05 17:33:50
+ * @LastEditTime: 2022-10-01 18:43:06
  * @FilePath: /melodyLCP/packages/lcp/src/client/store/pageObject.ts
  * @Description: update here
  */
@@ -33,8 +33,6 @@ export class ErrorObjectStoreConstructor {
         PAGE_MENU_CONFIG[0]
       ).value,
     ],
-    // 当前详情
-    errorObjectList: [],
   };
   setSelectedKeys = (key) => {
     this.pageObject = {

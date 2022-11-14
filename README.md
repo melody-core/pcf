@@ -7,8 +7,7 @@
 ### 低代码平台开发(melody-lcp)
 
 1. 拉取代码后，务必使用 yarn install 来安装依赖(使用了 yarn workspace 来进行包管理)
-2. 依赖安装完毕后，请直接运行 yarn init:lcp 来初始化lcp本地文件数据库
-3. 初始化完毕后，运行 yarn dev 即可运行低代码平台
+2. 依赖安装完毕后，运行 yarn dev 即可运行低代码平台，注意mongodb的配置项
 
 ### 页面模板库开发（melody-template-core）
 

@@ -1,43 +1,5 @@
 ## 文档v1
 
-### 库表设计
-
-1. Template
-
-```ts
-{
-  "id": @Id,
-  "name": string,
-  "title": string,
-  "desc": string,
-  "image": string,
-  "code": string,
-  "props": string,
-  "types": string,
-  "mdx": string,
-  "author": string,
-  "version": string,
-}
-```
-
-### 创建并播种数据库
-
-+ 运行以下命令以创建 SQLite 数据库文件。这也创建了User和Post中定义的表prisma/schema.prisma：
-
-  + npx prisma migrate dev --name init
-
-+ prisma/seed.ts现在，通过运行以下命令为数据库中的示例数据播种：
-
-  + npx prisma db seed
-
-Use this template:
-
-```bash
-npx degit https://github.com/midwayjs/hooks/examples/react ./hooks-app
-```
-
-Use `npm install` to install the dependencies
-
 ## Commands
 
 + `npm run dev`: Starts the development server

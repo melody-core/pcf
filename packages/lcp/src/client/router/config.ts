@@ -2,8 +2,8 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-05-28 16:00:11
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-09-19 11:57:30
- * @FilePath: /todoweb/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/router/config.ts
+ * @LastEditTime: 2022-10-04 22:57:00
+ * @FilePath: /melodyLCP/packages/lcp/src/client/router/config.ts
  * @Description: update here
  */
 
@@ -17,15 +17,16 @@ import { MODEL_MENU_KEYS } from "./../pages/modelObject/effect";
 // 页面管理 - start
 import PageManager from "../pages/pageObject";
 import Demo from "../pages/demo";
-import PageList from "../pages/pageObject/components/PageList";
-import TemplateList from "../pages/pageObject/components/TemplateList";
-import PageCreate from "../pages/pageObject/components/PageCreate";
+import {
+  PageList,
+  TemplateList,
+  PageCreate,
+} from "./../pages/pageObject/views";
 // 页面管理 - end
 
 // 模型管理 - start
 import ModelManager from "../pages/modelObject";
-import ModelList from "../pages/modelObject/components/ModelList";
-import ModelCreate from "../pages/modelObject/components/ModelCreate";
+import { ModelList, ModelCreate } from "./../pages/modelObject/views";
 // 模型管理 - end
 
 export default [
