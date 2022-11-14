@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-09-05 15:47:49
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-11-14 14:18:47
+ * @LastEditTime: 2022-11-14 17:34:21
  * @FilePath: /melodyLCP/packages/lcp/src/client/pages/modelObject/views/ModelCreate/effects/const.ts
  * @Description: update here
  */
@@ -153,11 +153,6 @@ export const INIT_MODEL_CREATE_FORM_COLUMNS: ProFormColumnsType<
               valueType: "xSelect",
               // valueEnum: getEnum(ALL_MODEL_FIELD_LIST),
               fieldProps: {
-                // open: true,
-                dropdownRender: (...args) => {
-                  console.log("?:", ...args);
-                  return args[0];
-                },
                 options: ALL_MODEL_FIELD_LIST,
                 style: {
                   minWidth: "135px",
@@ -202,10 +197,6 @@ export const INIT_MODEL_CREATE_FORM_COLUMNS: ProFormColumnsType<
                   },
                 ];
               },
-              // fieldProps: {
-              //   options: WHETHER_OPTIONS,
-              //   defaultValue: WHETHER_OPTIONS[1].value,
-              // },
             },
           ],
         },
