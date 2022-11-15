@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-11-15 11:43:30
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-11-15 16:15:58
+ * @LastEditTime: 2022-11-15 16:51:12
  * @FilePath: /mission-order/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/api/commonGetListApi.ts
  * @Description: update here
  */
@@ -16,10 +16,6 @@ import {
   Params,
   useContext,
 } from "@midwayjs/hooks";
-import mongoose from "mongoose";
-import { z } from "zod";
-// import { MODEL_FIELD_TYPE_MAP } from "./const";
-// import { createCollection, dropCollection } from "./lib";
 import { db } from "./lib/db";
 
 export const getCommonModelRecordsList = Api(

@@ -2,16 +2,22 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-09-05 15:47:49
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-11-14 17:34:21
- * @FilePath: /melodyLCP/packages/lcp/src/client/pages/modelObject/views/ModelCreate/effects/const.ts
+ * @LastEditTime: 2022-11-15 17:29:44
+ * @FilePath: /mission-order/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/pages/modelObject/views/common/ModelForm/effects/const.ts
  * @Description: update here
  */
 
 import { ProFormColumnsType } from "@ant-design/pro-components";
-import { MODEL_TYPE_CONFIG_LIST } from "../../../../../../api/const";
-import { getEnum } from "../../../../../utils";
-import { ALL_MODEL_FIELD_LIST } from "../../../lib";
+import { MODEL_TYPE_CONFIG_LIST } from "../../../../../../../api/const";
+import { getEnum } from "../../../../../../utils";
+import { ALL_MODEL_FIELD_LIST } from "../../../../lib";
 import styles from "./../index.module.less";
+
+export enum MODEL_VIEW_TYPES {
+  CREATE = "CREATE",
+  DETAIL = "DETAIL",
+  EDIT = "EDIT",
+}
 
 export const LOCAL_STORE_CREATE_MODEL = "LOCAL_STORE_CREATE_MODEL";
 
@@ -188,7 +194,8 @@ export const INIT_MODEL_CREATE_FORM_COLUMNS: ProFormColumnsType<
             {
               valueType: "dependency",
               name: ["type"],
-              columns: (...args) => {
+              columns: ({ type }) => {
+                console.log("type:", type);
                 return [
                   {
                     title: "设置",
