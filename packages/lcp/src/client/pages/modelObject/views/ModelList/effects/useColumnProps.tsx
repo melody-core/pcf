@@ -2,14 +2,15 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-07-29 10:53:36
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-11-11 16:20:53
- * @FilePath: /melodyLCP/packages/lcp/src/client/pages/modelObject/views/ModelList/effects/useColumnProps.tsx
+ * @LastEditTime: 2022-11-15 16:19:36
+ * @FilePath: /mission-order/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/pages/modelObject/views/ModelList/effects/useColumnProps.tsx
  * @Description: update here
  */
 import { message, Popconfirm } from "antd";
 import React, { useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { deleteModelById } from "../../../../../../api/modelApi";
+import { getCommonModelRecordsList } from "../../../../../../api/commonGetListApi";
+import { deleteModelById, getModelList } from "../../../../../../api/modelApi";
 import { xFetch } from "../../../../../utils/xFetch";
 // import { deleteErrorObj } from './../../../../../../api/errorObject'
 // import { sentError2o } from './../../../../../../api/report'
@@ -31,12 +32,23 @@ export const useColumnProps = ({
         tip: "",
         render: (text, record, _, action) => [
           <a
-            key="editable"
-            onClick={() => {
-              action?.startEditable?.(record.hash);
+            key="textApi"
+            onClick={async () => {
+              const result = await getCommonModelRecordsList(
+                {
+                  params: {},
+                  sort: {},
+                },
+                {
+                  params: {
+                    modelName: record.name,
+                  },
+                }
+              );
+              console.log("test-result:", result);
             }}
           >
-            状态修改
+            接口测试
           </a>,
           <a
             key="detail"

@@ -1,3 +1,6 @@
+import { ModelFieldTransformFn } from "../lib/modelFieldTransform/type";
+import { transformText, transformDigit } from "./../lib/modelFieldTransform";
+
 export enum MODEL_FIELD_TYPES {
   text = "text",
   digit = "digit",
@@ -33,6 +36,9 @@ export enum MODEL_FIELD_TYPES {
   treeSelect = "treeSelect",
 }
 
-export const MODEL_FIELD_TYPE_MAP = new Map()
-  .set(MODEL_FIELD_TYPES.text, String)
-  .set(MODEL_FIELD_TYPES.digit, Number);
+export const MODEL_FIELD_TYPE_MAP = new Map<
+  MODEL_FIELD_TYPES,
+  ModelFieldTransformFn
+>()
+  .set(MODEL_FIELD_TYPES.text, transformText)
+  .set(MODEL_FIELD_TYPES.digit, transformDigit);

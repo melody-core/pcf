@@ -2,12 +2,12 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-09-16 16:15:00
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-11-11 16:39:32
- * @FilePath: /melodyLCP/packages/lcp/src/api/modelApi.ts
+ * @LastEditTime: 2022-11-15 16:30:24
+ * @FilePath: /mission-order/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/api/modelApi.ts
  * @Description: update here
  */
 
-import { Api, Get, Post, Query, useContext, Validate } from "@midwayjs/hooks";
+import { Api, Post, Validate } from "@midwayjs/hooks";
 import mongoose from "mongoose";
 import { z } from "zod";
 import { MODEL_FIELD_TYPE_MAP } from "./const";
@@ -42,7 +42,6 @@ const CreateModel = z
       })
     ),
     effects: z.object({}),
-    type: z.string(),
   })
   .partial({
     desc: true,
@@ -56,10 +55,18 @@ export const createModel = Api(
   async (createItemParams) => {
     const { name, fields } = createItemParams || {};
     const modelSchema = {};
-    fields.forEach((fieldOptions) => {
+    for (const fieldOptions of fields) {
       const { fieldName, type } = fieldOptions || {};
-      modelSchema[fieldName] = MODEL_FIELD_TYPE_MAP.get(type) || String;
-    });
+      modelSchema[fieldName] = String;
+      const targetTransformFn = MODEL_FIELD_TYPE_MAP.get(type);
+      if (targetTransformFn) {
+        const { dbFieldConfig } = await targetTransformFn({
+          type,
+          effect: {},
+        });
+        modelSchema[fieldName] = dbFieldConfig;
+      }
+    }
     await createCollection({
       modelSchema,
       modelName: name,
@@ -83,12 +90,20 @@ const GetModelListParams = z.object({
     .partial(),
   sort: z.object({}),
 });
+
 export const getModelList = Api(
   Post("/api/modelConfig/getList"),
   Validate(GetModelListParams),
   async (paramsWithSort) => {
-    const { params, sort } = paramsWithSort;
-    const { pageSize = 20, current = 1, title, desc, name, ...others } = params;
+    const { params, sort } = paramsWithSort || {};
+    const {
+      pageSize = 20,
+      current = 1,
+      title,
+      desc,
+      name,
+      ...others
+    } = params || {};
     const total = await modelModel.count();
     const findWhereParams = {
       ...others,
