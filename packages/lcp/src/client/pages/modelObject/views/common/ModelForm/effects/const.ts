@@ -2,16 +2,16 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-09-05 15:47:49
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-11-15 17:29:44
+ * @LastEditTime: 2022-11-17 18:02:25
  * @FilePath: /mission-order/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/pages/modelObject/views/common/ModelForm/effects/const.ts
  * @Description: update here
  */
 
 import { ProFormColumnsType } from "@ant-design/pro-components";
-import { MODEL_TYPE_CONFIG_LIST } from "../../../../../../../api/const";
-import { getEnum } from "../../../../../../utils";
+// import { MODEL_TYPE_CONFIG_LIST } from "../../../../../../../api/const";
+// import { getEnum } from "../../../../../../utils";
 import { ALL_MODEL_FIELD_LIST } from "../../../../lib";
-import styles from "./../index.module.less";
+// import styles from "./../index.module.less";
 
 export enum MODEL_VIEW_TYPES {
   CREATE = "CREATE",
@@ -35,20 +35,9 @@ export const MODEL_FORM_CREATE_STEPS = [
   },
 ];
 
-export const WHETHER_OPTIONS = [
-  {
-    label: "是",
-    value: 1,
-  },
-  {
-    label: "否",
-    value: 0,
-  },
-];
-
 export const INIT_MODEL_CREATE_FORM_COLUMNS: ProFormColumnsType<
   Record<string, any>,
-  "modelSetup" | "xSelect"
+  "modelSetup" | "xSelect" | "modelCommonSetup"
 >[][] = [
   [
     {
@@ -133,9 +122,9 @@ export const INIT_MODEL_CREATE_FORM_COLUMNS: ProFormColumnsType<
           },
           columns: [
             {
-              title: "字段名称",
+              title: "字段key",
               dataIndex: "fieldName",
-              tooltip: "字段名称是唯一的, 模型字段与库表字段是一一对应的。",
+              tooltip: "字段key是唯一的,本质上,它是库表的字段名。",
               formItemProps: {
                 rules: [
                   {
@@ -152,6 +141,11 @@ export const INIT_MODEL_CREATE_FORM_COLUMNS: ProFormColumnsType<
                   },
                 ],
               },
+            },
+            {
+              title: "字段名称",
+              dataIndex: "title",
+              tooltip: "给字段一个名称便于使用，例如key设为six,命名为‘性别’",
             },
             {
               title: "字段类型",
@@ -174,33 +168,22 @@ export const INIT_MODEL_CREATE_FORM_COLUMNS: ProFormColumnsType<
               },
             },
             {
-              title: "是否必须",
-              dataIndex: "isRequired",
-              valueType: "radio",
-              fieldProps: {
-                options: WHETHER_OPTIONS,
-                defaultValue: WHETHER_OPTIONS[1].value,
-              },
-            },
-            {
-              title: "是否唯一",
-              dataIndex: "isUnique",
-              valueType: "radio",
-              fieldProps: {
-                options: WHETHER_OPTIONS,
-                defaultValue: WHETHER_OPTIONS[1].value,
-              },
+              title: "通用化配置",
+              dataIndex: "commonSetup",
+              valueType: "modelCommonSetup",
             },
             {
               valueType: "dependency",
               name: ["type"],
               columns: ({ type }) => {
-                console.log("type:", type);
                 return [
                   {
-                    title: "设置",
-                    dataIndex: "setup",
+                    title: "个性化配置",
+                    dataIndex: "individualizedSetup",
                     valueType: "modelSetup",
+                    fieldProps: {
+                      fieldType: type,
+                    },
                   },
                 ];
               },

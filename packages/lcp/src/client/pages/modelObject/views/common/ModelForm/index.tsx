@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-09-05 15:43:29
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-11-15 17:10:56
+ * @LastEditTime: 2022-11-17 17:40:42
  * @FilePath: /mission-order/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/pages/modelObject/views/common/ModelForm/index.tsx
  * @Description: update here
  */
@@ -18,7 +18,7 @@ import { createModel } from "../../../../../../api/modelApi";
 import { xFetch } from "../../../../../utils/xFetch";
 import { message } from "antd";
 import { SelectWithTipImg } from "../../../../../components";
-import { ModelFieldSetup } from "./components";
+import { ModelFieldSetup, ModelFieldCommonSetup } from "./components";
 
 export const ModelFormCommon = ({ viewType = MODEL_VIEW_TYPES.CREATE }) => {
   const formRef = useRef();
@@ -33,6 +33,25 @@ export const ModelFormCommon = ({ viewType = MODEL_VIEW_TYPES.CREATE }) => {
         value={{
           ...values,
           valueTypeMap: {
+            modelCommonSetup: {
+              render: (_, props) => {
+                return (
+                  <ModelFieldCommonSetup
+                    {...props.fieldProps}
+                    mode={props.mode}
+                  />
+                );
+              },
+              renderFormItem: (_, props) => {
+                // console.log("...renderFormItem=args", ...args);
+                return (
+                  <ModelFieldCommonSetup
+                    {...props.fieldProps}
+                    mode={props.mode}
+                  />
+                );
+              },
+            },
             modelSetup: {
               render: (_, props) => {
                 return (
@@ -61,7 +80,10 @@ export const ModelFormCommon = ({ viewType = MODEL_VIEW_TYPES.CREATE }) => {
           },
         }}
       >
-        <BetaSchemaForm<Record<string, any>, "modelSetup" | "xSelect">
+        <BetaSchemaForm<
+          Record<string, any>,
+          "modelSetup" | "xSelect" | "modelCommonSetup"
+        >
           layoutType="StepsForm"
           current={current}
           formRef={formRef}
