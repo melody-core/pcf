@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-07-29 10:53:36
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-11-15 16:19:36
+ * @LastEditTime: 2022-12-19 11:36:37
  * @FilePath: /mission-order/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/pages/modelObject/views/ModelList/effects/useColumnProps.tsx
  * @Description: update here
  */
@@ -11,7 +11,9 @@ import React, { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { getCommonModelRecordsList } from "../../../../../../api/commonGetListApi";
 import { deleteModelById, getModelList } from "../../../../../../api/modelApi";
+import NavItems from "../../../../../config/nav.config";
 import { xFetch } from "../../../../../utils/xFetch";
+import { MODEL_MENU_KEYS } from "../../../effect";
 // import { deleteErrorObj } from './../../../../../../api/errorObject'
 // import { sentError2o } from './../../../../../../api/report'
 import { INIT_COLUMN_LIST } from "./const";
@@ -60,6 +62,17 @@ export const useColumnProps = ({
             }}
           >
             详情
+          </a>,
+          <a
+            key="edit"
+            onClick={() => {
+              // setSelectedDetail(record.id);
+              navigator(
+                `/${NavItems[1].key}/${MODEL_MENU_KEYS.MODEL_EDIT}?_id=${record._id}`
+              );
+            }}
+          >
+            编辑
           </a>,
           <Popconfirm
             key="delete"

@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-09-16 16:15:00
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-11-15 16:30:24
+ * @LastEditTime: 2022-12-19 11:54:02
  * @FilePath: /mission-order/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/api/modelApi.ts
  * @Description: update here
  */
@@ -27,6 +27,26 @@ const modelSchema = new mongoose.Schema(MODEL_MODEL_SCHEMA, {
 });
 
 const modelModel = mongoose.model("modelObject", modelSchema, "modelObject");
+
+// 单条查询根据_id
+const GetModelDetailById = z.object({
+  _id: z.string(),
+});
+
+export const getModelById = Api(
+  Post("/api/modelConfig/getModelById"),
+  Validate(GetModelDetailById),
+  async ({ _id }) => {
+    if (!_id) {
+      throw new Error("缺失请求参数: _id!");
+    }
+    const findItem = await modelModel.findById(_id);
+    if (!findItem) {
+      throw new Error("没有这个模型!");
+    }
+    return findItem;
+  }
+);
 
 // 单条存储
 const CreateModel = z

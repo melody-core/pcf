@@ -2,8 +2,8 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-07-28 17:42:36
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-11-14 17:24:46
- * @FilePath: /melodyLCP/packages/lcp/src/client/pages/modelObject/effect.ts
+ * @LastEditTime: 2022-12-19 11:35:47
+ * @FilePath: /mission-order/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/pages/modelObject/effect.ts
  * @Description: update here
  */
 
@@ -15,6 +15,7 @@ export enum MODEL_MENU_KEYS {
   // DATA_GOVERNMENT = "data_government", // 数据治理 - 这个放在数据管理
   // 下面的属于增改，不植入menu
   MODEL_CREATE = "model_create",
+  MODEL_EDIT = "model_edit",
 }
 
 export enum MODEL_MENU_LABELS {

@@ -2,17 +2,22 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-09-05 15:43:29
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-11-17 17:40:42
+ * @LastEditTime: 2022-12-19 14:03:31
  * @FilePath: /mission-order/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/pages/modelObject/views/common/ModelForm/index.tsx
  * @Description: update here
  */
 import React, { useContext, useRef } from "react";
-import { BetaSchemaForm, ProProvider } from "@ant-design/pro-components";
+import {
+  BetaSchemaForm,
+  ProFormInstance,
+  ProProvider,
+} from "@ant-design/pro-components";
 import {
   useCurrentProp,
   useColumnsProp,
   MODEL_FORM_CREATE_STEPS,
   MODEL_VIEW_TYPES,
+  useInitValues,
 } from "./effects";
 import { createModel } from "../../../../../../api/modelApi";
 import { xFetch } from "../../../../../utils/xFetch";
@@ -21,12 +26,14 @@ import { SelectWithTipImg } from "../../../../../components";
 import { ModelFieldSetup, ModelFieldCommonSetup } from "./components";
 
 export const ModelFormCommon = ({ viewType = MODEL_VIEW_TYPES.CREATE }) => {
-  const formRef = useRef();
   const values = useContext(ProProvider);
-  const { current, handleCurrentChange } = useCurrentProp({
-    formRef,
-  });
+  const formMapRef = useRef<React.MutableRefObject<ProFormInstance<any>>[]>([]);
+  const { current, handleCurrentChange } = useCurrentProp({});
   const { columns } = useColumnsProp();
+  useInitValues({
+    formMapRef,
+    viewType,
+  });
   return (
     <>
       <ProProvider.Provider
@@ -86,12 +93,11 @@ export const ModelFormCommon = ({ viewType = MODEL_VIEW_TYPES.CREATE }) => {
         >
           layoutType="StepsForm"
           current={current}
-          formRef={formRef}
+          formMapRef={formMapRef}
           steps={MODEL_FORM_CREATE_STEPS}
           columns={columns}
           onCurrentChange={handleCurrentChange}
           onFinish={async (values) => {
-            console.log("values: ", values);
             const { success } = await xFetch(createModel(values));
             if (success) {
               message.success("创建模型成功");

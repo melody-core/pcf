@@ -2,8 +2,8 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-05-28 16:00:11
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-10-04 22:57:00
- * @FilePath: /melodyLCP/packages/lcp/src/client/router/config.ts
+ * @LastEditTime: 2022-12-19 11:38:55
+ * @FilePath: /mission-order/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/router/config.ts
  * @Description: update here
  */
 
@@ -26,7 +26,11 @@ import {
 
 // 模型管理 - start
 import ModelManager from "../pages/modelObject";
-import { ModelList, ModelCreate } from "./../pages/modelObject/views";
+import {
+  ModelList,
+  ModelCreate,
+  ModelEdit,
+} from "./../pages/modelObject/views";
 // 模型管理 - end
 
 export default [
@@ -80,6 +84,11 @@ export default [
             path: MODEL_MENU_KEYS.MODEL_CREATE,
             Component: ModelCreate,
             bread: ["六弦低代码系统", "模型管理", "创建模型"],
+          },
+          {
+            path: MODEL_MENU_KEYS.MODEL_EDIT,
+            Component: ModelEdit,
+            bread: ["六弦低代码系统", "模型管理", "编辑模型"],
           },
         ],
       },

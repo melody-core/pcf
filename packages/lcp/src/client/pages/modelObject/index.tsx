@@ -2,12 +2,12 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-09-16 16:16:07
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-10-01 19:51:39
- * @FilePath: /melodyLCP/packages/lcp/src/client/pages/modelObject/index.tsx
+ * @LastEditTime: 2022-12-19 11:32:24
+ * @FilePath: /mission-order/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/pages/modelObject/index.tsx
  * @Description: update here
  */
 
-import React, { FC, useState } from "react";
+import React, { useState } from "react";
 import { Layout, Menu } from "antd";
 import { MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons";
 import { observer } from "mobx-react";
