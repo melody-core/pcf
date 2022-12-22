@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-09-05 15:47:49
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-11-17 18:02:25
+ * @LastEditTime: 2022-12-21 18:06:20
  * @FilePath: /mission-order/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/pages/modelObject/views/common/ModelForm/effects/const.ts
  * @Description: update here
  */
@@ -98,7 +98,6 @@ export const INIT_MODEL_CREATE_FORM_COLUMNS: ProFormColumnsType<
       },
       columns: [
         {
-          // title: "--字段配置--",
           valueType: "group",
           formItemProps: {
             rules: [

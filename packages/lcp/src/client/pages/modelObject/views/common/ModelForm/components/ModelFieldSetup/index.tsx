@@ -2,20 +2,19 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-11-15 17:03:39
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-11-17 17:57:07
+ * @LastEditTime: 2022-12-21 21:49:15
  * @FilePath: /mission-order/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/pages/modelObject/views/common/ModelForm/components/ModelFieldSetup/index.tsx
  * @Description: update here
  */
-import React from "react";
+import React, { useRef } from "react";
 import { ToolOutlined } from "@ant-design/icons";
-import { BetaSchemaForm } from "@ant-design/pro-components";
+import { BetaSchemaForm, ProForm } from "@ant-design/pro-components";
 
 import styles from "./index.module.less";
 import { useColumnsProp } from "./effects";
-import { message } from "antd";
+import { message, Modal } from "antd";
 
 export const ModelFieldSetup = ({ value, onChange, mode, fieldType }) => {
-  console.log("fieldType:", fieldType);
   const mergeColumns = useColumnsProp({
     fieldType,
     mode,
@@ -37,7 +36,8 @@ export const ModelFieldSetup = ({ value, onChange, mode, fieldType }) => {
   }
   return (
     <BetaSchemaForm
-      columns={mergeColumns}
+      component={false}
+      columns={[...mergeColumns]}
       trigger={
         <div className={styles["icon_wrap"]}>
           <a>
@@ -45,6 +45,11 @@ export const ModelFieldSetup = ({ value, onChange, mode, fieldType }) => {
           </a>
         </div>
       }
+      // initialValues={value}
+      onFieldsChange={console.log}
+      onFinish={async (values) => {
+        console.log("values:", values);
+      }}
       layoutType="ModalForm"
     />
   );

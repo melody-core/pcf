@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-11-17 17:17:31
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-11-17 17:24:54
+ * @LastEditTime: 2022-12-19 16:11:22
  * @FilePath: /mission-order/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/pages/modelObject/views/common/ModelForm/components/ModelFieldCommonSetup/effects/const.ts
  * @Description: update here
  */
@@ -26,7 +26,7 @@ export const FIELD_COMMON_CONFIG_COLUMN: ProFormColumnsType<
   {
     title: "是否必须",
     dataIndex: "isRequired",
-    valueType: "radio",
+    valueType: "switch",
     fieldProps: {
       options: WHETHER_OPTIONS,
     },
@@ -34,7 +34,7 @@ export const FIELD_COMMON_CONFIG_COLUMN: ProFormColumnsType<
   {
     title: "是否唯一",
     dataIndex: "isUnique",
-    valueType: "radio",
+    valueType: "switch",
     fieldProps: {
       options: WHETHER_OPTIONS,
     },
@@ -42,7 +42,7 @@ export const FIELD_COMMON_CONFIG_COLUMN: ProFormColumnsType<
   {
     title: "是否可编辑",
     dataIndex: "isEditable",
-    valueType: "radio",
+    valueType: "switch",
     fieldProps: {
       options: WHETHER_OPTIONS,
     },

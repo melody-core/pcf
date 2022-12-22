@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-09-05 15:43:29
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-12-19 14:03:31
+ * @LastEditTime: 2022-12-21 18:04:06
  * @FilePath: /mission-order/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/pages/modelObject/views/common/ModelForm/index.tsx
  * @Description: update here
  */
@@ -18,6 +18,7 @@ import {
   MODEL_FORM_CREATE_STEPS,
   MODEL_VIEW_TYPES,
   useInitValues,
+  useSubmit,
 } from "./effects";
 import { createModel } from "../../../../../../api/modelApi";
 import { xFetch } from "../../../../../utils/xFetch";
@@ -34,6 +35,9 @@ export const ModelFormCommon = ({ viewType = MODEL_VIEW_TYPES.CREATE }) => {
     formMapRef,
     viewType,
   });
+  const onFinish = useSubmit({
+    viewType,
+  });
   return (
     <>
       <ProProvider.Provider
@@ -43,30 +47,19 @@ export const ModelFormCommon = ({ viewType = MODEL_VIEW_TYPES.CREATE }) => {
             modelCommonSetup: {
               render: (_, props) => {
                 return (
-                  <ModelFieldCommonSetup
-                    {...props.fieldProps}
-                    mode={props.mode}
-                  />
+                  <ModelFieldCommonSetup {...props} {...props.fieldProps} />
                 );
               },
               renderFormItem: (_, props) => {
                 // console.log("...renderFormItem=args", ...args);
                 return (
-                  <ModelFieldCommonSetup
-                    {...props.fieldProps}
-                    mode={props.mode}
-                  />
+                  <ModelFieldCommonSetup {...props} {...props.fieldProps} />
                 );
               },
             },
             modelSetup: {
-              render: (_, props) => {
-                return (
-                  <ModelFieldSetup {...props.fieldProps} mode={props.mode} />
-                );
-              },
-              renderFormItem: (_, props) => {
-                // console.log("...renderFormItem=args", ...args);
+              renderFormItem: (_, props, ...aothers) => {
+                console.log("text", props, aothers);
                 return (
                   <ModelFieldSetup {...props.fieldProps} mode={props.mode} />
                 );
@@ -97,13 +90,7 @@ export const ModelFormCommon = ({ viewType = MODEL_VIEW_TYPES.CREATE }) => {
           steps={MODEL_FORM_CREATE_STEPS}
           columns={columns}
           onCurrentChange={handleCurrentChange}
-          onFinish={async (values) => {
-            const { success } = await xFetch(createModel(values));
-            if (success) {
-              message.success("创建模型成功");
-            }
-            return false;
-          }}
+          onFinish={onFinish}
         />
       </ProProvider.Provider>
     </>

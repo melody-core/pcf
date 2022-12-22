@@ -8,7 +8,6 @@
  */
 
 import App from "../../App";
-import Page404 from "../pages/Status/404";
 import NotOpen from "../pages/Status/NotOpen";
 import { NavItems } from "./../config/nav.config";
 import { PAGE_MENU_KEYS } from "./../pages/pageObject/effect";
