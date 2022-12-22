@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-12-19 14:55:41
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-12-21 17:42:28
+ * @LastEditTime: 2022-12-23 00:58:28
  * @FilePath: /mission-order/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/pages/modelObject/views/common/ModelForm/effects/useSubmit.ts
  * @Description: update here
  */
@@ -19,8 +19,6 @@ import { UseSubmit } from "./type";
 export const useSubmit: UseSubmit =
   ({ viewType }) =>
   async (values) => {
-    console.log("values:", values);
-    return;
     if (viewType === MODEL_VIEW_TYPES.CREATE) {
       const { success } = await xFetch(createModel(values));
       if (success) {

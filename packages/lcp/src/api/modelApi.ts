@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-09-16 16:15:00
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-12-21 23:16:18
+ * @LastEditTime: 2022-12-23 01:19:14
  * @FilePath: /mission-order/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/api/modelApi.ts
  * @Description: update here
  */
@@ -82,14 +82,16 @@ export const createModel = Api(
     }
     const modelSchema = {};
     for (const fieldOptions of fields) {
-      const { fieldName, type } = fieldOptions || {};
+      const { fieldName, type, commonSetup = {} } = fieldOptions || {};
       modelSchema[fieldName] = String;
       // todo
       const targetTransformFn = MODEL_FIELD_TYPE_MAP.get(type);
       if (targetTransformFn) {
         const { dbFieldConfig } = await targetTransformFn({
           type,
-          effect: {},
+          effect: {
+            commonSetup,
+          },
         });
         modelSchema[fieldName] = dbFieldConfig;
       }

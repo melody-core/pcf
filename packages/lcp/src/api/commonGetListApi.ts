@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-11-15 11:43:30
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-11-15 16:51:12
+ * @LastEditTime: 2022-12-23 00:17:44
  * @FilePath: /mission-order/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/api/commonGetListApi.ts
  * @Description: update here
  */
@@ -36,8 +36,13 @@ export const getCommonModelRecordsList = Api(
     };
     for (const key in others) {
       if (typeof others[key] === "string") {
+        // string 类型支持模糊查询
         findWhereParams[key] = {
           $regex: others[key],
+        };
+      } else {
+        findWhereParams[key] = {
+          $eq: others[key],
         };
       }
     }
@@ -45,7 +50,8 @@ export const getCommonModelRecordsList = Api(
       .find(findWhereParams)
       .skip(pageSize * (current - 1))
       .limit(pageSize)
-      .sort(sort);
+      .sort(sort)
+      .toArray();
     return {
       data: result,
       total,

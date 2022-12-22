@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-11-17 17:17:31
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-12-19 16:11:22
+ * @LastEditTime: 2022-12-22 21:48:09
  * @FilePath: /mission-order/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/pages/modelObject/views/common/ModelForm/components/ModelFieldCommonSetup/effects/const.ts
  * @Description: update here
  */
@@ -30,6 +30,9 @@ export const FIELD_COMMON_CONFIG_COLUMN: ProFormColumnsType<
     fieldProps: {
       options: WHETHER_OPTIONS,
     },
+    formItemProps: {
+      required: true,
+    },
   },
   {
     title: "是否唯一",
@@ -37,6 +40,9 @@ export const FIELD_COMMON_CONFIG_COLUMN: ProFormColumnsType<
     valueType: "switch",
     fieldProps: {
       options: WHETHER_OPTIONS,
+    },
+    formItemProps: {
+      required: true,
     },
   },
   {
@@ -46,5 +52,19 @@ export const FIELD_COMMON_CONFIG_COLUMN: ProFormColumnsType<
     fieldProps: {
       options: WHETHER_OPTIONS,
     },
+    formItemProps: {
+      required: true,
+    },
   },
+  // {
+  //   title: "管理属性",
+  //   dataIndex: "isEditable",
+  //   valueType: "switch",
+  //   fieldProps: {
+  //     options: WHETHER_OPTIONS,
+  //   },
+  //   formItemProps: {
+  //     required: true,
+  //   },
+  // },
 ];

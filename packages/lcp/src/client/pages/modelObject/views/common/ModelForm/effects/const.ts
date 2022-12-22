@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-09-05 15:47:49
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-12-21 18:06:20
+ * @LastEditTime: 2022-12-22 22:28:09
  * @FilePath: /mission-order/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/pages/modelObject/views/common/ModelForm/effects/const.ts
  * @Description: update here
  */
@@ -87,6 +87,7 @@ export const INIT_MODEL_CREATE_FORM_COLUMNS: ProFormColumnsType<
     {
       title: "模型字段定义",
       dataIndex: "fields",
+      key: "fields",
       valueType: "formList",
       formItemProps: {
         rules: [
