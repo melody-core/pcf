@@ -1,12 +1,31 @@
 /*
  * @Author: 六弦(melodyWxy)
- * @Date: 2022-11-17 17:17:31
+ * @Date: 2022-12-23 19:14:32
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-12-22 21:48:09
- * @FilePath: /mission-order/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/pages/modelObject/views/common/ModelForm/components/ModelFieldCommonSetup/effects/const.ts
+ * @LastEditTime: 2022-12-23 19:41:15
+ * @FilePath: /mission-order/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/pages/modelObject/views/common/ModelForm/components/ModelFieldConfigSetup/effects/const.ts
  * @Description: update here
  */
+
 import { ProFormColumnsType } from "@ant-design/pro-components";
+import {
+  MODEL_FIELD_DIGIT,
+  MODEL_FIELD_TEXT,
+  MODEL_FIELD_SELECT,
+} from "./../../../../../../lib/modelFieldTypes";
+
+import { TEXT_EFFECT_COLUMN, SELECT_EFFECT_COLUMN } from "./libs";
+
+export const CONFIG_FORM_TABS = [
+  {
+    label: "通用配置",
+    key: "commonSetup",
+  },
+  {
+    label: "个性化配置",
+    key: "individualizedSetup",
+  },
+];
 
 export const WHETHER_OPTIONS = [
   {
@@ -19,6 +38,15 @@ export const WHETHER_OPTIONS = [
   },
 ];
 
+// 个性化配置columns定义
+export const FIELD_TYPE_CONFIG_COLUMN_MAP = new Map<
+  any,
+  ProFormColumnsType<Record<string, any>, "text">[]
+>()
+  .set(MODEL_FIELD_TEXT.value, TEXT_EFFECT_COLUMN)
+  .set(MODEL_FIELD_SELECT.value, SELECT_EFFECT_COLUMN);
+
+// 通用配置定义
 export const FIELD_COMMON_CONFIG_COLUMN: ProFormColumnsType<
   Record<string, any>,
   "text"

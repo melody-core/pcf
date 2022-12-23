@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-09-05 15:47:49
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-12-22 22:28:09
+ * @LastEditTime: 2022-12-23 20:12:09
  * @FilePath: /mission-order/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/pages/modelObject/views/common/ModelForm/effects/const.ts
  * @Description: update here
  */
@@ -37,7 +37,7 @@ export const MODEL_FORM_CREATE_STEPS = [
 
 export const INIT_MODEL_CREATE_FORM_COLUMNS: ProFormColumnsType<
   Record<string, any>,
-  "modelSetup" | "xSelect" | "modelCommonSetup"
+  "xSelect" | "modelFieldConfigSetup"
 >[][] = [
   [
     {
@@ -168,19 +168,14 @@ export const INIT_MODEL_CREATE_FORM_COLUMNS: ProFormColumnsType<
               },
             },
             {
-              title: "通用化配置",
-              dataIndex: "commonSetup",
-              valueType: "modelCommonSetup",
-            },
-            {
               valueType: "dependency",
               name: ["type"],
               columns: ({ type }) => {
                 return [
                   {
-                    title: "个性化配置",
-                    dataIndex: "individualizedSetup",
-                    valueType: "modelSetup",
+                    title: "配置",
+                    dataIndex: "config",
+                    valueType: "modelFieldConfigSetup",
                     fieldProps: {
                       fieldType: type,
                     },

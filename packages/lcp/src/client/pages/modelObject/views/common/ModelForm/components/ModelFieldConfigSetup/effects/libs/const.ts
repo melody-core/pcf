@@ -1,12 +1,11 @@
 /*
  * @Author: 六弦(melodyWxy)
- * @Date: 2022-11-17 11:21:30
+ * @Date: 2022-12-23 19:39:53
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-11-17 17:28:48
- * @FilePath: /mission-order/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/pages/modelObject/views/common/ModelForm/components/ModelFieldSetup/const/const.tsx
+ * @LastEditTime: 2022-12-23 19:39:54
+ * @FilePath: /mission-order/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/pages/modelObject/views/common/ModelForm/components/ModelFieldConfigSetup/effects/libs/const.ts
  * @Description: update here
  */
-
 // 通用是否radio项
 export const NORMAL_RADIO_GROUP_IS = [
   {

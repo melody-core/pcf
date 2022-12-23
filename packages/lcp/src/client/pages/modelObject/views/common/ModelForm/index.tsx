@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-09-05 15:43:29
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-12-22 21:51:26
+ * @LastEditTime: 2022-12-23 19:33:50
  * @FilePath: /mission-order/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/pages/modelObject/views/common/ModelForm/index.tsx
  * @Description: update here
  */
@@ -20,11 +20,8 @@ import {
   useInitValues,
   useSubmit,
 } from "./effects";
-import { createModel } from "../../../../../../api/modelApi";
-import { xFetch } from "../../../../../utils/xFetch";
-import { message } from "antd";
 import { SelectWithTipImg } from "../../../../../components";
-import { ModelFieldSetup, ModelFieldCommonSetup } from "./components";
+import { ModelFieldConfigSetup } from "./components";
 
 export const ModelFormCommon = ({ viewType = MODEL_VIEW_TYPES.CREATE }) => {
   const values = useContext(ProProvider);
@@ -44,23 +41,13 @@ export const ModelFormCommon = ({ viewType = MODEL_VIEW_TYPES.CREATE }) => {
         value={{
           ...values,
           valueTypeMap: {
-            modelCommonSetup: {
-              render: (_, props) => {
-                return (
-                  <ModelFieldCommonSetup {...props} {...props.fieldProps} />
-                );
-              },
-              renderFormItem: (_, props) => {
-                // console.log("...renderFormItem=args", ...args);
-                return (
-                  <ModelFieldCommonSetup {...props} {...props.fieldProps} />
-                );
-              },
-            },
-            modelSetup: {
+            modelFieldConfigSetup: {
               renderFormItem: (_, props) => {
                 return (
-                  <ModelFieldSetup {...props.fieldProps} mode={props.mode} />
+                  <ModelFieldConfigSetup
+                    {...props.fieldProps}
+                    mode={props.mode}
+                  />
                 );
               },
             },
@@ -81,7 +68,7 @@ export const ModelFormCommon = ({ viewType = MODEL_VIEW_TYPES.CREATE }) => {
       >
         <BetaSchemaForm<
           Record<string, any>,
-          "modelSetup" | "xSelect" | "modelCommonSetup"
+          "xSelect" | "modelFieldConfigSetup"
         >
           layoutType="StepsForm"
           current={current}

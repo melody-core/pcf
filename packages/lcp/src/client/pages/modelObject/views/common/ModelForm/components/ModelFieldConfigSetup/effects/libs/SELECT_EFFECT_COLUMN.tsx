@@ -1,3 +1,11 @@
+/*
+ * @Author: 六弦(melodyWxy)
+ * @Date: 2022-12-23 19:39:30
+ * @LastEditors: 六弦(melodyWxy)
+ * @LastEditTime: 2022-12-23 19:39:31
+ * @FilePath: /mission-order/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/pages/modelObject/views/common/ModelForm/components/ModelFieldConfigSetup/effects/libs/SELECT_EFFECT_COLUMN.tsx
+ * @Description: update here
+ */
 import { ProFormColumnsType } from "@ant-design/pro-components";
 import { NORMAL_RADIO_GROUP_IS, SELECT_SOURCE_OPTIONS } from "./const";
 
