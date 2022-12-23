@@ -2,13 +2,13 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-09-05 15:47:49
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-09-08 14:32:05
- * @FilePath: /melodyLCP/packages/lcp/src/client/pages/pageObject/components/PageCreate/effects/const.ts
+ * @LastEditTime: 2022-12-24 03:45:33
+ * @FilePath: /bui-integration-platform/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/pages/pageObject/views/PageCreate/effects/const.ts
  * @Description: update here
  */
 
 import { ProFormColumnsType } from "@ant-design/pro-components";
-import { TemplateObject } from "@prisma/client";
+// import { TemplateObject } from "@prisma/client";
 import { getTemplateList } from "../../../../../../api/templateApi";
 
 export const INIT_PAGE_CREATE_FORM_COLUMNS: ProFormColumnsType<
@@ -49,7 +49,7 @@ export const INIT_PAGE_CREATE_FORM_COLUMNS: ProFormColumnsType<
             sort: {},
           }) as any as Promise<{
             data: {
-              data: TemplateObject[];
+              data: any[];
             };
           }>
         ).then(({ data }) => {
@@ -61,10 +61,10 @@ export const INIT_PAGE_CREATE_FORM_COLUMNS: ProFormColumnsType<
       },
     },
     {
-      title: "页面路由",
+      title: "所属项目",
       dataIndex: "router",
       fieldProps: {
-        placeholder: "如果不填，默认将自动生成页面路由地址",
+        placeholder: "如果未选择，则为公共资源页面",
       },
     },
     {
@@ -74,6 +74,11 @@ export const INIT_PAGE_CREATE_FORM_COLUMNS: ProFormColumnsType<
     },
   ],
   [
+    // {
+    //   title: "选择数据源",
+    //   valueType: "dependency",
+    //   name: ["tem"],
+    // },
     {
       title: "选择数据源",
       dataIndex: "dataEffect",

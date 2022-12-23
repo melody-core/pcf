@@ -13,6 +13,7 @@
     "build": "yarn workspace melody-lcp run build",
     "build:tem": "yarn workspace melody-template-core run build:tem",
     "dev": "yarn workspace melody-template-core run dev & yarn workspace melody-lcp run dev",
+    "dev:lcp": "yarn workspace melody-lcp run dev",
     "docs:tem": "yarn workspace melody-template-core run demo",
     "f2elint-scan": "f2elint scan",
     "f2elint-fix": "f2elint fix"

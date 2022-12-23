@@ -2,12 +2,10 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-07-29 11:10:02
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-11-11 10:07:53
- * @FilePath: /melodyLCP/packages/lcp/src/client/pages/modelObject/views/ModelList/effects/useRequestProps.ts
+ * @LastEditTime: 2022-12-24 01:47:42
+ * @FilePath: /bui-integration-platform/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/pages/modelObject/views/ModelList/effects/useRequestProps.ts
  * @Description: update here
  */
-import { message } from "antd";
-import { useCallback } from "react";
 import { getModelList } from "../../../../../../api/modelApi";
 import { xFetch } from "../../../../../utils/xFetch";
 

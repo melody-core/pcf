@@ -2,8 +2,8 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-12-23 19:14:32
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-12-23 22:18:02
- * @FilePath: /mission-order/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/pages/modelObject/views/common/ModelForm/components/ModelFieldConfigSetup/effects/const.ts
+ * @LastEditTime: 2022-12-24 02:15:34
+ * @FilePath: /bui-integration-platform/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/pages/modelObject/views/common/ModelForm/components/ModelFieldConfigSetup/effects/const.ts
  * @Description: update here
  */
 
@@ -60,6 +60,7 @@ export const FIELD_COMMON_CONFIG_COLUMN: ProFormColumnsType<
     title: "是否必须",
     dataIndex: "isRequired",
     valueType: "switch",
+    tooltip: "对于此模型对应的数据而言，此字段是否必传",
     fieldProps: {
       options: WHETHER_OPTIONS,
     },
@@ -71,6 +72,7 @@ export const FIELD_COMMON_CONFIG_COLUMN: ProFormColumnsType<
     title: "是否唯一",
     dataIndex: "isUnique",
     valueType: "switch",
+    tooltip: "对于此模型对应的数据而言，此字段是否唯一",
     fieldProps: {
       options: WHETHER_OPTIONS,
     },
@@ -81,6 +83,7 @@ export const FIELD_COMMON_CONFIG_COLUMN: ProFormColumnsType<
   {
     title: "是否可编辑",
     dataIndex: "isEditable",
+    tooltip: "对于此模型对应的数据而言，此字段是否可编辑",
     valueType: "switch",
     fieldProps: {
       options: WHETHER_OPTIONS,
@@ -89,15 +92,11 @@ export const FIELD_COMMON_CONFIG_COLUMN: ProFormColumnsType<
       required: true,
     },
   },
-  // {
-  //   title: "管理属性",
-  //   dataIndex: "isEditable",
-  //   valueType: "switch",
-  //   fieldProps: {
-  //     options: WHETHER_OPTIONS,
-  //   },
-  //   formItemProps: {
-  //     required: true,
-  //   },
-  // },
+  {
+    title: "字段描述",
+    dataIndex: "desc",
+    valueType: "textarea",
+    tooltip:
+      "您可以对此字段设置一个描述，这将会在创建数据时对此字段添加设置提示功能",
+  },
 ];

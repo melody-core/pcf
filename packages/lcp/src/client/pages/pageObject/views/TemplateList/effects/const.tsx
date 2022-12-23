@@ -2,8 +2,8 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-09-06 11:41:05
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-11-11 14:27:08
- * @FilePath: /melodyLCP/packages/lcp/src/client/pages/pageObject/views/TemplateList/effects/const.tsx
+ * @LastEditTime: 2022-12-24 03:36:19
+ * @FilePath: /bui-integration-platform/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/pages/pageObject/views/TemplateList/effects/const.tsx
  * @Description: update here
  */
 
@@ -18,6 +18,13 @@ import React from "react";
 import { TEM_STATUS_LIST } from "../../../../../../api/const";
 import { deleteTemplateById } from "../../../../../../api/templateApi";
 import { getEnum } from "../../../../../utils";
+
+import * as TemplateMap from "melody-template-core";
+
+const TemplateList = Object.keys(TemplateMap).map((n) => ({
+  label: n,
+  value: n,
+}));
 
 export const INIT_TEM_LIST_COLUMNS: ProFormColumnsType<any, "text">[] = [
   {
@@ -44,6 +51,10 @@ export const INIT_TEM_LIST_COLUMNS: ProFormColumnsType<any, "text">[] = [
     title: "组件源",
     formItemProps: {
       required: true,
+    },
+    valueType: "select",
+    fieldProps: {
+      options: TemplateList,
     },
   },
   {

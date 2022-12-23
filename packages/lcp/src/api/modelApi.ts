@@ -2,8 +2,8 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-09-16 16:15:00
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-12-23 20:50:41
- * @FilePath: /mission-order/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/api/modelApi.ts
+ * @LastEditTime: 2022-12-24 02:01:59
+ * @FilePath: /bui-integration-platform/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/api/modelApi.ts
  * @Description: update here
  */
 
@@ -41,6 +41,27 @@ export const getModelById = Api(
       throw new Error("缺失请求参数: _id!");
     }
     const findItem = await modelModel.findById(_id);
+    if (!findItem) {
+      throw new Error("没有这个模型!");
+    }
+    return findItem;
+  }
+);
+
+// 单条查询根据modelName
+const GetModelDetailByModelName = z.object({
+  name: z.string(),
+});
+export const getModelByName = Api(
+  Post("/api/modelConfig/getMetaDataByModelName"),
+  Validate(GetModelDetailByModelName),
+  async ({ name }) => {
+    if (!name) {
+      throw new Error("缺失请求参数: name!");
+    }
+    const findItem = await modelModel.findOne({
+      name,
+    });
     if (!findItem) {
       throw new Error("没有这个模型!");
     }
@@ -141,14 +162,7 @@ export const getModelList = Api(
   Validate(GetModelListParams),
   async (paramsWithSort) => {
     const { params, sort } = paramsWithSort || {};
-    const {
-      pageSize = 20,
-      current = 1,
-      title,
-      desc,
-      name,
-      ...others
-    } = params || {};
+    const { pageSize = 20, current = 1, ...others } = params || {};
     const total = await modelModel.count();
     const findWhereParams = {
       ...others,
@@ -157,6 +171,10 @@ export const getModelList = Api(
       if (typeof others[key] === "string") {
         findWhereParams[key] = {
           $regex: others[key],
+        };
+      } else {
+        findWhereParams[key] = {
+          $eq: others[key],
         };
       }
     }
