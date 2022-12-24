@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-12-23 23:14:01
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-12-24 03:27:51
+ * @LastEditTime: 2022-12-24 13:26:25
  * @FilePath: /bui-integration-platform/Users/wxy/codeWorks/melodyLCP/packages/pro-template-lib/src/components/NormalFilterTableList/index.tsx
  * @Description: update here
  */
@@ -20,7 +20,7 @@ import { getModelOptionList } from '../../sevice';
 
 export const NormalFilterTableList: FC<NormalFilterTableListProps> & {
   PAGE_CONFIG: PAGE_CONFIG;
-} = ({ modelConfig }) => {
+} = ({ modelConfig, actionConfig }) => {
   const { modelMetaData } = useMetaData({
     modelConfig,
   });
@@ -31,6 +31,7 @@ export const NormalFilterTableList: FC<NormalFilterTableListProps> & {
   const toolBarRender = useToolBarProp({});
   return (
     <ProTable
+      title={() => actionConfig?.listName}
       pagination={{}}
       params={{
         mainModel: modelConfig?.mainModel,
@@ -56,5 +57,31 @@ NormalFilterTableList.PAGE_CONFIG = {
       request: getModelOptionList,
     },
   ],
-  actionConfig: [],
+  actionConfig: [
+    {
+      title: '列表名称',
+      valueType: 'text',
+      dataIndex: 'listName',
+      formItemProps: {
+        required: true,
+      },
+    },
+    {
+      title: '创建页面跳转链接',
+      valueType: 'text',
+      tooltip: '点击新建按钮跳转的页面url',
+      dataIndex: 'createPageUrl',
+      formItemProps: {
+        required: true,
+      },
+    },
+    {
+      title: '编辑页面跳转链接',
+      valueType: 'text',
+      dataIndex: 'editPageUrl',
+      formItemProps: {
+        required: true,
+      },
+    },
+  ],
 };

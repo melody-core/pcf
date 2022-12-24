@@ -2,11 +2,11 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-09-05 15:43:29
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-10-04 22:48:10
- * @FilePath: /melodyLCP/packages/lcp/src/client/pages/pageObject/views/PageCreate/index.tsx
+ * @LastEditTime: 2022-12-24 11:45:57
+ * @FilePath: /bui-integration-platform/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/pages/pageObject/views/PageCreate/index.tsx
  * @Description: update here
  */
-import React from "react";
+import React, { useRef } from "react";
 import { BetaSchemaForm } from "@ant-design/pro-components";
 import {
   INIT_PAGE_CREATE_FORM_COLUMNS,
@@ -15,8 +15,13 @@ import {
 } from "./effects";
 
 export const PageCreate = () => {
-  const { current, handleCurrentChange } = useCurrentProp();
-  const { columns } = useColumnsProp();
+  const formRef = useRef();
+  const { current, handleCurrentChange, cuTem } = useCurrentProp({
+    formRef,
+  });
+  const { columns } = useColumnsProp({
+    cuTem,
+  });
   return (
     <BetaSchemaForm
       layoutType="StepsForm"
@@ -38,6 +43,7 @@ export const PageCreate = () => {
         console.log("values: ", values);
         return Promise.resolve(true);
       }}
+      formRef={formRef}
     />
   );
 };

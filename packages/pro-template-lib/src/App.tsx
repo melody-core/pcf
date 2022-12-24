@@ -12,6 +12,11 @@ function App() {
         modelConfig={{
           mainModel: 'Student',
         }}
+        actionConfig={{
+          listName: '学生管理列表',
+          createPageUrl: 'xxxx',
+          editPageUrl: 'xxx',
+        }}
       />
     </div>
   );
