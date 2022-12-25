@@ -2,8 +2,8 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-12-23 19:50:01
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-12-23 21:25:31
- * @FilePath: /mission-order/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/pages/modelObject/views/common/ModelForm/components/ModelFieldConfigSetup/effects/useFormValues.ts
+ * @LastEditTime: 2022-12-25 19:26:47
+ * @FilePath: /bui-integration-platform/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/pages/modelObject/views/common/ModelForm/components/ModelFieldConfigSetup/effects/useFormValues.ts
  * @Description: 注意！这个hook用以绕过ant的form嵌套时的key值的bug！
  */
 
@@ -19,6 +19,7 @@ export const useFormValues = ({
   onChange,
   modalContrulor,
 }) => {
+  const formValuesRef = useRef<Record<string, any>>();
   const targetIndexStr = id.match(INDEX_REG)?.[1];
   const cuValues = {
     [targetIndexStr]: value || {
@@ -30,6 +31,7 @@ export const useFormValues = ({
       [CONFIG_FORM_TABS[1].key]: {},
     },
   };
+  formValuesRef.current = cuValues[targetIndexStr];
   useEffect(() => {
     if (!value) {
       onChange && onChange(cuValues[targetIndexStr]);
@@ -39,12 +41,9 @@ export const useFormValues = ({
     [targetIndexStr]: cuValues[targetIndexStr][currentTabKey],
   };
   const onValuesChange = (v) => {
-    cuValues[targetIndexStr] = {
-      ...cuValues[targetIndexStr],
-      [currentTabKey]: {
-        ...cuValues[targetIndexStr][currentTabKey],
-        ...v[targetIndexStr],
-      },
+    cuValues[targetIndexStr][currentTabKey] = {
+      ...cuValues[targetIndexStr][currentTabKey],
+      ...v[targetIndexStr],
     };
   };
   const onFinish = async () => {
@@ -80,7 +79,7 @@ export const useFormValues = ({
     }
   };
   return {
-    cuValues,
+    formValues: formValuesRef,
     onValuesChange,
     onFinish,
     initialValues,

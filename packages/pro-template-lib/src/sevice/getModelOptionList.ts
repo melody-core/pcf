@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-12-24 03:20:39
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-12-24 03:27:12
+ * @LastEditTime: 2022-12-25 21:06:51
  * @FilePath: /bui-integration-platform/Users/wxy/codeWorks/melodyLCP/packages/pro-template-lib/src/sevice/getModelOptionList.ts
  * @Description: update here
  */
@@ -15,7 +15,9 @@ export const getModelOptionList = () => {
     total: number;
     data: MetaDataResponse[];
   }>('http://localhost:3000/api/modelConfig/getList', {
-    params: {},
+    params: {
+      pageSize: 999,
+    },
     sort: {},
   }).then((res) => {
     const { success, data } = res;

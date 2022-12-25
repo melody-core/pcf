@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-12-23 23:14:01
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-12-24 13:26:25
+ * @LastEditTime: 2022-12-25 21:06:38
  * @FilePath: /bui-integration-platform/Users/wxy/codeWorks/melodyLCP/packages/pro-template-lib/src/components/NormalFilterTableList/index.tsx
  * @Description: update here
  */
@@ -53,6 +53,9 @@ NormalFilterTableList.PAGE_CONFIG = {
       dataIndex: 'mainModel',
       formItemProps: {
         required: true,
+      },
+      fieldProps: {
+        showSearch: true,
       },
       request: getModelOptionList,
     },

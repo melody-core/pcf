@@ -2,8 +2,8 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-12-23 19:04:06
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-12-23 21:07:40
- * @FilePath: /mission-order/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/pages/modelObject/views/common/ModelForm/components/ModelFieldConfigSetup/index.tsx
+ * @LastEditTime: 2022-12-25 19:36:48
+ * @FilePath: /bui-integration-platform/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/pages/modelObject/views/common/ModelForm/components/ModelFieldConfigSetup/index.tsx
  * @Description: update here
  */
 
@@ -27,16 +27,18 @@ export const ModelFieldConfigSetup = ({ value, onChange, fieldType, id }) => {
   const { currentTabKey, handleTabChange } = useTabsContrulor({
     fieldType,
   });
+  const { onFinish, onValuesChange, formValues, initialValues, onReset } =
+    useFormValues({
+      value,
+      onChange,
+      id,
+      currentTabKey,
+      modalContrulor,
+    });
   const targetColumns = useFormColumns({
     currentTabKey,
     fieldType,
-  });
-  const { onFinish, onValuesChange, initialValues, onReset } = useFormValues({
-    value,
-    onChange,
-    id,
-    currentTabKey,
-    modalContrulor,
+    formValues,
   });
 
   const radioBtns = CONFIG_FORM_TABS.map((tabConfig) => (
@@ -50,7 +52,12 @@ export const ModelFieldConfigSetup = ({ value, onChange, fieldType, id }) => {
         <SettingOutlined />
       </a>
       {showModal && (
-        <Modal visible onCancel={modalContrulor(false)} footer={false}>
+        <Modal
+          visible
+          onCancel={modalContrulor(false)}
+          footer={false}
+          width="70vw"
+        >
           <Radio.Group value={currentTabKey} onChange={handleTabChange}>
             {radioBtns}
           </Radio.Group>

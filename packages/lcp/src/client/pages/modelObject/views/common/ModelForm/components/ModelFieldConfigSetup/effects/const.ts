@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-12-23 19:14:32
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-12-24 02:15:34
+ * @LastEditTime: 2022-12-25 19:10:56
  * @FilePath: /bui-integration-platform/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/pages/modelObject/views/common/ModelForm/components/ModelFieldConfigSetup/effects/const.ts
  * @Description: update here
  */
@@ -45,7 +45,8 @@ export const WHETHER_OPTIONS = [
 // 个性化配置columns定义
 export const FIELD_TYPE_CONFIG_COLUMN_MAP = new Map<
   any,
-  ProFormColumnsType<Record<string, any>, "text">[]
+  | ProFormColumnsType<Record<string, any>, "text">[]
+  | ((o: any) => ProFormColumnsType<Record<string, any>, "text">[])
 >()
   .set(MODEL_FIELD_TEXT.value, TEXT_EFFECT_COLUMN)
   .set(MODEL_FIELD_SELECT.value, SELECT_EFFECT_COLUMN)
