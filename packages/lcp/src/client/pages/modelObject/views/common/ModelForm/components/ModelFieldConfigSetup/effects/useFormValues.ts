@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-12-23 19:50:01
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-12-25 19:26:47
+ * @LastEditTime: 2022-12-26 15:50:39
  * @FilePath: /bui-integration-platform/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/pages/modelObject/views/common/ModelForm/components/ModelFieldConfigSetup/effects/useFormValues.ts
  * @Description: 注意！这个hook用以绕过ant的form嵌套时的key值的bug！
  */
@@ -41,10 +41,39 @@ export const useFormValues = ({
     [targetIndexStr]: cuValues[targetIndexStr][currentTabKey],
   };
   const onValuesChange = (v) => {
-    cuValues[targetIndexStr][currentTabKey] = {
-      ...cuValues[targetIndexStr][currentTabKey],
-      ...v[targetIndexStr],
-    };
+    const target = v[targetIndexStr] || {};
+    const targetKey = Object.keys(target)?.[0];
+    if (targetKey) {
+      if (Array.isArray(target[targetKey])) {
+        const targetIndex = target[targetKey].findIndex(
+          (item) => item || item === 0 || item === ""
+        );
+        if (targetIndex > -1) {
+          if (!cuValues[targetIndexStr][currentTabKey][targetKey]) {
+            cuValues[targetIndexStr][currentTabKey][targetKey] =
+              target[targetKey];
+          } else {
+            if (typeof target[targetKey][targetIndex] === "object") {
+              cuValues[targetIndexStr][currentTabKey][targetKey][targetIndex] =
+                {
+                  ...(cuValues[targetIndexStr][currentTabKey][targetKey][
+                    targetIndex
+                  ] || {}),
+                  ...target[targetKey][targetIndex],
+                };
+            } else {
+              cuValues[targetIndexStr][currentTabKey][targetKey][targetIndex] =
+                target[targetKey][targetIndex];
+            }
+          }
+        }
+      } else {
+        cuValues[targetIndexStr][currentTabKey] = {
+          ...cuValues[targetIndexStr][currentTabKey],
+          ...v[targetIndexStr],
+        };
+      }
+    }
   };
   const onFinish = async () => {
     onChange && onChange(cuValues[targetIndexStr]);

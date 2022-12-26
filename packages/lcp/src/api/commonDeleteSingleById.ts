@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-12-24 02:48:38
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-12-24 03:10:01
+ * @LastEditTime: 2022-12-26 16:07:14
  * @FilePath: /bui-integration-platform/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/api/commonDeleteSingleById.ts
  * @Description: update here
  */
@@ -29,7 +29,6 @@ export const commonDeleteSingleById = Api(
   Validate(DeleteSingleById),
   Params<{ modelName: string }>(),
   async ({ _id }) => {
-    console.log("_id:", _id);
     const ctx = useContext();
     const { modelName } = ctx.params;
     if (!modelName) {

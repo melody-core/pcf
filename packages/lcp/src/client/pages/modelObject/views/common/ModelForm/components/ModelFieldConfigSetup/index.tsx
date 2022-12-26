@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-12-23 19:04:06
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-12-25 19:36:48
+ * @LastEditTime: 2022-12-26 14:58:04
  * @FilePath: /bui-integration-platform/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/pages/modelObject/views/common/ModelForm/components/ModelFieldConfigSetup/index.tsx
  * @Description: update here
  */

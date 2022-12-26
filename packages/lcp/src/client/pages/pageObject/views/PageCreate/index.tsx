@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-09-05 15:43:29
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-12-24 11:45:57
+ * @LastEditTime: 2022-12-26 16:10:11
  * @FilePath: /bui-integration-platform/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/pages/pageObject/views/PageCreate/index.tsx
  * @Description: update here
  */
@@ -40,7 +40,6 @@ export const PageCreate = () => {
       columns={columns}
       onCurrentChange={handleCurrentChange}
       onFinish={async (values) => {
-        console.log("values: ", values);
         return Promise.resolve(true);
       }}
       formRef={formRef}

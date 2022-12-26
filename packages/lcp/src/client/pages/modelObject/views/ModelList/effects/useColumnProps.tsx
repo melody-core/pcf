@@ -2,8 +2,8 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-07-29 10:53:36
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-12-19 11:36:37
- * @FilePath: /mission-order/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/pages/modelObject/views/ModelList/effects/useColumnProps.tsx
+ * @LastEditTime: 2022-12-26 16:09:15
+ * @FilePath: /bui-integration-platform/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/pages/modelObject/views/ModelList/effects/useColumnProps.tsx
  * @Description: update here
  */
 import { message, Popconfirm } from "antd";
@@ -47,7 +47,6 @@ export const useColumnProps = ({
                   },
                 }
               );
-              console.log("test-result:", result);
             }}
           >
             接口测试

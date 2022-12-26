@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-09-16 16:15:00
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-12-24 02:01:59
+ * @LastEditTime: 2022-12-26 16:07:20
  * @FilePath: /bui-integration-platform/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/api/modelApi.ts
  * @Description: update here
  */
@@ -112,7 +112,6 @@ export const createModel = Api(
           type,
           config,
         });
-        console.log("fieldName:", dbFieldConfig);
         modelSchema[fieldName] = dbFieldConfig;
       }
     }

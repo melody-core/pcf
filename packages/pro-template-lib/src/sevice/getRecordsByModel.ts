@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-12-24 00:47:52
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-12-24 01:51:51
+ * @LastEditTime: 2022-12-26 12:26:31
  * @FilePath: /bui-integration-platform/Users/wxy/codeWorks/melodyLCP/packages/pro-template-lib/src/sevice/getRecordsByModel.ts
  * @Description: update here
  */
@@ -16,7 +16,7 @@ export const getRecordsByModel = ({
 }: {
   modelName: string;
   params: Record<string, any>;
-  sort?: any;
+  sort: Record<string, any>;
 }) => {
   const orderBy: Record<string, any> = {};
   for (const key in sort) {

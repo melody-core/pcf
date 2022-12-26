@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-12-23 19:39:30
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-12-25 21:05:07
+ * @LastEditTime: 2022-12-26 15:44:46
  * @FilePath: /bui-integration-platform/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/pages/modelObject/views/common/ModelForm/components/ModelFieldConfigSetup/effects/libs/SELECT_EFFECT_COLUMN.tsx
  * @Description: update here
  */

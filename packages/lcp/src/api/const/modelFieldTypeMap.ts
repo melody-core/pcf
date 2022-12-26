@@ -1,5 +1,9 @@
 import { ModelFieldTransformFn } from "../lib/modelFieldTransform/type";
-import { transformText, transformDigit } from "./../lib/modelFieldTransform";
+import {
+  transformText,
+  transformDigit,
+  transformSelect,
+} from "./../lib/modelFieldTransform";
 
 export enum MODEL_FIELD_TYPES {
   text = "text",
@@ -41,4 +45,5 @@ export const MODEL_FIELD_TYPE_MAP = new Map<
   ModelFieldTransformFn
 >()
   .set(MODEL_FIELD_TYPES.text, transformText)
+  .set(MODEL_FIELD_TYPES.select, transformSelect)
   .set(MODEL_FIELD_TYPES.digit, transformDigit);

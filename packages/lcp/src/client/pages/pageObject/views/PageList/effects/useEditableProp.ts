@@ -2,8 +2,8 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-07-29 17:45:39
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-09-05 14:48:11
- * @FilePath: /melodyLCP/packages/lcp/src/client/pages/pageObject/components/PageList/effects/useEditableProp.ts
+ * @LastEditTime: 2022-12-26 16:10:01
+ * @FilePath: /bui-integration-platform/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/pages/pageObject/views/PageList/effects/useEditableProp.ts
  * @Description: update here
  */
 
@@ -21,7 +21,6 @@ export const useEditableProps: () => RowEditableConfig<
       defaultDom.cancel,
     ],
     onSave: async (rowKey, data, row) => {
-      console.log("onSave - ...args", rowKey, data, row);
       try {
         // await updateErrorInfo({
         //   hash: rowKey,
