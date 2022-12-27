@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-12-23 23:14:01
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-12-25 21:06:38
+ * @LastEditTime: 2022-12-27 18:50:20
  * @FilePath: /bui-integration-platform/Users/wxy/codeWorks/melodyLCP/packages/pro-template-lib/src/components/NormalFilterTableList/index.tsx
  * @Description: update here
  */
@@ -17,6 +17,7 @@ import {
 import { NormalFilterTableListProps } from './type';
 import { PAGE_CONFIG } from '../../common/type';
 import { getModelOptionList } from '../../sevice';
+import { NORMAL_FILTER_TABLE_PAGE_CONFIG } from './effects/const';
 
 export const NormalFilterTableList: FC<NormalFilterTableListProps> & {
   PAGE_CONFIG: PAGE_CONFIG;
@@ -31,7 +32,7 @@ export const NormalFilterTableList: FC<NormalFilterTableListProps> & {
   const toolBarRender = useToolBarProp({});
   return (
     <ProTable
-      title={() => actionConfig?.listName}
+      headerTitle={actionConfig?.listName}
       pagination={{}}
       params={{
         mainModel: modelConfig?.mainModel,
@@ -45,46 +46,4 @@ export const NormalFilterTableList: FC<NormalFilterTableListProps> & {
   );
 };
 
-NormalFilterTableList.PAGE_CONFIG = {
-  modelConfig: [
-    {
-      title: '页面数据主模型',
-      valueType: 'select',
-      dataIndex: 'mainModel',
-      formItemProps: {
-        required: true,
-      },
-      fieldProps: {
-        showSearch: true,
-      },
-      request: getModelOptionList,
-    },
-  ],
-  actionConfig: [
-    {
-      title: '列表名称',
-      valueType: 'text',
-      dataIndex: 'listName',
-      formItemProps: {
-        required: true,
-      },
-    },
-    {
-      title: '创建页面跳转链接',
-      valueType: 'text',
-      tooltip: '点击新建按钮跳转的页面url',
-      dataIndex: 'createPageUrl',
-      formItemProps: {
-        required: true,
-      },
-    },
-    {
-      title: '编辑页面跳转链接',
-      valueType: 'text',
-      dataIndex: 'editPageUrl',
-      formItemProps: {
-        required: true,
-      },
-    },
-  ],
-};
+NormalFilterTableList.PAGE_CONFIG = NORMAL_FILTER_TABLE_PAGE_CONFIG;

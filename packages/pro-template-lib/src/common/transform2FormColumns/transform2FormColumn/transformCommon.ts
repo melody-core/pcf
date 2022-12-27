@@ -2,16 +2,8 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-12-27 16:05:46
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-12-27 16:06:51
+ * @LastEditTime: 2022-12-27 18:52:54
  * @FilePath: /bui-integration-platform/Users/wxy/codeWorks/melodyLCP/packages/pro-template-lib/src/common/transform2FormColumns/transform2FormColumn/transformCommon.ts
- * @Description: update here
- */
-/*
- * @Author: 六弦(melodyWxy)
- * @Date: 2022-12-24 00:20:49
- * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-12-27 16:01:28
- * @FilePath: /bui-integration-platform/Users/wxy/codeWorks/melodyLCP/packages/pro-template-lib/src/common/transform2FormColumns/transform2FormColumn/transformText.ts
  * @Description: update here
  */
 

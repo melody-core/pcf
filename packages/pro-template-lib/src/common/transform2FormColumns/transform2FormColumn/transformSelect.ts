@@ -2,11 +2,10 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-12-26 12:18:16
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-12-27 16:11:58
+ * @LastEditTime: 2022-12-27 18:52:27
  * @FilePath: /bui-integration-platform/Users/wxy/codeWorks/melodyLCP/packages/pro-template-lib/src/common/transform2FormColumns/transform2FormColumn/transformSelect.ts
  * @Description: update here
  */
-import { ProFormColumnsType } from '@ant-design/pro-components';
 import { getRecordsByModel } from '../../../sevice';
 import { transformCommon } from './transformCommon';
 import { Transform2FormColumn } from './type';
