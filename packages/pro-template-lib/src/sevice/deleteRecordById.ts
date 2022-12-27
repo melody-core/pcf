@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-12-24 02:51:25
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-12-24 03:10:17
+ * @LastEditTime: 2022-12-26 20:24:56
  * @FilePath: /bui-integration-platform/Users/wxy/codeWorks/melodyLCP/packages/pro-template-lib/src/sevice/deleteRecordById.ts
  * @Description: update here
  */
@@ -15,10 +15,7 @@ export const deleteRecordById = ({
   modelName: string;
   _id: string;
 }) => {
-  return xPost<any>(
-    `http://localhost:3000/api/common/${modelName}/deleteSingleById`,
-    {
-      _id,
-    }
-  );
+  return xPost<any>(`/api/common/${modelName}/deleteSingleById`, {
+    _id,
+  });
 };

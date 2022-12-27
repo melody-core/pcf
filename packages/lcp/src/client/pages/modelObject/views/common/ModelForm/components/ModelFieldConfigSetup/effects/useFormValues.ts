@@ -2,13 +2,13 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-12-23 19:50:01
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-12-26 15:50:39
+ * @LastEditTime: 2022-12-26 17:31:44
  * @FilePath: /bui-integration-platform/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/pages/modelObject/views/common/ModelForm/components/ModelFieldConfigSetup/effects/useFormValues.ts
  * @Description: 注意！这个hook用以绕过ant的form嵌套时的key值的bug！
  */
 
 import { useEffect, useRef } from "react";
-import { CONFIG_FORM_TABS } from "./const";
+import { COMMON_INIT_VALUES, CONFIG_FORM_TABS } from "./const";
 
 const INDEX_REG = /_(\d+)_/;
 
@@ -24,9 +24,7 @@ export const useFormValues = ({
   const cuValues = {
     [targetIndexStr]: value || {
       [CONFIG_FORM_TABS[0].key]: {
-        isRequired: true,
-        isUnique: false,
-        isEditable: true,
+        ...COMMON_INIT_VALUES,
       },
       [CONFIG_FORM_TABS[1].key]: {},
     },
@@ -85,9 +83,7 @@ export const useFormValues = ({
         onChange({
           [targetIndexStr]: {
             [CONFIG_FORM_TABS[0].key]: {
-              isRequired: true,
-              isUnique: false,
-              isEditable: true,
+              ...COMMON_INIT_VALUES,
             },
             [CONFIG_FORM_TABS[1].key]: {
               ...cuValues[targetIndexStr][CONFIG_FORM_TABS[1].key],

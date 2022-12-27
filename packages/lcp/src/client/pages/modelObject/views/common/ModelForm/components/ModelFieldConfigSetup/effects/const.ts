@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-12-23 19:14:32
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-12-25 19:10:56
+ * @LastEditTime: 2022-12-26 17:31:15
  * @FilePath: /bui-integration-platform/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/pages/modelObject/views/common/ModelForm/components/ModelFieldConfigSetup/effects/const.ts
  * @Description: update here
  */
@@ -94,6 +94,18 @@ export const FIELD_COMMON_CONFIG_COLUMN: ProFormColumnsType<
     },
   },
   {
+    title: "是否配置为筛选搜索项",
+    dataIndex: "isAllowedSearch",
+    tooltip: "在列表页中，是否将此字段列为列表筛选搜索项, 默认为true",
+    valueType: "switch",
+    fieldProps: {
+      options: WHETHER_OPTIONS,
+    },
+    formItemProps: {
+      required: true,
+    },
+  },
+  {
     title: "字段描述",
     dataIndex: "desc",
     valueType: "textarea",
@@ -101,3 +113,10 @@ export const FIELD_COMMON_CONFIG_COLUMN: ProFormColumnsType<
       "您可以对此字段设置一个描述，这将会在创建数据时对此字段添加设置提示功能",
   },
 ];
+
+export const COMMON_INIT_VALUES = {
+  isRequired: true,
+  isUnique: false,
+  isEditable: true,
+  isAllowedSearch: true,
+};
