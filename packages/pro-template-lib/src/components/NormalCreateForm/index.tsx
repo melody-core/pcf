@@ -2,15 +2,21 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-10-08 09:36:04
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-12-27 18:08:27
+ * @LastEditTime: 2022-12-28 17:56:53
  * @FilePath: /bui-integration-platform/Users/wxy/codeWorks/melodyLCP/packages/pro-template-lib/src/components/NormalCreateForm/index.tsx
  * @Description: update here
  */
 
+import { FC } from 'react';
 import { CommonNormalForm } from '../../common/components';
-import { getModelOptionList } from '../../sevice';
+import { PAGE_CONFIG } from '../../common/type';
+// import { getModelOptionList } from '../../sevice';
+import { NORMAL_CREATE_FORM__PAGE_CONFIG } from './effects/const';
+import { NormalCreateFormProps } from './type';
 
-export const NormalCreateForm = ({ modelConfig, actionConfig }: any) => (
+export const NormalCreateForm: FC<NormalCreateFormProps> & {
+  PAGE_CONFIG: PAGE_CONFIG;
+} = ({ modelConfig, actionConfig }) => (
   <CommonNormalForm
     viewType="create"
     modelConfig={modelConfig}
@@ -18,30 +24,4 @@ export const NormalCreateForm = ({ modelConfig, actionConfig }: any) => (
   />
 );
 
-NormalCreateForm.PAGE_CONFIG = {
-  modelConfig: [
-    {
-      title: '页面数据主模型',
-      valueType: 'select',
-      dataIndex: 'mainModel',
-      formItemProps: {
-        required: true,
-      },
-      fieldProps: {
-        showSearch: true,
-      },
-      request: getModelOptionList,
-    },
-  ],
-  actionConfig: [
-    {
-      title: '创建成功后的跳转地址',
-      valueType: 'text',
-      tooltip: '创建成功后的跳转地址',
-      dataIndex: 'finishedCallbackUrl',
-      formItemProps: {
-        required: true,
-      },
-    },
-  ],
-};
+NormalCreateForm.PAGE_CONFIG = NORMAL_CREATE_FORM__PAGE_CONFIG;

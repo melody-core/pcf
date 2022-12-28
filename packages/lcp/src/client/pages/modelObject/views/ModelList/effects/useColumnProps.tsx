@@ -2,20 +2,17 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-07-29 10:53:36
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-12-26 16:09:15
+ * @LastEditTime: 2022-12-28 20:22:42
  * @FilePath: /bui-integration-platform/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/pages/modelObject/views/ModelList/effects/useColumnProps.tsx
  * @Description: update here
  */
 import { message, Popconfirm } from "antd";
 import React, { useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { getCommonModelRecordsList } from "../../../../../../api/commonGetListApi";
-import { deleteModelById, getModelList } from "../../../../../../api/modelApi";
+import { deleteModelById } from "../../../../../../api/modelApi";
 import NavItems from "../../../../../config/nav.config";
 import { xFetch } from "../../../../../utils/xFetch";
 import { MODEL_MENU_KEYS } from "../../../effect";
-// import { deleteErrorObj } from './../../../../../../api/errorObject'
-// import { sentError2o } from './../../../../../../api/report'
 import { INIT_COLUMN_LIST } from "./const";
 
 export const useColumnProps = ({
@@ -35,21 +32,11 @@ export const useColumnProps = ({
         render: (text, record, _, action) => [
           <a
             key="textApi"
-            onClick={async () => {
-              const result = await getCommonModelRecordsList(
-                {
-                  params: {},
-                  sort: {},
-                },
-                {
-                  params: {
-                    modelName: record.name,
-                  },
-                }
-              );
+            onClick={() => {
+              window.open(`/common/${record.name}/record/list`);
             }}
           >
-            接口测试
+            模型记录
           </a>,
           <a
             key="detail"

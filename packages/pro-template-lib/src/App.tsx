@@ -1,9 +1,13 @@
 import { useState } from 'react';
-import reactLogo from './assets/react.svg';
 
-import { NormalFilterTableList } from './components';
+import {
+  NormalCreateForm,
+  NormalDetailForm,
+  NormalFilterTableList,
+  NormalEditForm,
+} from './components';
+
 import './App.css';
-import { NormalCreateForm } from './components/NormalCreateForm';
 
 function App() {
   return (
@@ -20,12 +24,29 @@ function App() {
         }}
       /> */}
       {/* <h2>NormalCreateForm</h2> */}
-      <NormalCreateForm
+      {/* <NormalCreateForm
         modelConfig={{
           mainModel: 'Student',
         }}
         actionConfig={{
           formTitle: '学生创建表单',
+          finishedCallbackUrl: 'xxxx',
+        }}
+      /> */}
+      {/* <NormalDetailForm
+        modelConfig={{
+          mainModel: 'Student',
+        }}
+        actionConfig={{
+          formTitle: '学生创建表单',
+          finishedCallbackUrl: 'xxxx',
+        }}
+      /> */}
+      <NormalEditForm
+        modelConfig={{
+          mainModel: 'Student',
+        }}
+        actionConfig={{
           finishedCallbackUrl: 'xxxx',
         }}
       />

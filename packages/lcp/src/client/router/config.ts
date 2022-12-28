@@ -2,8 +2,8 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-05-28 16:00:11
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-12-19 11:38:55
- * @FilePath: /mission-order/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/router/config.ts
+ * @LastEditTime: 2022-12-28 19:41:06
+ * @FilePath: /bui-integration-platform/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/router/config.ts
  * @Description: update here
  */
 
@@ -31,8 +31,36 @@ import {
   ModelEdit,
 } from "./../pages/modelObject/views";
 // 模型管理 - end
+// base-页面管理 - start
+import {
+  CommonCreate,
+  CommonDetail,
+  CommonEdit,
+  CommonFilterTable,
+} from "../pages/common";
+// base-页面管理 - end
 
 export default [
+  {
+    path: "common/:model/record/create",
+    Component: CommonCreate,
+    bread: ["六弦低代码系统", "基础页面"],
+  },
+  {
+    path: "common/:model/record/detail",
+    Component: CommonDetail,
+    bread: ["六弦低代码系统", "基础页面"],
+  },
+  {
+    path: "common/:model/record/edit",
+    Component: CommonEdit,
+    bread: ["六弦低代码系统", "基础页面"],
+  },
+  {
+    path: "common/:model/record/list",
+    Component: CommonFilterTable,
+    bread: ["六弦低代码系统", "基础页面"],
+  },
   {
     path: "/",
     Component: App,
@@ -96,6 +124,7 @@ export default [
         Component: Demo,
         bread: ["六弦低代码系统", "模型管理"],
       },
+
       {
         path: "",
         Component: PageManager,
