@@ -2,8 +2,8 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-06-06 16:46:18
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-12-23 23:57:39
- * @FilePath: /mission-order/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/App.tsx
+ * @LastEditTime: 2023-01-28 18:08:04
+ * @FilePath: /melodyLCP/packages/lcp/src/App.tsx
  * @Description: update here
  */
 import React from "react";
@@ -13,7 +13,7 @@ import NavConfig from "./client/config/nav.config";
 import { observer } from "mobx-react";
 import globalStore from "./client/store/global";
 
-import styles from "./index.module.css";
+import styles from "./index.module.less";
 
 const { Header, Footer } = Layout;
 
@@ -26,7 +26,7 @@ const App = observer(
   }) => {
     const navigate = useNavigate();
     return (
-      <Layout className="app-wrap">
+      <Layout className={styles["app-wrap"]}>
         <Header className={styles["flex-wrap"]}>
           <div className={styles["logo"]} />
           <Menu

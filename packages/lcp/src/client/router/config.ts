@@ -2,8 +2,8 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-05-28 16:00:11
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-12-28 19:41:06
- * @FilePath: /bui-integration-platform/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/router/config.ts
+ * @LastEditTime: 2023-01-28 17:23:39
+ * @FilePath: /melodyLCP/packages/lcp/src/client/router/config.ts
  * @Description: update here
  */
 
@@ -37,29 +37,36 @@ import {
   CommonDetail,
   CommonEdit,
   CommonFilterTable,
-} from "../pages/common";
+} from "../pages/common/Views";
+import { CommonObject } from "../pages/common";
 // base-页面管理 - end
 
 export default [
   {
-    path: "common/:model/record/create",
-    Component: CommonCreate,
-    bread: ["六弦低代码系统", "基础页面"],
-  },
-  {
-    path: "common/:model/record/detail",
-    Component: CommonDetail,
-    bread: ["六弦低代码系统", "基础页面"],
-  },
-  {
-    path: "common/:model/record/edit",
-    Component: CommonEdit,
-    bread: ["六弦低代码系统", "基础页面"],
-  },
-  {
-    path: "common/:model/record/list",
-    Component: CommonFilterTable,
-    bread: ["六弦低代码系统", "基础页面"],
+    path: "common",
+    Component: CommonObject,
+    children: [
+      {
+        path: ":model/record/create",
+        Component: CommonCreate,
+        bread: ["六弦低代码系统", "创建记录"],
+      },
+      {
+        path: ":model/record/detail",
+        Component: CommonDetail,
+        bread: ["六弦低代码系统", "记录详情"],
+      },
+      {
+        path: ":model/record/edit",
+        Component: CommonEdit,
+        bread: ["六弦低代码系统", "编辑记录"],
+      },
+      {
+        path: ":model/record/list",
+        Component: CommonFilterTable,
+        bread: ["六弦低代码系统", "记录列表"],
+      },
+    ],
   },
   {
     path: "/",
@@ -124,7 +131,6 @@ export default [
         Component: Demo,
         bread: ["六弦低代码系统", "模型管理"],
       },
-
       {
         path: "",
         Component: PageManager,

@@ -3,7 +3,7 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import RouterView from "./client/router";
 
-import "antd/dist/antd.css";
+// import "antd/dist/antd.css";
 import "./index.css";
 
 const Index = () => {

@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-09-16 16:15:00
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2023-01-28 16:32:24
+ * @LastEditTime: 2023-01-28 16:55:24
  * @FilePath: /melodyLCP/packages/lcp/src/api/modelApi.ts
  * @Description: update here
  */
@@ -191,6 +191,7 @@ export const deleteModelById = Api(
     const result = await modelModel.deleteOne({
       _id,
     });
+    delete TP_MODELS[findItem.name];
     return result;
   }
 );
