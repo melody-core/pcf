@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-09-16 16:15:00
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2023-01-28 15:09:46
+ * @LastEditTime: 2023-01-28 16:32:24
  * @FilePath: /melodyLCP/packages/lcp/src/api/modelApi.ts
  * @Description: update here
  */
@@ -14,6 +14,7 @@ import {
   createModelSchemaByMetaData,
   dropCollection,
   modelModel,
+  TP_MODELS,
 } from "./lib";
 
 // 单条查询根据_id
@@ -114,7 +115,10 @@ export const updateModelById = Api(
     if (!_id) {
       throw new Error("缺失请求参数: _id!");
     }
-    return modelModel.findByIdAndUpdate(_id, data);
+    const target = await modelModel.findByIdAndUpdate(_id, data);
+    const { name } = target || {};
+    delete TP_MODELS[name];
+    return target;
   }
 );
 
