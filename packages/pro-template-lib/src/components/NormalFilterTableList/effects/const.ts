@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-12-23 23:16:05
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-12-27 18:50:09
+ * @LastEditTime: 2022-12-29 15:37:11
  * @FilePath: /bui-integration-platform/Users/wxy/codeWorks/melodyLCP/packages/pro-template-lib/src/components/NormalFilterTableList/effects/const.ts
  * @Description: update here
  */
@@ -93,6 +93,7 @@ export const NORMAL_FILTER_TABLE_PAGE_CONFIG: PAGE_CONFIG = {
                   return [
                     {
                       title: '路由地址',
+                      dataIndex: 'url',
                     },
                   ];
                 }
@@ -100,6 +101,7 @@ export const NORMAL_FILTER_TABLE_PAGE_CONFIG: PAGE_CONFIG = {
                   return [
                     {
                       title: '跳转地址',
+                      dataIndex: 'url',
                     },
                   ];
                 }

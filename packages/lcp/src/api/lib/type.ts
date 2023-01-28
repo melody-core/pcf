@@ -7,6 +7,8 @@
  * @Description: update here
  */
 
+import { InferSchemaType, Model, ObtainSchemaGeneric, Schema } from "mongoose";
+
 export interface CreateDBModelParams {
   modelSchema: Record<string, any>;
   definition?: any;
@@ -15,4 +17,25 @@ export interface CreateDBModelParams {
 
 export interface DropCollectionParams {
   modelName: string;
+}
+
+export type TSchema = Schema<
+  any,
+  Model<any, any, any, any, any>,
+  {},
+  {},
+  {},
+  {},
+  "type",
+  {}
+>;
+export interface TP_MODELS_TYPE {
+  [key: string]: Model<
+    InferSchemaType<TSchema>,
+    ObtainSchemaGeneric<TSchema, "TQueryHelpers">,
+    ObtainSchemaGeneric<TSchema, "TInstanceMethods">,
+    {},
+    TSchema
+  > &
+    ObtainSchemaGeneric<TSchema, "TStaticMethods">;
 }

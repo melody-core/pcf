@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-07-29 10:53:36
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-12-28 20:22:42
+ * @LastEditTime: 2023-01-01 18:26:49
  * @FilePath: /bui-integration-platform/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/pages/modelObject/views/ModelList/effects/useColumnProps.tsx
  * @Description: update here
  */
@@ -38,17 +38,17 @@ export const useColumnProps = ({
           >
             模型记录
           </a>,
-          <a
-            key="detail"
-            onClick={() => {
-              // setSelectedDetail(record.id);
-              navigator(
-                `/errorObject?project=${selectedKeys[0]}&detail=${record._id}`
-              );
-            }}
-          >
-            详情
-          </a>,
+          // <a
+          //   key="detail"
+          //   onClick={() => {
+          //     // setSelectedDetail(record.id);
+          //     navigator(
+          //       `/errorObject?project=${selectedKeys[0]}&detail=${record._id}`
+          //     );
+          //   }}
+          // >
+          //   详情
+          // </a>,
           <a
             key="edit"
             onClick={() => {

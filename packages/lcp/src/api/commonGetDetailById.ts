@@ -2,8 +2,8 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-11-15 16:51:45
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-12-24 03:08:44
- * @FilePath: /bui-integration-platform/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/api/commonGetDetailById.ts
+ * @LastEditTime: 2023-01-28 16:15:39
+ * @FilePath: /melodyLCP/packages/lcp/src/api/commonGetDetailById.ts
  * @Description: update here
  */
 
@@ -19,6 +19,7 @@ import {
 import { z } from "zod";
 import { db } from "./lib/db";
 import { Types } from "mongoose";
+import { getTargetModelByModelName } from "./lib";
 
 const GetDetailById = z.object({
   _id: z.string(),
@@ -34,12 +35,19 @@ export const commonGetDetailById = Api(
     if (!modelName) {
       throw new Error("请求路径缺少模型名称!");
     }
-    const targetModel = db.collection(modelName);
-    const result = await targetModel.findOne({
-      _id: {
-        $eq: new Types.ObjectId(_id),
-      },
+    const targetModel = await getTargetModelByModelName({
+      name: modelName,
     });
+    if (!targetModel) {
+      throw new Error(`不存在的模型: ${modelName}!`);
+    }
+    const result = await targetModel.findById(_id);
+    // const targetModel = db.collection(modelName);
+    // const result = await targetModel.findOne({
+    //   _id: {
+    //     $eq: new Types.ObjectId(_id),
+    //   },
+    // });
     return result;
   }
 );

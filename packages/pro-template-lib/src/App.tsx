@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Tree } from 'antd';
 
 import {
   NormalCreateForm,
@@ -12,15 +13,25 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      {/* <h2>NormalFilterTableList(v0.0.1):</h2>
-      <NormalFilterTableList
+      <h2>NormalFilterTableList(v0.0.1):</h2>
+      {/* <NormalFilterTableList
         modelConfig={{
           mainModel: 'Student',
         }}
         actionConfig={{
           listName: '学生管理列表',
-          createPageUrl: 'xxxx',
-          editPageUrl: 'xxx',
+          rowOptionBtnGroup: [
+            {
+              title: '详情',
+              type: 'linkTo',
+              url: '/xxx',
+            },
+            {
+              title: '编辑',
+              type: 'linkTo',
+              url: '/xxx',
+            },
+          ],
         }}
       /> */}
       {/* <h2>NormalCreateForm</h2> */}
@@ -42,14 +53,14 @@ function App() {
           finishedCallbackUrl: 'xxxx',
         }}
       /> */}
-      <NormalEditForm
+      {/* <NormalEditForm
         modelConfig={{
           mainModel: 'Student',
         }}
         actionConfig={{
           finishedCallbackUrl: 'xxxx',
         }}
-      />
+      /> */}
     </div>
   );
 }

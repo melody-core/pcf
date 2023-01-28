@@ -2,31 +2,19 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-09-16 16:15:00
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-12-26 16:07:20
- * @FilePath: /bui-integration-platform/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/api/modelApi.ts
+ * @LastEditTime: 2023-01-28 15:09:46
+ * @FilePath: /melodyLCP/packages/lcp/src/api/modelApi.ts
  * @Description: update here
  */
 
 import { Api, Post, Validate } from "@midwayjs/hooks";
-import mongoose from "mongoose";
 import { z } from "zod";
-import { MODEL_FIELD_TYPE_MAP } from "./const";
-import { createCollection, dropCollection } from "./lib";
-
-const MODEL_MODEL_SCHEMA = {
-  name: String,
-  title: String,
-  author: String,
-  desc: String,
-  type: String,
-  effects: Object,
-  fields: [Object],
-};
-const modelSchema = new mongoose.Schema(MODEL_MODEL_SCHEMA, {
-  timestamps: true,
-});
-
-const modelModel = mongoose.model("modelObject", modelSchema, "modelObject");
+import {
+  createCollection,
+  createModelSchemaByMetaData,
+  dropCollection,
+  modelModel,
+} from "./lib";
 
 // 单条查询根据_id
 const GetModelDetailById = z.object({
@@ -94,27 +82,16 @@ export const createModel = Api(
   Post("/api/modelConfig/create"),
   Validate(CreateModel),
   async (createItemParams) => {
-    const { name, fields } = createItemParams || {};
+    const { name } = createItemParams || {};
     const findItem = await modelModel.findOne({
       name,
     });
     if (findItem) {
       throw new Error(`已存在name为${name}的模型！`);
     }
-    const modelSchema = {};
-    for (const fieldOptions of fields) {
-      const { fieldName, type, config = {} } = fieldOptions || {};
-      modelSchema[fieldName] = String;
-      // todo
-      const targetTransformFn = MODEL_FIELD_TYPE_MAP.get(type);
-      if (targetTransformFn) {
-        const { dbFieldConfig } = await targetTransformFn({
-          type,
-          config,
-        });
-        modelSchema[fieldName] = dbFieldConfig;
-      }
-    }
+    const modelSchema = await createModelSchemaByMetaData(
+      createItemParams || {}
+    );
     await createCollection({
       modelSchema,
       modelName: name,

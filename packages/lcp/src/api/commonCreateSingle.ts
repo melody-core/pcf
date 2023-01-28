@@ -2,8 +2,8 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-12-22 23:40:16
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-12-22 23:52:18
- * @FilePath: /mission-order/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/api/commonCreateSingle.ts
+ * @LastEditTime: 2023-01-28 16:08:12
+ * @FilePath: /melodyLCP/packages/lcp/src/api/commonCreateSingle.ts
  * @Description: update here
  */
 import {
@@ -15,6 +15,7 @@ import {
   Params,
   useContext,
 } from "@midwayjs/hooks";
+import { getTargetModelByModelName } from "./lib";
 import { db } from "./lib/db";
 
 export const commonCreateSingle = Api(
@@ -26,10 +27,19 @@ export const commonCreateSingle = Api(
     if (!modelName) {
       throw new Error("请求路径缺少模型名称!");
     }
-    const targetModel = db.collection(modelName);
-    const result = await targetModel.insertOne({
+    const targetModel = await getTargetModelByModelName({
+      name: modelName,
+    });
+    if (!targetModel) {
+      throw new Error(`不存在的模型: ${modelName}!`);
+    }
+    const result = await targetModel.create({
       ...params,
     });
+    // const targetModel = db.collection(modelName);
+    // const result = await targetModel.insertOne({
+    //   ...params,
+    // });
     return result;
   }
 );

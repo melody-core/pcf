@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-12-23 23:14:01
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-12-27 18:50:20
+ * @LastEditTime: 2023-01-01 18:22:37
  * @FilePath: /bui-integration-platform/Users/wxy/codeWorks/melodyLCP/packages/pro-template-lib/src/components/NormalFilterTableList/index.tsx
  * @Description: update here
  */
@@ -16,7 +16,6 @@ import {
 } from './effects';
 import { NormalFilterTableListProps } from './type';
 import { PAGE_CONFIG } from '../../common/type';
-import { getModelOptionList } from '../../sevice';
 import { NORMAL_FILTER_TABLE_PAGE_CONFIG } from './effects/const';
 
 export const NormalFilterTableList: FC<NormalFilterTableListProps> & {
