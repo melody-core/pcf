@@ -2,12 +2,13 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-12-26 19:12:37
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-12-28 19:00:43
- * @FilePath: /bui-integration-platform/Users/wxy/codeWorks/melodyLCP/packages/pro-template-lib/src/common/components/CommonNormalForm/index.tsx
+ * @LastEditTime: 2023-01-31 17:48:41
+ * @FilePath: /melodyLCP/packages/pro-template-lib/src/common/components/CommonNormalForm/index.tsx
  * @Description: update here
  */
 
 import { BetaSchemaForm, ProFormInstance } from '@ant-design/pro-components';
+import { Button } from 'antd';
 import { FC, useRef } from 'react';
 import { useModelMetaData, useColumnsProp, useInitValue } from './effects';
 import { useSubmit } from './effects/useSubmit';
@@ -40,11 +41,28 @@ export const CommonNormalForm: FC<CommonNormalFormProps> = ({
       formRef={formRef}
       onFinish={onFinish}
       columns={mergeColumns}
+      submitter={
+        viewType === 'detail'
+          ? {
+              render({ submit }) {
+                return (
+                  <Button type="primary" onClick={submit}>
+                    返回列表
+                  </Button>
+                );
+              },
+            }
+          : undefined
+      }
       layoutType="Form"
       // grid
-      // colProps={{s
-      //   span: 8,
-      // }}
+      // colProps={
+      //   viewType === 'detail'
+      //     ? {
+      //         span: 8,
+      //       }
+      //     : undefined
+      // }
     />
   );
 };

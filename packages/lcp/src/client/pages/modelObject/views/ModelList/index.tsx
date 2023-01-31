@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-07-28 19:02:59
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2023-01-05 09:50:21
+ * @LastEditTime: 2023-01-31 17:13:05
  * @FilePath: /melodyLCP/packages/lcp/src/client/pages/modelObject/views/ModelList/index.tsx
  * @Description: update here
  */
@@ -40,7 +40,7 @@ const List = observer(
     return (
       <>
         <ProTable
-          title={() => <Bread lvs={["模型管理", "模型列表"]} />}
+          headerTitle={<Bread lvs={["模型管理", "模型列表"]} />}
           actionRef={tableActionRef}
           columns={mergeColumns}
           request={mergeRequest}

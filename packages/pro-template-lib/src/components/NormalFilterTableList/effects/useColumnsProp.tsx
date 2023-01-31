@@ -2,19 +2,21 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-12-24 00:29:22
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-12-24 02:56:38
- * @FilePath: /bui-integration-platform/Users/wxy/codeWorks/melodyLCP/packages/pro-template-lib/src/components/NormalFilterTableList/effects/useColumnsProp.tsx
+ * @LastEditTime: 2023-01-31 17:25:55
+ * @FilePath: /melodyLCP/packages/pro-template-lib/src/components/NormalFilterTableList/effects/useColumnsProp.tsx
  * @Description: update here
  */
 
 import { ProColumns, ProColumnType } from '@ant-design/pro-components';
 import { message, Popconfirm } from 'antd';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { transform2TableColumns } from '../../../common';
 import { deleteRecordById } from '../../../sevice';
 import { UseColumnsPropParams } from './type';
 
 export const useColumnsProp = ({ modelMetaData }: UseColumnsPropParams) => {
+  const navigate = useNavigate();
   const [mergeColumns, setColumns] = useState<
     ProColumns<Record<string, any>, 'text'>[]
   >([]);
@@ -35,13 +37,23 @@ export const useColumnsProp = ({ modelMetaData }: UseColumnsPropParams) => {
       width: '250px',
       render: (text: any, record: any, _: any, action: any) => [
         <a
+          key="detail"
+          onClick={() => {
+            navigate(
+              `${location.pathname.replace('/list', '/detail')}?_id=${
+                record._id
+              }`
+            );
+          }}
+        >
+          详情
+        </a>,
+        <a
           key="edit"
           onClick={() => {
-            // setSelectedDetail(record.id);
-            // navigator(
-            //   `/${NavItems[1].key}/${MODEL_MENU_KEYS.MODEL_EDIT}?_id=${record._id}`
-            // );
-            message.warn('此模板尚未支持此功能！');
+            navigate(
+              `${location.pathname.replace('/list', '/edit')}?_id=${record._id}`
+            );
           }}
         >
           编辑

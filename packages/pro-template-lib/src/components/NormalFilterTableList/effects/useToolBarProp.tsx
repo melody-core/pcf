@@ -2,8 +2,8 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-12-24 02:33:11
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-12-24 02:42:51
- * @FilePath: /bui-integration-platform/Users/wxy/codeWorks/melodyLCP/packages/pro-template-lib/src/components/NormalFilterTableList/effects/useToolBarProp.tsx
+ * @LastEditTime: 2023-01-31 17:17:38
+ * @FilePath: /melodyLCP/packages/pro-template-lib/src/components/NormalFilterTableList/effects/useToolBarProp.tsx
  * @Description: update here
  */
 
@@ -20,14 +20,13 @@ export const useToolBarProp = ({}): ((
     selectedRows?: Record<string, any>[];
   }
 ) => React.ReactNode[]) => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const result = [
     <Button
       key="button"
       icon={<PlusOutlined />}
       onClick={() => {
-        // navigate(`/common_pages/`)
-        message.warn('此页面模板尚未完善此功能!');
+        navigate(`${location.pathname.replace('/list', '/create')}`);
       }}
       type="primary"
     >

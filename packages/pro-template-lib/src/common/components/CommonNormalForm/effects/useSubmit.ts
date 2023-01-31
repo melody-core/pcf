@@ -2,12 +2,13 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-12-26 20:51:44
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-12-28 19:08:59
- * @FilePath: /bui-integration-platform/Users/wxy/codeWorks/melodyLCP/packages/pro-template-lib/src/common/components/CommonNormalForm/effects/useSubmit.ts
+ * @LastEditTime: 2023-01-31 17:39:33
+ * @FilePath: /melodyLCP/packages/pro-template-lib/src/common/components/CommonNormalForm/effects/useSubmit.ts
  * @Description: update here
  */
 
 import { message } from 'antd';
+import { useNavigate } from 'react-router-dom';
 import {
   createRecordSingleByModel,
   editRecordSingleById,
@@ -16,12 +17,16 @@ import { getSearchParams } from '../../../../utils';
 import { UseSubmitParams } from './type';
 
 export const useSubmit = ({ modelConfig, viewType }: UseSubmitParams) => {
+  const navigate = useNavigate();
   const onFinish: (
     formData: Record<string, any>
   ) => Promise<boolean | void> = async (formData) => {
     if (!modelConfig?.mainModel) {
       message.error('缺失模型配置！');
       return false;
+    }
+    if (viewType === 'detail') {
+      navigate(`${location.pathname.replace('/detail', '/list')}`);
     }
     if (viewType === 'create') {
       const result = await createRecordSingleByModel({
@@ -31,6 +36,7 @@ export const useSubmit = ({ modelConfig, viewType }: UseSubmitParams) => {
       const { success } = result || {};
       if (success) {
         message.success('创建成功！');
+        navigate(`${location.pathname.replace('/create', '/list')}`);
         return true;
       }
     }
@@ -49,6 +55,7 @@ export const useSubmit = ({ modelConfig, viewType }: UseSubmitParams) => {
       const { success } = result || {};
       if (success) {
         message.success('更新成功！');
+        navigate(`${location.pathname.replace('/edit', '/list')}`);
         return true;
       }
     }

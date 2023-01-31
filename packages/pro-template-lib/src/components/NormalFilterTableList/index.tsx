@@ -2,8 +2,8 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-12-23 23:14:01
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2023-01-01 18:22:37
- * @FilePath: /bui-integration-platform/Users/wxy/codeWorks/melodyLCP/packages/pro-template-lib/src/components/NormalFilterTableList/index.tsx
+ * @LastEditTime: 2023-01-31 17:11:28
+ * @FilePath: /melodyLCP/packages/pro-template-lib/src/components/NormalFilterTableList/index.tsx
  * @Description: update here
  */
 import { FC } from 'react';
@@ -31,7 +31,7 @@ export const NormalFilterTableList: FC<NormalFilterTableListProps> & {
   const toolBarRender = useToolBarProp({});
   return (
     <ProTable
-      headerTitle={actionConfig?.listName}
+      headerTitle={actionConfig?.listName || `${modelMetaData?.title}记录列表`}
       pagination={{}}
       params={{
         mainModel: modelConfig?.mainModel,
