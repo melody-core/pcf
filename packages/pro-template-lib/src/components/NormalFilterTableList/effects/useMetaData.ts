@@ -2,8 +2,8 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-12-24 01:14:10
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-12-24 01:20:08
- * @FilePath: /bui-integration-platform/Users/wxy/codeWorks/melodyLCP/packages/pro-template-lib/src/components/NormalFilterTableList/effects/useMetaData.ts
+ * @LastEditTime: 2023-01-31 16:29:41
+ * @FilePath: /melodyLCP/packages/pro-template-lib/src/components/NormalFilterTableList/effects/useMetaData.ts
  * @Description: update here
  */
 
@@ -29,7 +29,7 @@ export const useMetaData = ({ modelConfig }: UseMetaDataParams) => {
         setMetaData(data);
       }
     });
-  }, []);
+  }, [modelConfig.mainModel]);
   return {
     modelMetaData,
   };

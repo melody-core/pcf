@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2023-01-28 15:09:00
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2023-01-28 16:07:11
+ * @LastEditTime: 2023-01-31 16:35:26
  * @FilePath: /melodyLCP/packages/lcp/src/api/lib/modelModel.ts
  * @Description: update here
  */
@@ -20,6 +20,7 @@ const MODEL_MODEL_SCHEMA = {
   title: String,
   author: String,
   desc: String,
+  dataType: String,
   type: String,
   effects: Object,
   fields: [Object],
@@ -34,11 +35,9 @@ export const modelModel = mongoose.model(
   "modelObject"
 );
 
-export const TP_MODELS: TP_MODELS_TYPE = {};
-
 export const getTargetModelByModelName = async ({ name }) => {
-  if (TP_MODELS[name]) {
-    return TP_MODELS[name];
+  if (mongoose.models[name]) {
+    return mongoose.models[name];
   }
   const modelMeta = await modelModel.findOne({
     name,
@@ -51,7 +50,6 @@ export const getTargetModelByModelName = async ({ name }) => {
     timestamps: true,
   });
   const targetModel = mongoose.model(name, MODEL_SCHEMA, name);
-  TP_MODELS[name] = targetModel;
   return targetModel;
 };
 
@@ -64,8 +62,7 @@ export const createCollection = ({
     timestamps: true,
     ...definition,
   });
-  const targetModel = mongoose.model(modelName, schema, modelName);
-  TP_MODELS[modelName] = targetModel;
+  mongoose.model(modelName, schema, modelName);
   return {
     success: true,
   };
@@ -78,8 +75,8 @@ export const dropCollection = ({ modelName }: DropCollectionParams) =>
       if (error) {
         r(error);
       } else {
-        if (TP_MODELS[modelName]) {
-          delete TP_MODELS[modelName];
+        if (mongoose.models[modelName]) {
+          delete mongoose.models[modelName];
         }
         s(null);
       }

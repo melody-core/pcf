@@ -2,15 +2,12 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-07-29 10:54:18
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-11-11 14:16:39
+ * @LastEditTime: 2023-01-31 15:25:37
  * @FilePath: /melodyLCP/packages/lcp/src/client/pages/modelObject/views/ModelList/effects/const.tsx
  * @Description: update here
  */
 
-import React from "react";
 import { ProColumns, ProFormColumnsType } from "@ant-design/pro-components";
-import { Button } from "antd";
-import { CopyOutlined } from "@ant-design/icons";
 import { MODEL_STATUS_LIST } from "../../../../../../api/const";
 import { getEnum } from "../../../../../utils";
 

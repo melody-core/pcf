@@ -2,8 +2,8 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-09-05 15:43:29
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-12-23 19:33:50
- * @FilePath: /mission-order/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/pages/modelObject/views/common/ModelForm/index.tsx
+ * @LastEditTime: 2023-01-31 10:07:40
+ * @FilePath: /melodyLCP/packages/lcp/src/client/pages/modelObject/views/common/ModelForm/index.tsx
  * @Description: update here
  */
 import React, { useContext, useRef } from "react";
@@ -28,6 +28,7 @@ export const ModelFormCommon = ({ viewType = MODEL_VIEW_TYPES.CREATE }) => {
   const formMapRef = useRef<React.MutableRefObject<ProFormInstance<any>>[]>([]);
   const { current, handleCurrentChange } = useCurrentProp({});
   const { columns } = useColumnsProp();
+
   useInitValues({
     formMapRef,
     viewType,

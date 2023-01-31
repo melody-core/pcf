@@ -2,8 +2,8 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-09-05 15:47:49
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-12-23 20:12:09
- * @FilePath: /mission-order/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/pages/modelObject/views/common/ModelForm/effects/const.ts
+ * @LastEditTime: 2023-01-31 11:08:45
+ * @FilePath: /melodyLCP/packages/lcp/src/client/pages/modelObject/views/common/ModelForm/effects/const.ts
  * @Description: update here
  */
 
@@ -40,6 +40,33 @@ export const INIT_MODEL_CREATE_FORM_COLUMNS: ProFormColumnsType<
   "xSelect" | "modelFieldConfigSetup"
 >[][] = [
   [
+    {
+      dataIndex: "dataType",
+      title: "模型数据类型",
+      tooltip:
+        "主体数据即构成业务的主体，比如在音乐培训学校场景中，音乐培训是一个业务流程，是由老师、学生等主体进行活动构成的，能进行或参与业务活动的即为主体数据，如学生、老师、产品等, 而基础数据类型指可枚举的数据，例如课程分类: 架子鼓、吉他、钢琴, 业务数据比如课程订单,是由主体数据学生进行事务活动形成的数据。",
+      valueType: "radioButton",
+      fieldProps: {
+        defaultValue: "business",
+        options: [
+          {
+            label: "业务数据类型",
+            value: "business",
+          },
+          {
+            label: "主体数据",
+            value: "mainBody",
+          },
+          {
+            label: "基础数据类型",
+            value: "basics",
+          },
+        ],
+      },
+      formItemProps: {
+        required: true,
+      },
+    },
     {
       title: "模型名称",
       tooltip:
@@ -143,9 +170,18 @@ export const INIT_MODEL_CREATE_FORM_COLUMNS: ProFormColumnsType<
               },
             },
             {
-              title: "字段名称",
+              title: "字段含义名称",
               dataIndex: "title",
-              tooltip: "给字段一个名称便于使用，例如key设为six,命名为‘性别’",
+              formItemProps: {
+                rules: [
+                  {
+                    required: true,
+                    message: "此项为必填项",
+                  },
+                ],
+              },
+              tooltip:
+                "给字段一个名称便于使用，例如key设为name,含义名称为‘姓名’",
             },
             {
               title: "字段类型",

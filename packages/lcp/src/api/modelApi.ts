@@ -2,19 +2,19 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-09-16 16:15:00
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2023-01-28 16:55:24
+ * @LastEditTime: 2023-01-31 16:33:50
  * @FilePath: /melodyLCP/packages/lcp/src/api/modelApi.ts
  * @Description: update here
  */
 
 import { Api, Post, Validate } from "@midwayjs/hooks";
+import mongoose from "mongoose";
 import { z } from "zod";
 import {
   createCollection,
   createModelSchemaByMetaData,
   dropCollection,
   modelModel,
-  TP_MODELS,
 } from "./lib";
 
 // 单条查询根据_id
@@ -71,11 +71,13 @@ const CreateModel = z
         type: z.string(),
       })
     ),
+    dataType: z.string(),
     effects: z.object({}),
   })
   .partial({
     desc: true,
     author: true,
+    dataType: true,
     effects: true,
   });
 
@@ -83,7 +85,7 @@ export const createModel = Api(
   Post("/api/modelConfig/create"),
   Validate(CreateModel),
   async (createItemParams) => {
-    const { name } = createItemParams || {};
+    const { name, dataType = "business" } = createItemParams || {};
     const findItem = await modelModel.findOne({
       name,
     });
@@ -97,7 +99,10 @@ export const createModel = Api(
       modelSchema,
       modelName: name,
     });
-    const result = await modelModel.create(createItemParams);
+    const result = await modelModel.create({
+      ...(createItemParams || {}),
+      dataType: dataType,
+    });
     return result;
   }
 );
@@ -117,7 +122,7 @@ export const updateModelById = Api(
     }
     const target = await modelModel.findByIdAndUpdate(_id, data);
     const { name } = target || {};
-    delete TP_MODELS[name];
+    delete mongoose.models[name];
     return target;
   }
 );
@@ -145,17 +150,19 @@ export const getModelList = Api(
     const { pageSize = 20, current = 1, ...others } = params || {};
     const total = await modelModel.count();
     const findWhereParams = {
-      ...others,
+      // ...others,
     };
     for (const key in others) {
-      if (typeof others[key] === "string") {
-        findWhereParams[key] = {
-          $regex: others[key],
-        };
-      } else {
-        findWhereParams[key] = {
-          $eq: others[key],
-        };
+      if (others[key] || others[key] === 0) {
+        if (typeof others[key] === "string") {
+          findWhereParams[key] = {
+            $regex: others[key],
+          };
+        } else {
+          findWhereParams[key] = {
+            $eq: others[key],
+          };
+        }
       }
     }
     const result = await modelModel
@@ -163,6 +170,7 @@ export const getModelList = Api(
       .skip(pageSize * (current - 1))
       .limit(pageSize)
       .sort(sort);
+
     return {
       data: result,
       total,
@@ -191,7 +199,7 @@ export const deleteModelById = Api(
     const result = await modelModel.deleteOne({
       _id,
     });
-    delete TP_MODELS[findItem.name];
+    delete mongoose.models[findItem.name];
     return result;
   }
 );
