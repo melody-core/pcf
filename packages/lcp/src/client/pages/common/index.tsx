@@ -2,13 +2,13 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-12-28 19:25:18
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2023-01-31 16:39:12
+ * @LastEditTime: 2023-02-01 09:33:34
  * @FilePath: /melodyLCP/packages/lcp/src/client/pages/common/index.tsx
  * @Description: update here
  */
 import React, { useState } from "react";
 import { Outlet, useNavigate, useParams } from "react-router-dom";
-import { Layout, Menu } from "antd";
+import { Layout, Menu, Tooltip } from "antd";
 
 import styles from "./index.module.less";
 import {
@@ -30,9 +30,8 @@ export const CommonObject = () => {
       <Header className={styles["flex-wrap"]}>
         <div className={styles["flex-wrap"]}>
           <div className={styles["logo"]} />
-          <h3 className={styles["logo-text"]}>六弦低代码</h3>
+          <h3 className={styles["logo-text"]}>六弦低代码-体验版</h3>
         </div>
-
         <Menu
           className={styles["flex-1"]}
           theme="dark"
@@ -44,10 +43,14 @@ export const CommonObject = () => {
           }}
         />
         {/* <UserIcon /> */}
-        <QuestionCircleOutlined
-          className={styles["ques-icon"]}
-          style={{ color: "#fff" }}
-        />
+        <a href="https://www.yuque.com/sff4rc/mngp0u" target="_blank">
+          <Tooltip title="查看文档">
+            <QuestionCircleOutlined
+              className={styles["ques-icon"]}
+              style={{ color: "#fff" }}
+            />
+          </Tooltip>
+        </a>
       </Header>
       <Layout className={styles["catalogue-wrap"]}>
         <Sider trigger={null} collapsible collapsed={collapsed}>
@@ -57,7 +60,6 @@ export const CommonObject = () => {
             selectedKeys={[model]}
             items={menuData}
             onClick={(item) => {
-              // setSelectedKeys(item.key);
               navigate(`/common/${item.key}/record/list`);
             }}
           />

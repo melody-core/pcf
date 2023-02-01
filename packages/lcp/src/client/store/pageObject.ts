@@ -7,7 +7,7 @@
  * @Description: update here
  */
 import { makeAutoObservable } from "mobx";
-import { PAGE_MENU_CONFIG } from "./../pages/pageObject/effect";
+import { PAGE_MENU_CONFIG } from "../pages/PageObject/effect";
 
 const getURLParams: (props: {
   key: string;

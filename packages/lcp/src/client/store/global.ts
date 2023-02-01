@@ -7,7 +7,7 @@
  * @Description: update here
  */
 import { makeAutoObservable } from "mobx";
-import { PAGE_MENU_CONFIG } from "../pages/pageObject/effect";
+import { PAGE_MENU_CONFIG } from "../pages/PageObject/effect";
 import { MODEL_MENU_CONFIG } from "../pages/modelObject/effect";
 import NavConfig from "../config/nav.config";
 

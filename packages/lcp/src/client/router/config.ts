@@ -10,17 +10,13 @@
 import App from "../../App";
 import NotOpen from "../pages/Status/NotOpen";
 import { NavItems } from "./../config/nav.config";
-import { PAGE_MENU_KEYS } from "./../pages/pageObject/effect";
+import { PAGE_MENU_KEYS } from "../pages/PageObject/effect";
 import { MODEL_MENU_KEYS } from "./../pages/modelObject/effect";
 
 // 页面管理 - start
-import PageManager from "../pages/pageObject";
+import PageManager from "../pages/PageObject";
 import Demo from "../pages/demo";
-import {
-  PageList,
-  TemplateList,
-  PageCreate,
-} from "./../pages/pageObject/views";
+import { PageList, TemplateList, PageCreate } from "../pages/PageObject/views";
 // 页面管理 - end
 
 // 模型管理 - start

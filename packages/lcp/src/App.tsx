@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-06-06 16:46:18
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2023-01-29 17:23:49
+ * @LastEditTime: 2023-01-31 21:36:07
  * @FilePath: /melodyLCP/packages/lcp/src/App.tsx
  * @Description: update here
  */
@@ -30,7 +30,7 @@ const App = observer(
         <Header className={styles["flex-wrap"]}>
           <div className={styles["flex-wrap"]}>
             <div className={styles["logo"]} />
-            <h3 className={styles["logo-text"]}>六弦低代码</h3>
+            <h3 className={styles["logo-text"]}>六弦低代码-体验版</h3>
           </div>
 
           <Menu
@@ -48,7 +48,7 @@ const App = observer(
         </Header>
         <Outlet />
         <Footer className={styles["footer-wrap"]}>
-          六弦低代码平台-维护人@六弦
+          六弦低代码平台-体验版@六弦(钉钉:melodyWxy)
         </Footer>
       </Layout>
     );
