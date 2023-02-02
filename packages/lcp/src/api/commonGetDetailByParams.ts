@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-12-22 23:20:03
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2023-01-28 16:18:23
+ * @LastEditTime: 2023-02-02 14:01:26
  * @FilePath: /melodyLCP/packages/lcp/src/api/commonGetDetailByParams.ts
  * @Description: update here
  */

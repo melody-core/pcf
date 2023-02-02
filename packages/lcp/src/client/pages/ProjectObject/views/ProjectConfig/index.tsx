@@ -1,11 +1,12 @@
 /*
  * @Author: 六弦(melodyWxy)
- * @Date: 2022-12-28 19:25:18
+ * @Date: 2023-02-02 16:13:47
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2023-02-02 16:57:51
- * @FilePath: /melodyLCP/packages/lcp/src/client/pages/common/index.tsx
+ * @LastEditTime: 2023-02-02 16:59:33
+ * @FilePath: /melodyLCP/packages/lcp/src/client/pages/ProjectObject/views/ProjectConfig/index.tsx
  * @Description: update here
  */
+
 import React, { useState } from "react";
 import { Outlet, useNavigate, useParams } from "react-router-dom";
 import { Layout, Menu, Tooltip } from "antd";
@@ -16,16 +17,24 @@ import {
   MenuUnfoldOutlined,
   QuestionCircleOutlined,
 } from "@ant-design/icons";
-import { useMenuData } from "./effects";
-import { DocLinkIcon } from "../../components";
+import { PROJECT_CONFIG_MENU_LIST } from "./effects/const";
+import { DocLinkIcon } from "../../../../components";
 
 const { Header, Sider, Content, Footer } = Layout;
 
-export const CommonObject = () => {
+export const ConfigObject = () => {
   const [collapsed, setCollapsed] = useState(false);
   const navigate = useNavigate();
-  const { menuData } = useMenuData();
-  const { model } = useParams();
+
+  const { project } = useParams();
+
+  const cuSelectKeys = [
+    (
+      PROJECT_CONFIG_MENU_LIST.find((item) =>
+        location.pathname.includes(item.key)
+      ) || PROJECT_CONFIG_MENU_LIST[0]
+    ).key,
+  ];
   return (
     <Layout className={styles["app-wrap"]}>
       <Header className={styles["flex-wrap"]}>
@@ -37,11 +46,13 @@ export const CommonObject = () => {
           className={styles["flex-1"]}
           theme="dark"
           mode="horizontal"
-          // selectedKeys={}
-          items={[]}
-          onClick={({ key }) => {
-            // navigate(NavConfig.find((item) => item.key === key)?.to);
-          }}
+          defaultSelectedKeys={["configCenter"]}
+          items={[
+            {
+              key: "configCenter",
+              label: "配置中心",
+            },
+          ]}
         />
         {/* <UserIcon /> */}
         <DocLinkIcon />
@@ -51,10 +62,10 @@ export const CommonObject = () => {
           <Menu
             style={{ height: "100%" }}
             mode="inline"
-            selectedKeys={[model]}
-            items={menuData}
+            selectedKeys={cuSelectKeys}
+            items={PROJECT_CONFIG_MENU_LIST}
             onClick={(item) => {
-              navigate(`/common/${item.key}/record/list`);
+              navigate(`/projectConfig/${project}/${item.key}`);
             }}
           />
         </Sider>
@@ -96,4 +107,4 @@ export const CommonObject = () => {
   );
 };
 
-export default () => <CommonObject />;
+export default () => <ConfigObject />;

@@ -2,12 +2,12 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-07-28 18:52:35
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-10-01 18:43:06
+ * @LastEditTime: 2023-02-02 12:43:44
  * @FilePath: /melodyLCP/packages/lcp/src/client/store/pageObject.ts
  * @Description: update here
  */
 import { makeAutoObservable } from "mobx";
-import { PAGE_MENU_CONFIG } from "../pages/PageObject/effect";
+import { PROJECT_MENU_CONFIG } from "../pages/ProjectObject/effect";
 
 const getURLParams: (props: {
   key: string;
@@ -29,8 +29,9 @@ export class ErrorObjectStoreConstructor {
     // 选择的Project
     selectedKeys: [
       (
-        PAGE_MENU_CONFIG.find((item) => location.pathname.match(item.value)) ||
-        PAGE_MENU_CONFIG[0]
+        PROJECT_MENU_CONFIG.find((item) =>
+          location.pathname.match(item.value)
+        ) || PROJECT_MENU_CONFIG[0]
       ).value,
     ],
   };

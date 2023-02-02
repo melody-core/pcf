@@ -2,16 +2,18 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-07-28 17:42:36
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-12-19 11:35:47
- * @FilePath: /mission-order/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/pages/modelObject/effect.ts
+ * @LastEditTime: 2023-02-02 14:30:45
+ * @FilePath: /melodyLCP/packages/lcp/src/client/pages/modelObject/effect.ts
  * @Description: update here
  */
 
 import { useEffect } from "react";
 
 export enum MODEL_MENU_KEYS {
-  MODEL_LIST = "model_list", // 模型管理
-  MODEL_ASSOCIATION = "model_association", // 模型关联关系管理
+  TP_MODEL_LIST = "business", // 模型管理
+  MAIN_MODEL_LIST = "mainBody",
+  BASE_MODEL_LIST = "basics",
+  // MODEL_ASSOCIATION = "model_association", // 模型关联关系管理
   // DATA_GOVERNMENT = "data_government", // 数据治理 - 这个放在数据管理
   // 下面的属于增改，不植入menu
   MODEL_CREATE = "model_create",
@@ -19,13 +21,18 @@ export enum MODEL_MENU_KEYS {
 }
 
 export enum MODEL_MENU_LABELS {
-  MODEL_LIST = "模型列表",
+  TP_MODEL_LIST = "业务模型列表",
+  MAIN_MODEL_LIST = "主数据模型列表",
+  BASE_MODEL_LIST = "基础模型管理",
   MODEL_ASSOCIATION = "关联关系管理",
 }
 
 export const MODEL_MENU_LABEL_MAP = new Map()
-  .set(MODEL_MENU_KEYS.MODEL_LIST, MODEL_MENU_LABELS.MODEL_LIST)
-  .set(MODEL_MENU_KEYS.MODEL_ASSOCIATION, MODEL_MENU_LABELS.MODEL_ASSOCIATION);
+  .set(MODEL_MENU_KEYS.TP_MODEL_LIST, MODEL_MENU_LABELS.TP_MODEL_LIST)
+  .set(MODEL_MENU_KEYS.MAIN_MODEL_LIST, MODEL_MENU_LABELS.MAIN_MODEL_LIST)
+  .set(MODEL_MENU_KEYS.BASE_MODEL_LIST, MODEL_MENU_LABELS.BASE_MODEL_LIST);
+
+// .set(MODEL_MENU_KEYS.MODEL_ASSOCIATION, MODEL_MENU_LABELS.MODEL_ASSOCIATION);
 
 export const MODEL_MENU_CONFIG = (() => {
   const result: {

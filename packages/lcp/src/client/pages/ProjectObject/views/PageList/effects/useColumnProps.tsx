@@ -2,13 +2,15 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-07-29 10:53:36
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-09-05 14:43:48
- * @FilePath: /melodyLCP/packages/lcp/src/client/pages/pageObject/components/pageList/effects/useColumnProps.tsx
+ * @LastEditTime: 2023-02-02 16:40:40
+ * @FilePath: /melodyLCP/packages/lcp/src/client/pages/ProjectObject/views/PageList/effects/useColumnProps.tsx
  * @Description: update here
  */
 import { message, Popconfirm } from "antd";
 import React, { useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import { deleteProjectById } from "../../../../../../api/projectApi";
+import { xFetch } from "../../../../../utils";
 // import { deleteErrorObj } from './../../../../../../api/errorObject'
 // import { sentError2o } from './../../../../../../api/report'
 import { INIT_COLUMN_LIST } from "./const";
@@ -29,14 +31,6 @@ export const useColumnProps = ({
         tip: "",
         render: (text, record, _, action) => [
           <a
-            key="editable"
-            onClick={() => {
-              action?.startEditable?.(record.hash);
-            }}
-          >
-            状态修改
-          </a>,
-          <a
             key="detail"
             onClick={() => {
               // setSelectedDetail(record.id);
@@ -45,22 +39,43 @@ export const useColumnProps = ({
               );
             }}
           >
-            详情
+            打开应用
+          </a>,
+          <a
+            key="config"
+            onClick={() => {
+              navigator(`/projectConfig/${record.name}`);
+            }}
+          >
+            应用配置
+          </a>,
+          <a
+            key="edit"
+            onClick={() => {
+              action?.startEditable?.(record._id);
+            }}
+          >
+            编辑
           </a>,
           <Popconfirm
             key="delete"
             title="确定要删除这一条吗?"
             onConfirm={async () => {
               try {
-                // await deleteErrorObj({
-                //   hash: record.hash
-                // })
-                message.success("删除成功!");
-                action.reload();
+                const result = await xFetch(
+                  deleteProjectById({
+                    _id: record._id,
+                  })
+                );
+                const { success } = result || {};
+                if (success) {
+                  message.success("删除成功!");
+                  action.reload();
+                }
               } catch (error) {
                 console.error(error);
                 message.error(
-                  error.message || error.data?.message || "删除请求失败"
+                  error.message || error.data?.message || "删除失败"
                 );
               }
             }}

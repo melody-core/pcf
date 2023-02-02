@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-11-15 11:43:30
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2023-01-28 16:17:06
+ * @LastEditTime: 2023-02-02 14:03:02
  * @FilePath: /melodyLCP/packages/lcp/src/api/commonGetListApi.ts
  * @Description: update here
  */
@@ -17,7 +17,7 @@ import {
   useContext,
 } from "@midwayjs/hooks";
 import { getTargetModelByModelName } from "./lib";
-import { db } from "./lib/db";
+// import { db } from "./lib/db";
 
 export const getCommonModelRecordsList = Api(
   Post("/api/common/:modelName/getList"),
@@ -37,19 +37,19 @@ export const getCommonModelRecordsList = Api(
       throw new Error(`不存在的模型: ${modelName}!`);
     }
     const total = await targetModel.count();
-    const findWhereParams = {
-      ...others,
-    };
+    const findWhereParams = {};
     for (const key in others) {
-      if (typeof others[key] === "string") {
-        // string 类型支持模糊查询
-        findWhereParams[key] = {
-          $regex: others[key],
-        };
-      } else {
-        findWhereParams[key] = {
-          $eq: others[key],
-        };
+      if (others[key] || others[key] === 0) {
+        if (typeof others[key] === "string") {
+          // string 类型支持模糊查询
+          findWhereParams[key] = {
+            $regex: others[key],
+          };
+        } else {
+          findWhereParams[key] = {
+            $eq: others[key],
+          };
+        }
       }
     }
 

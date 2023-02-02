@@ -1,13 +1,13 @@
-.catalogue-wrap{
+.catalogue-wrap {
   flex: 1;
   height: 100%;
   overflow: scroll;
 }
-.bg-fff{
-  background: '#fff';
+.bg-fff {
+  background: "#fff";
 }
 
-.trigger{
+.trigger {
   padding: 0 24px;
   font-size: 18px;
   line-height: 64px;

@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-07-28 19:02:59
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2023-01-31 17:13:05
+ * @LastEditTime: 2023-02-02 14:32:28
  * @FilePath: /melodyLCP/packages/lcp/src/client/pages/modelObject/views/ModelList/index.tsx
  * @Description: update here
  */
@@ -18,6 +18,7 @@ import {
   useToolBarProp,
 } from "./effects";
 import Bread from "../../../../components/Bread";
+import { useParams } from "react-router-dom";
 
 const List = observer(
   ({
@@ -26,13 +27,16 @@ const List = observer(
       // setSelectedDetail,
     },
   }) => {
+    const { dataType = "business" } = useParams();
     const tableActionRef = useRef();
     // const navigator = useNavigate();
     const { mergeColumns } = useColumnProps({
       // setSelectedDetail,
       selectedKeys,
     });
-    const mergeRequest = useRequestProps();
+    const mergeRequest = useRequestProps({
+      dataType,
+    });
     const mergeEditable = useEditableProps();
     const mergeToolBarRender = useToolBarProp({
       tableActionRef,
@@ -46,6 +50,9 @@ const List = observer(
           request={mergeRequest}
           scroll={{
             x: "max-content",
+          }}
+          params={{
+            dataType,
           }}
           rowKey="name"
           pagination={{}}

@@ -2,8 +2,8 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-07-28 19:02:59
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-10-04 22:48:58
- * @FilePath: /melodyLCP/packages/lcp/src/client/pages/pageObject/views/PageList/index.tsx
+ * @LastEditTime: 2023-02-02 15:55:49
+ * @FilePath: /melodyLCP/packages/lcp/src/client/pages/ProjectObject/views/PageList/index.tsx
  * @Description: update here
  */
 
@@ -46,7 +46,7 @@ const List = observer(
           title={() => <Bread lvs={["页面管理", "页面列表"]} />}
           actionRef={tableActionRef}
           columns={mergeColumns}
-          rowKey="hash"
+          rowKey="_id"
           dateFormatter="string"
           request={mergeRequest}
           scroll={{

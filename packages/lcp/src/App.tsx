@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-06-06 16:46:18
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2023-01-31 21:36:07
+ * @LastEditTime: 2023-02-02 16:59:17
  * @FilePath: /melodyLCP/packages/lcp/src/App.tsx
  * @Description: update here
  */
@@ -14,6 +14,7 @@ import { observer } from "mobx-react";
 import globalStore from "./client/store/global";
 
 import styles from "./index.module.less";
+import { DocLinkIcon } from "./client/components";
 
 const { Header, Footer } = Layout;
 
@@ -30,7 +31,7 @@ const App = observer(
         <Header className={styles["flex-wrap"]}>
           <div className={styles["flex-wrap"]}>
             <div className={styles["logo"]} />
-            <h3 className={styles["logo-text"]}>六弦低代码-体验版</h3>
+            <h3 className={styles["logo-text"]}>六弦应用组装-体验版</h3>
           </div>
 
           <Menu
@@ -45,10 +46,11 @@ const App = observer(
             }}
           />
           {/* <UserIcon /> */}
+          <DocLinkIcon />
         </Header>
         <Outlet />
         <Footer className={styles["footer-wrap"]}>
-          六弦低代码平台-体验版@六弦(钉钉:melodyWxy)
+          六弦应用组装平台-体验版@六弦(钉钉:melodyWxy)
         </Footer>
       </Layout>
     );

@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-05-28 15:21:09
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2023-01-28 17:21:58
+ * @LastEditTime: 2023-02-02 12:46:09
  * @FilePath: /melodyLCP/packages/lcp/src/client/router/index.tsx
  * @Description: update here
  */
@@ -19,9 +19,6 @@ export const renderRouterList = (routerConfigs) => {
     let childRouters;
     if (children) {
       childRouters = renderRouterList(children);
-    }
-    if (!Component) {
-      console.log("item", item);
     }
     return (
       <Route path={path} key={path} element={<Component pageInfo={pageInfo} />}>

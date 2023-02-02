@@ -2,12 +2,12 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-07-28 17:42:04
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2023-02-01 09:34:58
- * @FilePath: /melodyLCP/packages/lcp/src/client/pages/pageObject/index.tsx
+ * @LastEditTime: 2023-02-02 14:54:19
+ * @FilePath: /melodyLCP/packages/lcp/src/client/pages/projectObject/index.tsx
  * @Description: update here
  */
 
-import React, { FC, useState } from "react";
+import React, { useState } from "react";
 import { Layout, Menu } from "antd";
 import { MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons";
 import { observer } from "mobx-react";
@@ -16,11 +16,11 @@ import pageObjectStore from "../../store/pageObject";
 import { Outlet, useNavigate } from "react-router-dom";
 
 import styles from "./index.module.css";
-import { PAGE_MENU_CONFIG, useInitMenuSelected } from "./effect";
+import { PROJECT_MENU_CONFIG, useInitMenuSelected } from "./effect";
 
 const { Header, Sider, Content } = Layout;
 
-export const PageObject = observer(
+export const ProjectObject = observer(
   ({
     store: {
       pageObject: { selectedKeys },
@@ -37,10 +37,10 @@ export const PageObject = observer(
             style={{ height: "100%" }}
             mode="inline"
             selectedKeys={selectedKeys}
-            items={PAGE_MENU_CONFIG}
+            items={PROJECT_MENU_CONFIG}
             onClick={(item) => {
               setSelectedKeys(item.key);
-              navigate(`/page_lc/${item.key}`);
+              navigate(`/project_lc/${item.key}`);
             }}
           />
         </Sider>
@@ -79,4 +79,4 @@ export const PageObject = observer(
   }
 );
 
-export default () => <PageObject store={pageObjectStore} />;
+export default () => <ProjectObject store={pageObjectStore} />;
