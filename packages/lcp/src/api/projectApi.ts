@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-09-05 11:37:12
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2023-02-02 16:10:50
+ * @LastEditTime: 2023-02-03 10:40:23
  * @FilePath: /melodyLCP/packages/lcp/src/api/projectApi.ts
  * @Description: update here
  */
@@ -133,7 +133,7 @@ const DeleteTem = z.object({
 });
 
 export const deleteProjectById = Api(
-  Post("/api/projectConfig/deleteModelById"),
+  Post("/api/projectConfig/deleteProjectById"),
   Validate(DeleteTem),
   async (modelConfig) => {
     const { _id } = modelConfig;
@@ -155,13 +155,53 @@ const UpdateProjectParams = z.object({
 });
 
 export const updateProjectById = Api(
-  Post("/api/projectConfig/updateModelById"),
+  Post("/api/projectConfig/updateProjectById"),
   Validate(UpdateProjectParams),
   async ({ _id, data = {} }) => {
     if (!_id) {
       throw new Error("缺失请求参数: _id!");
     }
     const target = await projectModel.findByIdAndUpdate(_id, data);
+    return target;
+  }
+);
+
+// 获取一条基于name
+const FindProjectByName = z.object({
+  name: z.string(),
+});
+
+export const findProjectByName = Api(
+  Post("/api/projectConfig/getProjectByName"),
+  Validate(FindProjectByName),
+  async ({ name }) => {
+    if (!name) {
+      throw new Error("缺失请求参数: name!");
+    }
+    const target = await projectModel.findOne({
+      name,
+    });
+    return target;
+  }
+);
+// 编辑一条基于name
+const UpdateProjectParamsByName = z.object({
+  name: z.string(),
+  data: CreateProject,
+});
+export const updateProjectByName = Api(
+  Post("/api/projectConfig/updateProjectByName"),
+  Validate(UpdateProjectParamsByName),
+  async ({ name, data = {} }) => {
+    if (!name) {
+      throw new Error("缺失请求参数: name!");
+    }
+    const target = await projectModel.findOneAndUpdate(
+      {
+        name,
+      },
+      data
+    );
     return target;
   }
 );

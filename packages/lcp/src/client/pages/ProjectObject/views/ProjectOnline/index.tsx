@@ -1,9 +1,9 @@
 /*
  * @Author: 六弦(melodyWxy)
- * @Date: 2023-02-02 16:13:47
+ * @Date: 2023-02-03 11:35:37
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2023-02-03 10:54:06
- * @FilePath: /melodyLCP/packages/lcp/src/client/pages/ProjectObject/views/ProjectConfig/index.tsx
+ * @LastEditTime: 2023-02-03 13:52:54
+ * @FilePath: /melodyLCP/packages/lcp/src/client/pages/ProjectObject/views/ProjectOnline/index.tsx
  * @Description: update here
  */
 
@@ -13,46 +13,43 @@ import { Layout, Menu } from "antd";
 
 import styles from "./index.module.less";
 import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
-import { PROJECT_CONFIG_MENU_LIST } from "./effects/const";
+// import { PROJECT_CONFIG_MENU_LIST } from "./effects/const";
 import { DocLinkIcon } from "../../../../components";
 import { useProject } from "../../commonHooks";
+import { getMenuData } from "./effects";
 
 const { Header, Sider, Content, Footer } = Layout;
 
-export const ConfigObject = () => {
+export const ProjectOnline = () => {
   const [collapsed, setCollapsed] = useState(false);
   const navigate = useNavigate();
 
   const { project } = useParams();
   const { projectData } = useProject({ name: project });
+  getMenuData(projectData?.menuConfig?.data || []);
 
-  const cuSelectKeys = [
-    (
-      PROJECT_CONFIG_MENU_LIST.find((item) =>
-        location.pathname.includes(item.key)
-      ) || PROJECT_CONFIG_MENU_LIST[0]
-    ).key,
-  ];
+  // const cuSelectKeys = [
+  //   (
+  //     PROJECT_CONFIG_MENU_LIST.find((item) =>
+  //       location.pathname.includes(item.key)
+  //     ) || PROJECT_CONFIG_MENU_LIST[0]
+  //   ).key,
+  // ];
   return (
     <Layout className={styles["app-wrap"]}>
       <Header className={styles["flex-wrap"]}>
         <div className={styles["flex-wrap"]}>
           <div className={styles["logo"]} />
           <h3 className={styles["logo-text"]}>
-            六弦应用组装-{projectData?.title || project}-体验版
+            {projectData?.title || project}(体验版)
           </h3>
         </div>
         <Menu
           className={styles["flex-1"]}
           theme="dark"
           mode="horizontal"
-          defaultSelectedKeys={["configCenter"]}
-          items={[
-            {
-              key: "configCenter",
-              label: "配置中心",
-            },
-          ]}
+          defaultSelectedKeys={[]}
+          items={[]}
         />
         {/* <UserIcon /> */}
         <DocLinkIcon />
@@ -62,10 +59,10 @@ export const ConfigObject = () => {
           <Menu
             style={{ height: "100%" }}
             mode="inline"
-            selectedKeys={cuSelectKeys}
-            items={PROJECT_CONFIG_MENU_LIST}
+            // selectedKeys={cuSelectKeys}
+            items={projectData?.menuConfig?.data || []}
             onClick={(item) => {
-              navigate(`/projectConfig/${project}/${item.key}`);
+              navigate(`/pro/${project}${item.key}`);
             }}
           />
         </Sider>
@@ -106,5 +103,3 @@ export const ConfigObject = () => {
     </Layout>
   );
 };
-
-export default () => <ConfigObject />;

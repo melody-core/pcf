@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-07-28 17:42:04
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2023-02-02 14:54:19
+ * @LastEditTime: 2023-02-03 10:45:28
  * @FilePath: /melodyLCP/packages/lcp/src/client/pages/projectObject/index.tsx
  * @Description: update here
  */
@@ -17,6 +17,7 @@ import { Outlet, useNavigate } from "react-router-dom";
 
 import styles from "./index.module.css";
 import { PROJECT_MENU_CONFIG, useInitMenuSelected } from "./effect";
+import { useProject } from "./commonHooks";
 
 const { Header, Sider, Content } = Layout;
 

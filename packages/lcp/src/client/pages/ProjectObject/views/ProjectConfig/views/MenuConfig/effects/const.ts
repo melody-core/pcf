@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2023-02-02 19:44:18
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2023-02-02 23:03:28
+ * @LastEditTime: 2023-02-03 11:57:59
  * @FilePath: /melodyLCP/packages/lcp/src/client/pages/ProjectObject/views/ProjectConfig/views/MenuConfig/effects/const.ts
  * @Description: update here
  */
@@ -35,7 +35,8 @@ export const CREATE_MENU_ITEM_SCHEMA = ({
     tip: "此菜单节点对应的路径, 如果不填则表达为菜单分组，体验版需要手动填写，可以参考文档说明！",
     fieldProps: {
       addonBefore: `/pro/${project}`,
-      placeholder: "如: /common/Student/list ,如果是菜单分组则不需要填写",
+      placeholder:
+        "如: /common/Student/record/list ,如果是菜单分组则不需要填写",
     },
   },
   {

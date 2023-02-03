@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-07-29 10:53:36
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2023-02-02 16:40:40
+ * @LastEditTime: 2023-02-03 11:47:02
  * @FilePath: /melodyLCP/packages/lcp/src/client/pages/ProjectObject/views/PageList/effects/useColumnProps.tsx
  * @Description: update here
  */
@@ -34,9 +34,7 @@ export const useColumnProps = ({
             key="detail"
             onClick={() => {
               // setSelectedDetail(record.id);
-              navigator(
-                `/errorObject?project=${selectedKeys[0]}&detail=${record.id}`
-              );
+              navigator(`/pro/${record.name}`);
             }}
           >
             打开应用

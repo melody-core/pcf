@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-05-28 16:00:11
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2023-02-02 17:00:14
+ * @LastEditTime: 2023-02-03 11:46:15
  * @FilePath: /melodyLCP/packages/lcp/src/client/router/config.ts
  * @Description: update here
  */
@@ -20,6 +20,7 @@ import {
   PageList,
   TemplateList,
   PageCreate,
+  ProjectOnline,
 } from "../pages/ProjectObject/views";
 // 页面管理 - end
 
@@ -48,6 +49,32 @@ import {
 // base-页面管理 - end
 
 export default [
+  {
+    path: "pro/:project",
+    Component: ProjectOnline,
+    children: [
+      {
+        path: "common/:model/record/create",
+        Component: CommonCreate,
+        bread: ["六弦应用组装系统", "创建记录"],
+      },
+      {
+        path: "common/:model/record/detail",
+        Component: CommonDetail,
+        bread: ["六弦应用组装系统", "记录详情"],
+      },
+      {
+        path: "common/:model/record/edit",
+        Component: CommonEdit,
+        bread: ["六弦应用组装系统", "编辑记录"],
+      },
+      {
+        path: "common/:model/record/list",
+        Component: CommonFilterTable,
+        bread: ["六弦应用组装系统", "记录列表"],
+      },
+    ],
+  },
   {
     path: "projectConfig/:project",
     Component: ConfigObject,
