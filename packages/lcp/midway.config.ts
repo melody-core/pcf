@@ -7,6 +7,10 @@ export default defineConfig({
     resolve: {
       alias: [{ find: /^~/, replacement: "" }],
     },
+    server: {
+      host: "0.0.0.0",
+      port: 7002,
+    },
     css: {
       preprocessorOptions: {
         less: {

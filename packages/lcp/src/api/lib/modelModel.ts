@@ -2,18 +2,18 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2023-01-28 15:09:00
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2023-01-31 16:35:26
+ * @LastEditTime: 2023-02-03 15:16:53
  * @FilePath: /melodyLCP/packages/lcp/src/api/lib/modelModel.ts
  * @Description: update here
  */
 
-import mongoose from "mongoose";
+import mongoose, {
+  InferSchemaType,
+  Model,
+  ObtainSchemaGeneric,
+} from "mongoose";
 import { createModelSchemaByMetaData } from "./createModelSchemaByMetaData";
-import {
-  TP_MODELS_TYPE,
-  CreateDBModelParams,
-  DropCollectionParams,
-} from "./type";
+import { CreateDBModelParams, DropCollectionParams, TSchema } from "./type";
 
 const MODEL_MODEL_SCHEMA = {
   name: { type: String, unique: true },
@@ -35,7 +35,18 @@ export const modelModel = mongoose.model(
   "modelObject"
 );
 
-export const getTargetModelByModelName = async ({ name }) => {
+export const getTargetModelByModelName = async ({
+  name,
+}): Promise<
+  Model<
+    InferSchemaType<TSchema>,
+    ObtainSchemaGeneric<TSchema, "TQueryHelpers">,
+    ObtainSchemaGeneric<TSchema, "TInstanceMethods">,
+    {},
+    TSchema
+  > &
+    ObtainSchemaGeneric<TSchema, "TStaticMethods">
+> => {
   if (mongoose.models[name]) {
     return mongoose.models[name];
   }
