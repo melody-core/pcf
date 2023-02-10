@@ -2,8 +2,8 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-07-28 19:02:59
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2023-02-02 14:32:28
- * @FilePath: /melodyLCP/packages/lcp/src/client/pages/modelObject/views/ModelList/index.tsx
+ * @LastEditTime: 2023-02-10 11:48:21
+ * @FilePath: /lcp-asset/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/pages/modelObject/views/ModelList/index.tsx
  * @Description: update here
  */
 
@@ -27,7 +27,7 @@ const List = observer(
       // setSelectedDetail,
     },
   }) => {
-    const { dataType = "business" } = useParams();
+    const { dataType = "basics" } = useParams();
     const tableActionRef = useRef();
     // const navigator = useNavigate();
     const { mergeColumns } = useColumnProps({

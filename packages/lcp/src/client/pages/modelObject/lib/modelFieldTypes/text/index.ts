@@ -2,8 +2,8 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-09-19 14:22:51
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-11-14 16:07:09
- * @FilePath: /melodyLCP/packages/lcp/src/client/pages/modelObject/lib/modelFieldTypes/text/index.ts
+ * @LastEditTime: 2023-02-10 11:44:39
+ * @FilePath: /lcp-asset/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/pages/modelObject/lib/modelFieldTypes/text/index.ts
  * @Description: update here
  */
 
@@ -13,6 +13,7 @@ class InputFieldType {
   label = "文本";
   value = "text";
   img = textSrc;
+  sortNo = 9;
 }
 
 export const MODEL_FIELD_TEXT = new InputFieldType();

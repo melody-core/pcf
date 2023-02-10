@@ -12,6 +12,7 @@
   "scripts": {
     "build": "yarn workspace melody-lcp run build",
     "build:tem": "yarn workspace melody-template-core run build:tem",
+    "start": "yarn workspace melody-lcp run start",
     "dev": "yarn workspace melody-template-core run dev & yarn workspace melody-lcp run dev",
     "dev:lcp": "yarn workspace melody-lcp run dev",
     "docs:tem": "yarn workspace melody-template-core run demo",

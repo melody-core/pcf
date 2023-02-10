@@ -2,8 +2,8 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-07-28 17:42:36
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2023-02-02 14:30:45
- * @FilePath: /melodyLCP/packages/lcp/src/client/pages/modelObject/effect.ts
+ * @LastEditTime: 2023-02-10 11:46:49
+ * @FilePath: /lcp-asset/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/pages/modelObject/effect.ts
  * @Description: update here
  */
 
@@ -28,9 +28,9 @@ export enum MODEL_MENU_LABELS {
 }
 
 export const MODEL_MENU_LABEL_MAP = new Map()
-  .set(MODEL_MENU_KEYS.TP_MODEL_LIST, MODEL_MENU_LABELS.TP_MODEL_LIST)
+  .set(MODEL_MENU_KEYS.BASE_MODEL_LIST, MODEL_MENU_LABELS.BASE_MODEL_LIST)
   .set(MODEL_MENU_KEYS.MAIN_MODEL_LIST, MODEL_MENU_LABELS.MAIN_MODEL_LIST)
-  .set(MODEL_MENU_KEYS.BASE_MODEL_LIST, MODEL_MENU_LABELS.BASE_MODEL_LIST);
+  .set(MODEL_MENU_KEYS.TP_MODEL_LIST, MODEL_MENU_LABELS.TP_MODEL_LIST);
 
 // .set(MODEL_MENU_KEYS.MODEL_ASSOCIATION, MODEL_MENU_LABELS.MODEL_ASSOCIATION);
 
