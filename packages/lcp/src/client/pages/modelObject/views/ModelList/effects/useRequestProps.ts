@@ -2,15 +2,15 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-07-29 11:10:02
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2023-02-02 14:28:35
- * @FilePath: /melodyLCP/packages/lcp/src/client/pages/modelObject/views/ModelList/effects/useRequestProps.ts
+ * @LastEditTime: 2023-02-10 13:55:37
+ * @FilePath: /lcp-asset/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/pages/modelObject/views/ModelList/effects/useRequestProps.ts
  * @Description: update here
  */
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 import { getModelList } from "../../../../../../api/modelApi";
 import { xFetch } from "../../../../../utils/xFetch";
 
-export const useRequestProps = ({ dataType = "business" }) => {
+export const useRequestProps = ({ dataType = "basics" }) => {
   const mergeRequest = async (params, sort) => {
     // 处理下sort参数
     const orderBy = {};
