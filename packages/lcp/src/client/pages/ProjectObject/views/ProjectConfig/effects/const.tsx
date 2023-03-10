@@ -2,15 +2,15 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2023-02-02 16:28:39
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2023-02-10 11:39:15
- * @FilePath: /lcp-asset/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/pages/ProjectObject/views/ProjectConfig/effects/const.tsx
+ * @LastEditTime: 2023-03-09 17:20:57
+ * @FilePath: /melodyLCP/packages/lcp/src/client/pages/ProjectObject/views/ProjectConfig/effects/const.tsx
  * @Description: update here
  */
 
 import {
   ApartmentOutlined,
   ClusterOutlined,
-  FilePptOutlined,
+  BellOutlined,
   HomeOutlined,
   MenuUnfoldOutlined,
   UsergroupAddOutlined,
@@ -47,5 +47,11 @@ export const PROJECT_CONFIG_MENU_LIST = [
     key: "homeConfig",
     disabled: true,
     icon: <HomeOutlined />,
+  },
+  {
+    label: "任务调度配置",
+    key: "taskConfig",
+    disabled: true,
+    icon: <BellOutlined />,
   },
 ];

@@ -8,6 +8,7 @@ import { MODEL_MENU_KEYS } from "../../../effect";
 
 export const useToolBarProp = ({
   tableActionRef,
+  dataType,
 }): ((
   action: ActionType,
   rows: {
@@ -21,7 +22,9 @@ export const useToolBarProp = ({
       key="button"
       icon={<PlusOutlined />}
       onClick={() =>
-        navigate(`/${NavItems[1].key}/${MODEL_MENU_KEYS.MODEL_CREATE}`)
+        navigate(
+          `/${NavItems[1].key}/${MODEL_MENU_KEYS.MODEL_CREATE}?dataType=${dataType}`
+        )
       }
       type="primary"
     >

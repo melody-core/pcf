@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-09-05 15:47:49
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2023-01-31 22:32:29
+ * @LastEditTime: 2023-03-09 16:48:19
  * @FilePath: /melodyLCP/packages/lcp/src/client/pages/modelObject/views/common/ModelForm/effects/const.ts
  * @Description: update here
  */
@@ -47,7 +47,6 @@ export const INIT_MODEL_CREATE_FORM_COLUMNS: ProFormColumnsType<
         "主体数据即构成业务的主体，比如在音乐培训学校场景中，音乐培训是一个业务流程，是由老师、学生等主体进行活动构成的，能进行或参与业务活动的即为主体数据，如学生、老师、产品等, 而基础数据类型指可枚举的数据，例如课程分类: 架子鼓、吉他、钢琴, 业务数据比如 考试 , 是由主体数据(学生)进行的事务活动(如考试)或其活动产物(如成绩)。",
       valueType: "radioButton",
       fieldProps: {
-        defaultValue: "business",
         options: [
           {
             label: "业务数据类型",

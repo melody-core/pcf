@@ -2,8 +2,8 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-07-28 19:02:59
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2023-02-10 11:48:21
- * @FilePath: /lcp-asset/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/pages/modelObject/views/ModelList/index.tsx
+ * @LastEditTime: 2023-03-09 16:43:24
+ * @FilePath: /melodyLCP/packages/lcp/src/client/pages/modelObject/views/ModelList/index.tsx
  * @Description: update here
  */
 
@@ -40,7 +40,9 @@ const List = observer(
     const mergeEditable = useEditableProps();
     const mergeToolBarRender = useToolBarProp({
       tableActionRef,
+      dataType,
     });
+
     return (
       <>
         <ProTable

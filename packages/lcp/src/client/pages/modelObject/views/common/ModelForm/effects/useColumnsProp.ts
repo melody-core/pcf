@@ -2,8 +2,8 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-09-07 15:08:17
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-11-11 11:07:51
- * @FilePath: /melodyLCP/packages/lcp/src/client/pages/modelObject/views/ModelCreate/effects/useColumnsProp.ts
+ * @LastEditTime: 2023-03-09 16:41:43
+ * @FilePath: /melodyLCP/packages/lcp/src/client/pages/modelObject/views/common/ModelForm/effects/useColumnsProp.ts
  * @Description: update here
  */
 

@@ -13,7 +13,7 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <h2>NormalFilterTableList(v0.0.1):</h2>
+      {/* <h2>NormalFilterTableList(v0.0.1):</h2> */}
       {/* <NormalFilterTableList
         modelConfig={{
           mainModel: 'Student',
