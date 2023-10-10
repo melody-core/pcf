@@ -8,30 +8,33 @@ import autoprefixer from 'autoprefixer';
 
 const entries = {};
 
-const COM_ROOT_PATH = path.resolve(__dirname, './src/components')
+const COM_ROOT_PATH = path.resolve(__dirname, './src/components');
 
 const dirs = fs.readdirSync(COM_ROOT_PATH);
 
-dirs.forEach(dir => {
-  if(dir.includes('index')){
+dirs.forEach((dir) => {
+  if (dir.includes('index')) {
     entries['components/index'] = `${COM_ROOT_PATH}/${dir}`;
-  }else{
-    entries[`components/${dir}/index`] = `${COM_ROOT_PATH}/${dir}/index.tsx`
+  } else {
+    entries[`components/${dir}/index`] = `${COM_ROOT_PATH}/${dir}/index.tsx`;
   }
-})
+});
 
 export default {
   input: entries,
-  output: [{
-    entryFileNames: '[name].es.js',
-    format: "esm",
-    dir: 'dist',
-    plugins: [getBabelOutputPlugin({ presets: ['@babel/preset-env'] })]
-  }, {
-    entryFileNames: '[name].js',
-    format: "cjs",
-    dir: 'dist'
-  }],
+  output: [
+    {
+      entryFileNames: '[name].es.js',
+      format: 'esm',
+      dir: 'dist',
+      plugins: [getBabelOutputPlugin({ presets: ['@babel/preset-env'] })],
+    },
+    {
+      entryFileNames: '[name].js',
+      format: 'system',
+      dir: 'dist',
+    },
+  ],
   plugins: [
     typescript(),
     babel({ presets: ['@babel/preset-react'] }),
@@ -41,12 +44,12 @@ export default {
       use: {
         sass: null,
         stylus: null,
-        less: { javascriptEnabled: true }
-      }, 
+        less: { javascriptEnabled: true },
+      },
       modules: true,
       // sourceMap: true,
       extract: true,
       minimize: true,
-    })
-  ]
+    }),
+  ],
 };

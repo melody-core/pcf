@@ -40,7 +40,9 @@
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-terser": "^7.0.2"
   },
-  "dependencies": {},
+  "dependencies": {
+    "ali-oss": "^6.18.1"
+  },
   "peerDependencies": {
     "@ant-design/icons": "^4.7.0",
     "@ant-design/pro-components": "^1.1.20",

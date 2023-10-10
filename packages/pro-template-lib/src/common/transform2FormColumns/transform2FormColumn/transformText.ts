@@ -2,8 +2,8 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-12-24 00:20:49
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-12-27 16:10:33
- * @FilePath: /bui-integration-platform/Users/wxy/codeWorks/melodyLCP/packages/pro-template-lib/src/common/transform2FormColumns/transform2FormColumn/transformText.ts
+ * @LastEditTime: 2023-10-10 22:51:32
+ * @FilePath: /melodyLCP/packages/pro-template-lib/src/common/transform2FormColumns/transform2FormColumn/transformText.ts
  * @Description: update here
  */
 
@@ -14,11 +14,6 @@ export const transformText: Transform2FormColumn = ({ field }) => {
   const result = transformCommon({ field });
   const { config } = field || {};
   const { individualizedSetup } = config || {};
-  const { minValue, maxValue } = individualizedSetup || {};
-  result.fieldProps = {
-    min: minValue,
-    max: maxValue,
-  };
   const { defaultValue, maxLength } = individualizedSetup || {};
   result.fieldProps = {
     defaultValue: defaultValue || '',

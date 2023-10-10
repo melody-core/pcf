@@ -3,6 +3,8 @@ import {
   transformText,
   transformDigit,
   transformSelect,
+  transformDate,
+  transfromImage,
 } from "./../lib/modelFieldTransform";
 
 export enum MODEL_FIELD_TYPES {
@@ -46,4 +48,6 @@ export const MODEL_FIELD_TYPE_MAP = new Map<
 >()
   .set(MODEL_FIELD_TYPES.text, transformText)
   .set(MODEL_FIELD_TYPES.select, transformSelect)
+  .set(MODEL_FIELD_TYPES.date, transformDate)
+  .set(MODEL_FIELD_TYPES.image, transfromImage)
   .set(MODEL_FIELD_TYPES.digit, transformDigit);

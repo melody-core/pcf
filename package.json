@@ -26,6 +26,7 @@
     }
   },
   "dependencies": {
+    "ali-oss": "^6.18.1",
     "@ant-design/icons": "^4.7.0",
     "@ant-design/pro-components": "^1.1.20",
     "ahooks": "^3.7.0",
@@ -39,6 +40,7 @@
     "vite": "^3.0.9"
   },
   "devDependencies": {
+    "@types/ali-oss": "^6.16.9",
     "@types/node": "^18.7.13",
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
