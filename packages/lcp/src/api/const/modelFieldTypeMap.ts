@@ -5,6 +5,7 @@ import {
   transformSelect,
   transformDate,
   transfromImage,
+  transformVideo,
 } from "./../lib/modelFieldTransform";
 
 export enum MODEL_FIELD_TYPES {
@@ -40,6 +41,7 @@ export enum MODEL_FIELD_TYPES {
   time = "time",
   timeRange = "timeRange",
   treeSelect = "treeSelect",
+  video = "video",
 }
 
 export const MODEL_FIELD_TYPE_MAP = new Map<
@@ -50,4 +52,5 @@ export const MODEL_FIELD_TYPE_MAP = new Map<
   .set(MODEL_FIELD_TYPES.select, transformSelect)
   .set(MODEL_FIELD_TYPES.date, transformDate)
   .set(MODEL_FIELD_TYPES.image, transfromImage)
+  .set(MODEL_FIELD_TYPES.video, transformVideo)
   .set(MODEL_FIELD_TYPES.digit, transformDigit);

@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2023-10-10 22:45:05
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2023-10-10 22:45:07
+ * @LastEditTime: 2023-10-14 18:46:07
  * @FilePath: /melodyLCP/packages/pro-template-lib/src/common/libs/upload.ts
  * @Description: update here
  */
@@ -37,10 +37,21 @@ Record<string, any>) {
   return client.multipartUpload(filename, imgfile, {
     mime: 'image/jpg',
   });
-  // .then((res: any) => {
-  //   return successCallck && successCallck(res);
-  // })
-  // .catch((err: any) => {
-  //   return errorCallback && errorCallback(err);
-  // });
+}
+
+// client表示OSS client实例
+export function uploadFile({
+  client,
+  file,
+  filename,
+  mime,
+  progress,
+}: //   successCallck,
+//   errorCallback,
+Record<string, any>) {
+  //key表示上传的object key ,imgFile表示dataURLtoFile处理后返回的图片
+  return client.multipartUpload(filename, file, {
+    mime: mime || 'image/jpg',
+    progress: progress || undefined,
+  });
 }

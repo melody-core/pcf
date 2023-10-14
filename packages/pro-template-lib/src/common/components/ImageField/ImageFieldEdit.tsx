@@ -2,12 +2,12 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2023-10-10 22:43:56
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2023-10-11 00:30:10
+ * @LastEditTime: 2023-10-14 17:56:38
  * @FilePath: /melodyLCP/packages/pro-template-lib/src/common/components/ImageField/ImageFieldEdit.tsx
  * @Description: update here
  */
 import { PlusOutlined } from '@ant-design/icons';
-import { Image, Upload, UploadProps, message } from 'antd';
+import { Upload, UploadProps, message } from 'antd';
 import { RcFile } from 'antd/lib/upload';
 import { useMemo, useState } from 'react';
 import { getOssStsConfig } from '../../../sevice/getOssStsConfig';
@@ -24,7 +24,7 @@ const getBase64 = (file: RcFile): Promise<string> =>
 
 export const ImageFieldEdit = (props: any) => {
   console.log('props:', props);
-  const { value, onChange, mode } = props || {};
+  const { value, onChange, maxCount, mode } = props || {};
   const [loading, setLoading] = useState(false);
   const uploadButton = useMemo(
     () => (
@@ -105,7 +105,7 @@ export const ImageFieldEdit = (props: any) => {
         beforeUpload={beforeUpload}
         onChange={handleChange}
       >
-        {uploadButton}
+        {maxCount ? value?.length < maxCount && uploadButton : uploadButton}
       </Upload>
     </>
   );

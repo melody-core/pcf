@@ -2,8 +2,8 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-12-23 19:14:32
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-12-26 17:31:15
- * @FilePath: /bui-integration-platform/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/pages/modelObject/views/common/ModelForm/components/ModelFieldConfigSetup/effects/const.ts
+ * @LastEditTime: 2023-10-14 18:37:00
+ * @FilePath: /melodyLCP/packages/lcp/src/client/pages/modelObject/views/common/ModelForm/components/ModelFieldConfigSetup/effects/const.ts
  * @Description: update here
  */
 
@@ -12,12 +12,16 @@ import {
   MODEL_FIELD_DIGIT,
   MODEL_FIELD_TEXT,
   MODEL_FIELD_SELECT,
+  MODEL_FIELD_IMAGE,
+  MODEL_FIELD_VIDEO,
 } from "./../../../../../../lib/modelFieldTypes";
 
 import {
   TEXT_EFFECT_COLUMN,
   SELECT_EFFECT_COLUMN,
   DIGIT_EFFECT_COLUMN,
+  IMAGE_EFFECT_COLUMN,
+  VIDEO_EFFECT_COLUMN,
 } from "./libs";
 
 export const CONFIG_FORM_TABS = [
@@ -50,6 +54,8 @@ export const FIELD_TYPE_CONFIG_COLUMN_MAP = new Map<
 >()
   .set(MODEL_FIELD_TEXT.value, TEXT_EFFECT_COLUMN)
   .set(MODEL_FIELD_SELECT.value, SELECT_EFFECT_COLUMN)
+  .set(MODEL_FIELD_IMAGE.value, IMAGE_EFFECT_COLUMN)
+  .set(MODEL_FIELD_VIDEO.value, VIDEO_EFFECT_COLUMN)
   .set(MODEL_FIELD_DIGIT.value, DIGIT_EFFECT_COLUMN);
 
 // 通用配置定义

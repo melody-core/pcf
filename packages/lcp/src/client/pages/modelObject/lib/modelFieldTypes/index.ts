@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-09-19 14:21:44
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-11-13 00:50:17
+ * @LastEditTime: 2023-10-14 16:11:40
  * @FilePath: /melodyLCP/packages/lcp/src/client/pages/modelObject/lib/modelFieldTypes/index.ts
  * @Description: update here
  */
@@ -39,3 +39,4 @@ export * from "./textarea";
 export * from "./time";
 export * from "./timeRange";
 export * from "./treeSelect";
+export * from "./video";

@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-12-24 00:19:16
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2023-10-10 22:53:42
+ * @LastEditTime: 2023-10-14 19:29:22
  * @FilePath: /melodyLCP/packages/pro-template-lib/src/common/transform2TableColumns/index.ts
  * @Description: update here
  */
@@ -15,6 +15,7 @@ import {
   transformSelect,
   transformDate,
   transformImage,
+  transformVideo,
 } from './transform2TableColumn';
 import { Transform2TableColumn } from './transform2TableColumn/type';
 
@@ -25,6 +26,7 @@ export const TRANSFORM_TABLE_COLUMN_MAP = new Map<
   .set('text', transformText)
   .set('select', transformSelect)
   .set('date', transformDate)
+  .set('video', transformVideo)
   .set('image', transformImage)
   .set('digit', transformDigit);
 
