@@ -2,30 +2,61 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-06-06 16:46:18
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2023-02-02 16:59:17
+ * @LastEditTime: 2023-10-15 15:04:18
  * @FilePath: /melodyLCP/packages/lcp/src/App.tsx
  * @Description: update here
  */
-import React from "react";
+import React, { useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
-import { Layout, Menu } from "antd";
+import { Layout, Menu, Avatar } from "antd";
 import NavConfig from "./client/config/nav.config";
 import { observer } from "mobx-react";
 import globalStore from "./client/store/global";
 
 import styles from "./index.module.less";
 import { DocLinkIcon } from "./client/components";
-
+import { findAdminUsers, loginAdminUser } from "./api/login";
+import { xFetch } from "./client/utils";
+import UserIcon from "./client/components/UserIcon";
 const { Header, Footer } = Layout;
+
+findAdminUsers().then(console.log);
 
 const App = observer(
   ({
     store: {
-      globalObject: { selectedMenuItem },
+      globalObject: { selectedMenuItem, userinfo },
       setSelectedKey,
+      setUserinfo,
     },
   }) => {
     const navigate = useNavigate();
+    useEffect(() => {
+      const cookie = localStorage.getItem("cookie");
+      if (!cookie) {
+        navigate("/login");
+        return;
+      }
+      xFetch(
+        loginAdminUser({
+          cookie,
+        })
+      )
+        .then((result) => {
+          const { success, data } = result;
+          if (success) {
+            setUserinfo(data?.userinfo);
+            localStorage.setItem("cookie", cookie);
+          } else {
+            navigate("/login");
+            return;
+          }
+        })
+        .catch(() => {
+          navigate("/login");
+          return;
+        });
+    }, []);
     return (
       <Layout className={styles["app-wrap"]}>
         <Header className={styles["flex-wrap"]}>
@@ -45,7 +76,7 @@ const App = observer(
               setSelectedKey(key);
             }}
           />
-          {/* <UserIcon /> */}
+          <UserIcon />
           <DocLinkIcon />
         </Header>
         <Outlet />

@@ -2,12 +2,15 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-12-26 20:28:51
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2023-10-14 16:55:14
+ * @LastEditTime: 2023-10-15 20:14:00
  * @FilePath: /melodyLCP/packages/pro-template-lib/src/common/transform2FormColumns/index.ts
  * @Description: update here
  */
 
-import { ProFormColumnsType } from '@ant-design/pro-components';
+import {
+  ProFormColumnsType,
+  ProFormInstance,
+} from '@ant-design/pro-components';
 import { FieldSingleMeta } from '../../sevice/type';
 import {
   transformDigit,
@@ -16,8 +19,10 @@ import {
   transformDate,
   transformImage,
   transformVideo,
+  transformTable,
 } from './transform2FormColumn';
 import { Transform2FormColumn } from './transform2FormColumn/type';
+import { MutableRefObject } from 'react';
 
 export const TRANSFORM_FORM_COLUMN_MAP = new Map<string, Transform2FormColumn>()
   .set('text', transformText)
@@ -25,10 +30,12 @@ export const TRANSFORM_FORM_COLUMN_MAP = new Map<string, Transform2FormColumn>()
   .set('date', transformDate)
   .set('image', transformImage)
   .set('video', transformVideo)
+  .set('table', transformTable)
   .set('digit', transformDigit);
 
 export const transform2FormColumns = (
-  fields: FieldSingleMeta[]
+  fields: FieldSingleMeta[],
+  formRef: MutableRefObject<ProFormInstance<Record<string, any>> | undefined>
 ): ProFormColumnsType<Record<string, any>, 'text'>[] => {
   return fields.map((field) => {
     const { type, title, fieldName } = field;
@@ -36,6 +43,7 @@ export const transform2FormColumns = (
     if (targetTransformFn) {
       return targetTransformFn({
         field,
+        formRef,
       });
     }
     return {

@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-12-26 19:12:37
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2023-01-31 17:48:41
+ * @LastEditTime: 2023-10-15 20:10:04
  * @FilePath: /melodyLCP/packages/pro-template-lib/src/common/components/CommonNormalForm/index.tsx
  * @Description: update here
  */
@@ -26,6 +26,7 @@ export const CommonNormalForm: FC<CommonNormalFormProps> = ({
   const { mergeColumns } = useColumnsProp({
     modelMetaData,
     viewType,
+    formRef,
   });
   const { onFinish } = useSubmit({
     modelConfig,

@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-12-23 19:14:32
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2023-10-14 18:37:00
+ * @LastEditTime: 2023-10-15 19:33:39
  * @FilePath: /melodyLCP/packages/lcp/src/client/pages/modelObject/views/common/ModelForm/components/ModelFieldConfigSetup/effects/const.ts
  * @Description: update here
  */
@@ -14,6 +14,7 @@ import {
   MODEL_FIELD_SELECT,
   MODEL_FIELD_IMAGE,
   MODEL_FIELD_VIDEO,
+  MODEL_FIELD_TABLE,
 } from "./../../../../../../lib/modelFieldTypes";
 
 import {
@@ -22,6 +23,7 @@ import {
   DIGIT_EFFECT_COLUMN,
   IMAGE_EFFECT_COLUMN,
   VIDEO_EFFECT_COLUMN,
+  TABLE_EFFECT_COLUMN,
 } from "./libs";
 
 export const CONFIG_FORM_TABS = [
@@ -56,6 +58,7 @@ export const FIELD_TYPE_CONFIG_COLUMN_MAP = new Map<
   .set(MODEL_FIELD_SELECT.value, SELECT_EFFECT_COLUMN)
   .set(MODEL_FIELD_IMAGE.value, IMAGE_EFFECT_COLUMN)
   .set(MODEL_FIELD_VIDEO.value, VIDEO_EFFECT_COLUMN)
+  .set(MODEL_FIELD_TABLE.value, TABLE_EFFECT_COLUMN)
   .set(MODEL_FIELD_DIGIT.value, DIGIT_EFFECT_COLUMN);
 
 // 通用配置定义

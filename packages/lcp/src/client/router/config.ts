@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-05-28 16:00:11
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2023-02-03 11:46:15
+ * @LastEditTime: 2023-10-15 14:32:20
  * @FilePath: /melodyLCP/packages/lcp/src/client/router/config.ts
  * @Description: update here
  */
@@ -12,6 +12,8 @@ import NotOpen from "../pages/Status/NotOpen";
 import { NavItems } from "./../config/nav.config";
 import { PAGE_MENU_KEYS } from "../pages/ProjectObject/effect";
 import { MODEL_MENU_KEYS } from "./../pages/modelObject/effect";
+
+import LoginPage from "./../pages/login";
 
 // 页面管理 - start
 import PageManager from "../pages/ProjectObject";
@@ -49,6 +51,10 @@ import {
 // base-页面管理 - end
 
 export default [
+  {
+    path: "login",
+    Component: LoginPage,
+  },
   {
     path: "pro/:project",
     Component: ProjectOnline,

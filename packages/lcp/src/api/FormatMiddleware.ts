@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-06-10 14:19:05
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-11-11 16:13:39
+ * @LastEditTime: 2023-10-15 14:05:45
  * @FilePath: /melodyLCP/packages/lcp/src/api/FormatMiddleware.ts
  * @Description: update here
  */
@@ -32,9 +32,9 @@ export class FormatMiddleware implements IMiddleware<Context, NextFunction> {
           success: true,
         };
       } catch (error) {
-        const { name, message } = error;
+        const { name, message, code } = error;
         return {
-          code: 500,
+          code: code || 500,
           msg: error.toString ? error.toString() : `${name}: ${message}`,
           error,
           success: false,

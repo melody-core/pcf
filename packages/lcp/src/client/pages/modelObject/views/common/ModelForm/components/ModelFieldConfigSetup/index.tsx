@@ -2,8 +2,8 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-12-23 19:04:06
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-12-26 14:58:04
- * @FilePath: /bui-integration-platform/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/pages/modelObject/views/common/ModelForm/components/ModelFieldConfigSetup/index.tsx
+ * @LastEditTime: 2023-10-15 19:35:51
+ * @FilePath: /melodyLCP/packages/lcp/src/client/pages/modelObject/views/common/ModelForm/components/ModelFieldConfigSetup/index.tsx
  * @Description: update here
  */
 
@@ -22,7 +22,13 @@ import { BetaSchemaForm } from "@ant-design/pro-components";
 
 import styles from "./index.module.less";
 
-export const ModelFieldConfigSetup = ({ value, onChange, fieldType, id }) => {
+export const ModelFieldConfigSetup = ({
+  formMapRef,
+  value,
+  onChange,
+  fieldType,
+  id,
+}) => {
   const { showModal, modalContrulor } = useModalContrulor();
   const { currentTabKey, handleTabChange } = useTabsContrulor({
     fieldType,
@@ -39,6 +45,7 @@ export const ModelFieldConfigSetup = ({ value, onChange, fieldType, id }) => {
     currentTabKey,
     fieldType,
     formValues,
+    formMapRef,
   });
 
   const radioBtns = CONFIG_FORM_TABS.map((tabConfig) => (
