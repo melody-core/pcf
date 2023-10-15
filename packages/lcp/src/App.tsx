@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-06-06 16:46:18
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2023-10-15 15:04:18
+ * @LastEditTime: 2023-10-15 20:44:28
  * @FilePath: /melodyLCP/packages/lcp/src/App.tsx
  * @Description: update here
  */
@@ -15,12 +15,18 @@ import globalStore from "./client/store/global";
 
 import styles from "./index.module.less";
 import { DocLinkIcon } from "./client/components";
-import { findAdminUsers, loginAdminUser } from "./api/login";
+import { createProject, findAdminUsers, loginAdminUser } from "./api/login";
 import { xFetch } from "./client/utils";
 import UserIcon from "./client/components/UserIcon";
 const { Header, Footer } = Layout;
 
-findAdminUsers().then(console.log);
+// findAdminUsers().then(console.log);
+
+// createProject({
+//   username: "admin",
+//   password: "xiaotijiang666",
+//   phone: "18210711176",
+// });
 
 const App = observer(
   ({

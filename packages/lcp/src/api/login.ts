@@ -23,17 +23,17 @@ const adminUserModel = mongoose.model(
 );
 
 // 单条存储
-// const CreateAdminUser = z
-//   .object({
-//     username: z.string(),
-//     phone: z.string(),
-//     password: z.string(),
-//     headerImgUrl: z.string(),
-//   })
-//   .partial({
-//     headerImgUrl: true,
-//     phone: true,
-//   });
+const CreateAdminUser = z
+  .object({
+    username: z.string(),
+    phone: z.string(),
+    password: z.string(),
+    headerImgUrl: z.string(),
+  })
+  .partial({
+    headerImgUrl: true,
+    phone: true,
+  });
 
 // export const createProject = Api(
 //   Post("/api/adminUser/create"),
@@ -81,7 +81,7 @@ export const loginAdminUser = Api(
       console.log("id:", id);
       const result = await adminUserModel.findById(id);
       if (!result) {
-        const error = new Error("该登陆账号已注销!请重新登陆!");
+        const error = new Error("登陆过期，请重新登陆!");
         (error as any).code = 402;
         throw error;
       }

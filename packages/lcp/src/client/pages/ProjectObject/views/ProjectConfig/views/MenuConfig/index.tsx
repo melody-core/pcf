@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2023-02-02 16:43:24
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2023-02-03 11:09:44
+ * @LastEditTime: 2023-10-15 22:22:52
  * @FilePath: /melodyLCP/packages/lcp/src/client/pages/ProjectObject/views/ProjectConfig/views/MenuConfig/index.tsx
  * @Description: update here
  */
@@ -35,6 +35,7 @@ export const MenuConfig = () => {
     updateNode,
     expandedKeys,
     setExpandedKeys,
+    deleteNode,
     onDrop,
   } = useTreeData({
     cuMenuNodeRef,
@@ -94,7 +95,10 @@ export const MenuConfig = () => {
                       />
                     </Tooltip>
                     <Tooltip title="删除此菜单项">
-                      <DeleteOutlined className={styles["menu-icon"]} />
+                      <DeleteOutlined
+                        className={styles["menu-icon"]}
+                        onClick={() => deleteNode(node)}
+                      />
                     </Tooltip>
                   </div>
                 </div>

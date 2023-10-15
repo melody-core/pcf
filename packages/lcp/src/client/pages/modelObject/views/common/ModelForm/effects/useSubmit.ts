@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-12-19 14:55:41
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2023-01-29 22:20:53
+ * @LastEditTime: 2023-10-15 21:57:16
  * @FilePath: /melodyLCP/packages/lcp/src/client/pages/modelObject/views/common/ModelForm/effects/useSubmit.ts
  * @Description: update here
  */
@@ -24,7 +24,7 @@ export const useSubmit: UseSubmit = ({ viewType }) => {
       const { success } = await xFetch(createModel(values));
       if (success) {
         message.success("创建模型成功");
-        navigator("/model_lc");
+        navigator(-1);
         return true;
       }
       return false;
@@ -39,7 +39,7 @@ export const useSubmit: UseSubmit = ({ viewType }) => {
       );
       if (success) {
         message.success("更新模型成功");
-        navigator("/model_lc");
+        navigator(-1);
         return true;
       }
       return false;

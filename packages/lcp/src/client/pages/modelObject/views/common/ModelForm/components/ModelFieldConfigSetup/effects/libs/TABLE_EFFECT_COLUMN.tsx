@@ -57,7 +57,7 @@ export const TABLE_EFFECT_COLUMN: (
                 options: [
                   {
                     label: "文本",
-                    value: "input",
+                    value: "text",
                   },
                   {
                     label: "数字",

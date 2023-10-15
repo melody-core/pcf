@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2023-02-02 22:45:35
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2023-02-03 11:07:00
+ * @LastEditTime: 2023-10-15 22:22:44
  * @FilePath: /melodyLCP/packages/lcp/src/client/pages/ProjectObject/views/ProjectConfig/views/MenuConfig/effects/useTreeData.ts
  * @Description: update here
  */
@@ -25,6 +25,19 @@ const loop = (
     if (data[i].children) {
       loop(data[i].children!, key, callback);
     }
+  }
+};
+
+const removeTreeNode = (tree, node) => {
+  if (!Array.isArray(tree)) {
+    return null;
+  }
+  for (let i = 0; i < tree.length; i++) {
+    if (node === tree[i]) {
+      tree.splice(i, 1);
+      break;
+    }
+    removeTreeNode(tree[i].children, node);
   }
 };
 
@@ -172,6 +185,12 @@ export const useTreeData = ({ cuMenuNodeRef, projectData }) => {
     });
   };
 
+  const deleteNode = async (node) => {
+    setTreeData((preTree) => {
+      removeTreeNode(preTree, node);
+      return [...(preTree || [])];
+    });
+  };
   return {
     treeData,
     addNode,
@@ -179,5 +198,6 @@ export const useTreeData = ({ cuMenuNodeRef, projectData }) => {
     updateNode,
     setExpandedKeys,
     onDrop,
+    deleteNode,
   };
 };
