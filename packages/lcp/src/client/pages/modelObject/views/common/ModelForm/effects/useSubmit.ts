@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-12-19 14:55:41
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2023-10-15 21:57:16
+ * @LastEditTime: 2023-10-15 23:25:27
  * @FilePath: /melodyLCP/packages/lcp/src/client/pages/modelObject/views/common/ModelForm/effects/useSubmit.ts
  * @Description: update here
  */
@@ -20,6 +20,12 @@ import { UseSubmit } from "./type";
 export const useSubmit: UseSubmit = ({ viewType }) => {
   const navigator = useNavigate();
   return async (values) => {
+    if (!values) {
+      return;
+    }
+    if (!values.individualizedSetup) {
+      values.individualizedSetup = {};
+    }
     if (viewType === MODEL_VIEW_TYPES.CREATE) {
       const { success } = await xFetch(createModel(values));
       if (success) {
