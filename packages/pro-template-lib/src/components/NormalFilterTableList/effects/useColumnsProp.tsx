@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-12-24 00:29:22
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2023-01-31 17:25:55
+ * @LastEditTime: 2023-10-17 01:54:11
  * @FilePath: /melodyLCP/packages/pro-template-lib/src/components/NormalFilterTableList/effects/useColumnsProp.tsx
  * @Description: update here
  */
@@ -24,7 +24,9 @@ export const useColumnsProp = ({ modelMetaData }: UseColumnsPropParams) => {
     if (!modelMetaData?.name) {
       return;
     }
-    const columns = transform2TableColumns(modelMetaData.fields);
+    const columns = transform2TableColumns(
+      modelMetaData.fields?.filter((field) => field.type !== 'table')
+    );
     setColumns(columns);
   }, [modelMetaData]);
   const mergeColumnsWithEdit: ProColumnType<Record<string, any>, 'text'>[] = [

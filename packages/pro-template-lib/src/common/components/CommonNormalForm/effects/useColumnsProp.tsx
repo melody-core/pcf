@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-12-26 19:16:37
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2023-10-15 20:10:44
+ * @LastEditTime: 2023-10-16 23:32:29
  * @FilePath: /melodyLCP/packages/pro-template-lib/src/common/components/CommonNormalForm/effects/useColumnsProp.tsx
  * @Description: update here
  */
@@ -24,7 +24,11 @@ export const useColumnsProp = ({
     if (!modelMetaData?.name) {
       return;
     }
-    const columns = transform2FormColumns(modelMetaData.fields, formRef);
+    const columns = transform2FormColumns(
+      modelMetaData.fields,
+      formRef,
+      modelMetaData
+    );
     if (viewType === 'detail') {
       columns.forEach((column) => {
         column.proFieldProps = {

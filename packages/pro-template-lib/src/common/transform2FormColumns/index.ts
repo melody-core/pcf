@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-12-26 20:28:51
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2023-10-15 20:14:00
+ * @LastEditTime: 2023-10-16 23:33:09
  * @FilePath: /melodyLCP/packages/pro-template-lib/src/common/transform2FormColumns/index.ts
  * @Description: update here
  */
@@ -11,7 +11,7 @@ import {
   ProFormColumnsType,
   ProFormInstance,
 } from '@ant-design/pro-components';
-import { FieldSingleMeta } from '../../sevice/type';
+import { FieldSingleMeta, MetaDataResponse } from '../../sevice/type';
 import {
   transformDigit,
   transformText,
@@ -35,7 +35,8 @@ export const TRANSFORM_FORM_COLUMN_MAP = new Map<string, Transform2FormColumn>()
 
 export const transform2FormColumns = (
   fields: FieldSingleMeta[],
-  formRef: MutableRefObject<ProFormInstance<Record<string, any>> | undefined>
+  formRef: MutableRefObject<ProFormInstance<Record<string, any>> | undefined>,
+  metaData: MetaDataResponse
 ): ProFormColumnsType<Record<string, any>, 'text'>[] => {
   return fields.map((field) => {
     const { type, title, fieldName } = field;
@@ -44,6 +45,7 @@ export const transform2FormColumns = (
       return targetTransformFn({
         field,
         formRef,
+        metaData,
       });
     }
     return {

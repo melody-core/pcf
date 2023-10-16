@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-12-23 23:14:01
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2023-10-15 21:57:52
+ * @LastEditTime: 2023-10-17 01:29:37
  * @FilePath: /melodyLCP/packages/pro-template-lib/src/components/NormalFilterTableList/index.tsx
  * @Description: update here
  */
@@ -13,6 +13,7 @@ import {
   useMetaData,
   useRequestProp,
   useToolBarProp,
+  useExpandedRowRender,
 } from './effects';
 import { NormalFilterTableListProps } from './type';
 import { PAGE_CONFIG } from '../../common/type';
@@ -29,11 +30,15 @@ export const NormalFilterTableList: FC<NormalFilterTableListProps> & {
   });
   const { mergeRequest } = useRequestProp();
   const toolBarRender = useToolBarProp({});
+  const expandable = useExpandedRowRender({
+    modelMetaData,
+  });
   return (
     <ProTable
       headerTitle={
         actionConfig?.listName || `${modelMetaData?.title || ''}记录列表`
       }
+      expandable={expandable}
       pagination={{}}
       params={{
         mainModel: modelConfig?.mainModel,

@@ -2,8 +2,8 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-12-24 01:10:43
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-12-24 01:39:00
- * @FilePath: /bui-integration-platform/Users/wxy/codeWorks/melodyLCP/packages/pro-template-lib/src/components/NormalFilterTableList/effects/type.ts
+ * @LastEditTime: 2023-10-17 01:31:17
+ * @FilePath: /melodyLCP/packages/pro-template-lib/src/components/NormalFilterTableList/effects/type.ts
  * @Description: update here
  */
 
@@ -20,6 +20,9 @@ export interface UseMetaDataParams {
 }
 
 export interface UseColumnsPropParams {
+  modelMetaData: MetaDataResponse | null;
+}
+export interface UseExpandedParams {
   modelMetaData: MetaDataResponse | null;
 }
 
