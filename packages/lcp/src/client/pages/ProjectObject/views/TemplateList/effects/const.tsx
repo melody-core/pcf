@@ -2,8 +2,8 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-09-06 11:41:05
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2022-12-24 03:36:19
- * @FilePath: /bui-integration-platform/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/pages/pageObject/views/TemplateList/effects/const.tsx
+ * @LastEditTime: 2023-10-19 23:04:32
+ * @FilePath: /melodyLCP/packages/lcp/src/client/pages/ProjectObject/views/TemplateList/effects/const.tsx
  * @Description: update here
  */
 
@@ -19,7 +19,7 @@ import { TEM_STATUS_LIST } from "../../../../../../api/const";
 import { deleteTemplateById } from "../../../../../../api/templateApi";
 import { getEnum } from "../../../../../utils";
 
-import * as TemplateMap from "melody-template-core";
+import * as TemplateMap from "@melody-core/melody-template-core";
 
 const TemplateList = Object.keys(TemplateMap).map((n) => ({
   label: n,

@@ -10,6 +10,7 @@ const ADMIN_USER_MODEL_SCHEMA = {
   phone: String,
   password: String,
   headerImgUrl: String,
+  level: Number,
 };
 
 const adminUserSchema = new mongoose.Schema(ADMIN_USER_MODEL_SCHEMA, {
@@ -23,7 +24,7 @@ const adminUserModel = mongoose.model(
 );
 
 // 单条存储
-const CreateAdminUser = z
+const CreateNextUser = z
   .object({
     username: z.string(),
     phone: z.string(),
@@ -35,19 +36,117 @@ const CreateAdminUser = z
     phone: true,
   });
 
-// export const createProject = Api(
-//   Post("/api/adminUser/create"),
-//   Validate(CreateAdminUser),
-//   async (createItemParams) => {
-//     const result = await adminUserModel.create({
-//       ...(createItemParams || {}),
-//     });
-//     return result;
-//   }
-// );
+// update
+
+export const UpdateAdminUser = z
+  .object({
+    cookie: z.string(),
+    username: z.string(),
+    phone: z.string(),
+    password: z.string(),
+    headerImgUrl: z.string(),
+    level: z.number(),
+    // headerImgUrl: z.string(),
+  })
+  .partial({
+    headerImgUrl: true,
+    phone: true,
+    username: true,
+    password: true,
+    level: true,
+  });
+
+export const DeleteAdminUser = z.object({
+  cookie: z.string(),
+  _id: z.string(),
+  // headerImgUrl: z.string(),
+});
+
+// 次级管理员
+export const createNextUser = Api(
+  Post("/api/adminUser/createNext"),
+  Validate(CreateNextUser),
+  async (createItemParams) => {
+    const result = await adminUserModel.create({
+      ...(createItemParams || {}),
+      level: 7,
+    });
+    return result;
+  }
+);
+
+// update
+export const updateAdminUser = Api(
+  Post("/api/adminUser/updateNext"),
+  Validate(UpdateAdminUser),
+  async ({ cookie, ...others }) => {
+    if (cookie) {
+      const { id } = Authentication(cookie);
+      const result = await adminUserModel.findById(id);
+      if (!result) {
+        const error = new Error("此超级管理员账号已不存在!");
+        (error as any).code = 402;
+        throw error;
+      }
+      if (result.username !== "admin") {
+        const error = new Error("非超级管理员账号，无权限执行此命令!");
+        (error as any).code = 402;
+        throw error;
+      }
+      await adminUserModel.findByIdAndUpdate(id, {
+        ...others,
+      });
+      return true;
+    }
+    const error = new Error("未登录!");
+    (error as any).code = 402;
+    throw error;
+  }
+);
+
+// delete
+export const deleteAdminUser = Api(
+  Post("/api/adminUser/deleteUserById"),
+  Validate(DeleteAdminUser),
+  async ({ cookie, _id }) => {
+    if (cookie) {
+      const { id } = Authentication(cookie);
+      const result = await adminUserModel.findById(id);
+      if (!result) {
+        const error = new Error("此超级管理员账号已不存在!");
+        (error as any).code = 402;
+        throw error;
+      }
+      if (result.username !== "admin") {
+        const error = new Error("非超级管理员账号，无权限执行此命令!");
+        (error as any).code = 402;
+        throw error;
+      }
+      await adminUserModel.findByIdAndRemove(_id);
+      return true;
+    }
+    const error = new Error("未登录!");
+    (error as any).code = 402;
+    throw error;
+  }
+);
+
+// 只读用户
+export const createReadOnlyUser = Api(
+  Post("/api/adminUser/createReadOnly"),
+  Validate(CreateNextUser),
+  async (createItemParams) => {
+    const result = await adminUserModel.create({
+      ...(createItemParams || {}),
+      level: 3,
+    });
+    return result;
+  }
+);
+
 export const findAdminUsers = Api(Post("/api/adminUser/findlist"), async () => {
   const result = await adminUserModel.find();
-  return result;
+  return result.filter((item) => item.username !== "admin");
 });
 
 // nickname,password,cookie
@@ -81,7 +180,7 @@ export const loginAdminUser = Api(
       console.log("id:", id);
       const result = await adminUserModel.findById(id);
       if (!result) {
-        const error = new Error("登陆过期，请重新登陆!");
+        const error = new Error("此账号已不存在!");
         (error as any).code = 402;
         throw error;
       }

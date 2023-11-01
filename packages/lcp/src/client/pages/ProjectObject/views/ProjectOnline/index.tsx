@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2023-02-03 11:35:37
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2023-02-03 13:52:54
+ * @LastEditTime: 2023-11-01 21:03:03
  * @FilePath: /melodyLCP/packages/lcp/src/client/pages/ProjectObject/views/ProjectOnline/index.tsx
  * @Description: update here
  */
@@ -41,7 +41,7 @@ export const ProjectOnline = () => {
         <div className={styles["flex-wrap"]}>
           <div className={styles["logo"]} />
           <h3 className={styles["logo-text"]}>
-            {projectData?.title || project}(体验版)
+            {projectData?.title || project}
           </h3>
         </div>
         <Menu

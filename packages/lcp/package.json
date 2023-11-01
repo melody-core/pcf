@@ -1,7 +1,6 @@
 {
   "name": "melody-lcp",
   "version": "1.0.0",
-  "private": true,
   "scripts": {
     "start": "hooks start",
     "dev": "hooks dev",
@@ -17,6 +16,7 @@
   },
   "dependencies": {
     "@koa/cors": "^3.4.1",
+    "@melody-core/melody-template-core": "^0.0.3",
     "@midwayjs/hooks": "^3.0.1",
     "@midwayjs/hooks-kit": "^3.0.1",
     "@midwayjs/koa": "^3.4.13",

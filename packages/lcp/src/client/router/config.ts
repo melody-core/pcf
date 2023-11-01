@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-05-28 16:00:11
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2023-10-15 14:32:20
+ * @LastEditTime: 2023-11-01 21:56:14
  * @FilePath: /melodyLCP/packages/lcp/src/client/router/config.ts
  * @Description: update here
  */
@@ -15,8 +15,12 @@ import { MODEL_MENU_KEYS } from "./../pages/modelObject/effect";
 
 import LoginPage from "./../pages/login";
 
+// 账户管理
+import AdminUserManager from "../pages/adminUserObject";
+
 // 页面管理 - start
 import PageManager from "../pages/ProjectObject";
+
 import Demo from "../pages/demo";
 import {
   PageList,
@@ -182,6 +186,11 @@ export default [
             bread: ["六弦应用组装系统", "模型管理", "编辑模型"],
           },
         ],
+      },
+      {
+        path: NavItems[2].key,
+        Component: AdminUserManager,
+        bread: ["六弦应用组装系统", "账户号", "账户管理"],
       },
       {
         path: "demo",

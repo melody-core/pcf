@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-06-06 16:46:18
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2023-10-15 20:44:28
+ * @LastEditTime: 2023-11-01 21:56:00
  * @FilePath: /melodyLCP/packages/lcp/src/App.tsx
  * @Description: update here
  */
@@ -15,18 +15,17 @@ import globalStore from "./client/store/global";
 
 import styles from "./index.module.less";
 import { DocLinkIcon } from "./client/components";
-import { createProject, findAdminUsers, loginAdminUser } from "./api/login";
+import { updateAdminUser, findAdminUsers, loginAdminUser } from "./api/login";
 import { xFetch } from "./client/utils";
 import UserIcon from "./client/components/UserIcon";
 const { Header, Footer } = Layout;
 
 // findAdminUsers().then(console.log);
 
-// createProject({
-//   username: "admin",
-//   password: "xiaotijiang666",
-//   phone: "18210711176",
-// });
+// updateAdminUser({
+//   cookie: localStorage.getItem("cookie"),
+//   level: 9,
+// }).then(() => findAdminUsers().then(console.log));
 
 const App = observer(
   ({
@@ -76,7 +75,7 @@ const App = observer(
             theme="dark"
             mode="horizontal"
             selectedKeys={[selectedMenuItem]}
-            items={NavConfig}
+            items={userinfo?.level === 9 ? NavConfig : NavConfig.slice(0, 2)}
             onClick={({ key }) => {
               navigate(NavConfig.find((item) => item.key === key)?.to);
               setSelectedKey(key);
@@ -86,9 +85,7 @@ const App = observer(
           <DocLinkIcon />
         </Header>
         <Outlet />
-        <Footer className={styles["footer-wrap"]}>
-          六弦应用组装平台-体验版@六弦(钉钉:melodyWxy)
-        </Footer>
+        <Footer className={styles["footer-wrap"]}>小梯匠应用组装平台</Footer>
       </Layout>
     );
   }

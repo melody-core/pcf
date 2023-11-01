@@ -1,11 +1,13 @@
 {
-  "name": "melody-template-core",
-  "private": true,
-  "version": "0.0.1",
+  "name": "@melody-core/melody-template-core",
+  "version": "0.0.3",
   "type": "module",
   "files": [
     "dist"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "typings": "./dist/components/index.d.ts",
   "types": "./dist/components/index.d.ts",
   "main": "./dist/components/index.js",
@@ -16,6 +18,14 @@
       "require": "./dist/components/index.js"
     }
   },
+  "license": "ISC",
+  "contributors": [
+    {
+      "name": "wxydesign",
+      "email": "18210711176@163.com",
+      "url": "https://github.com/melodyWxy"
+    }
+  ],
   "scripts": {
     "dev": "rollup -c -w",
     "demo": "vite",

@@ -1,4 +1,4 @@
-import { NormalEditForm } from "melody-template-core";
+import { NormalEditForm } from "@melody-core/melody-template-core";
 import React from "react";
 import { useParams } from "react-router-dom";
 

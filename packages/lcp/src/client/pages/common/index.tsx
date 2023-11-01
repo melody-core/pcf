@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-12-28 19:25:18
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2023-02-02 16:57:51
+ * @LastEditTime: 2023-11-01 21:02:38
  * @FilePath: /melodyLCP/packages/lcp/src/client/pages/common/index.tsx
  * @Description: update here
  */
@@ -31,7 +31,7 @@ export const CommonObject = () => {
       <Header className={styles["flex-wrap"]}>
         <div className={styles["flex-wrap"]}>
           <div className={styles["logo"]} />
-          <h3 className={styles["logo-text"]}>六弦应用组装-体验版</h3>
+          <h3 className={styles["logo-text"]}>小梯匠应用组装平台</h3>
         </div>
         <Menu
           className={styles["flex-1"]}

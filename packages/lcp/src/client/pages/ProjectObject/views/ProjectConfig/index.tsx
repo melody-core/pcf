@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2023-02-02 16:13:47
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2023-02-03 10:54:06
+ * @LastEditTime: 2023-11-01 21:02:45
  * @FilePath: /melodyLCP/packages/lcp/src/client/pages/ProjectObject/views/ProjectConfig/index.tsx
  * @Description: update here
  */
@@ -39,7 +39,7 @@ export const ConfigObject = () => {
         <div className={styles["flex-wrap"]}>
           <div className={styles["logo"]} />
           <h3 className={styles["logo-text"]}>
-            六弦应用组装-{projectData?.title || project}-体验版
+            小梯匠应用组装平台-{projectData?.title || project}
           </h3>
         </div>
         <Menu

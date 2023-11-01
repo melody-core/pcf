@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2023-02-02 19:44:18
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2023-02-03 11:57:59
+ * @LastEditTime: 2023-11-01 21:02:57
  * @FilePath: /melodyLCP/packages/lcp/src/client/pages/ProjectObject/views/ProjectConfig/views/MenuConfig/effects/const.ts
  * @Description: update here
  */
@@ -32,7 +32,7 @@ export const CREATE_MENU_ITEM_SCHEMA = ({
   {
     title: "菜单路径",
     dataIndex: "key",
-    tip: "此菜单节点对应的路径, 如果不填则表达为菜单分组，体验版需要手动填写，可以参考文档说明！",
+    tip: "此菜单节点对应的路径, 如果不填则表达为菜单分组，当前版本需要手动填写，可以参考文档说明！",
     fieldProps: {
       addonBefore: `/pro/${project}`,
       placeholder:
@@ -42,7 +42,7 @@ export const CREATE_MENU_ITEM_SCHEMA = ({
   {
     title: "菜单图标",
     dataIndex: "icon",
-    tip: "体验版不支持菜单icon记录!",
+    tip: "暂不支持菜单icon记录!",
     fieldProps: {
       disabled: true,
     },
