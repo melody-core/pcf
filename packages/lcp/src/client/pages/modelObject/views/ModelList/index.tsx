@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-07-28 19:02:59
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2023-03-09 16:43:24
+ * @LastEditTime: 2023-11-05 22:58:27
  * @FilePath: /melodyLCP/packages/lcp/src/client/pages/modelObject/views/ModelList/index.tsx
  * @Description: update here
  */
@@ -17,6 +17,7 @@ import {
   useRequestProps,
   useToolBarProp,
 } from "./effects";
+import globalStore from "../../../../store/global";
 import Bread from "../../../../components/Bread";
 import { useParams } from "react-router-dom";
 
@@ -26,6 +27,9 @@ const List = observer(
       modelObject: { selectedKeys },
       // setSelectedDetail,
     },
+    global: {
+      globalObject: { userinfo },
+    },
   }) => {
     const { dataType = "basics" } = useParams();
     const tableActionRef = useRef();
@@ -33,6 +37,7 @@ const List = observer(
     const { mergeColumns } = useColumnProps({
       // setSelectedDetail,
       selectedKeys,
+      userinfo,
     });
     const mergeRequest = useRequestProps({
       dataType,
@@ -41,6 +46,7 @@ const List = observer(
     const mergeToolBarRender = useToolBarProp({
       tableActionRef,
       dataType,
+      userinfo,
     });
 
     return (
@@ -66,4 +72,6 @@ const List = observer(
   }
 );
 
-export const ModelList = () => <List store={modelObjectStore} />;
+export const ModelList = () => (
+  <List store={modelObjectStore} global={globalStore} />
+);

@@ -2,8 +2,8 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-07-28 17:42:36
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2023-02-10 11:46:49
- * @FilePath: /lcp-asset/Users/wxy/codeWorks/melodyLCP/packages/lcp/src/client/pages/modelObject/effect.ts
+ * @LastEditTime: 2023-11-05 22:52:16
+ * @FilePath: /melodyLCP/packages/lcp/src/client/pages/modelObject/effect.ts
  * @Description: update here
  */
 
@@ -57,5 +57,5 @@ export const useInitMenuSelected = ({ setSelectedKeys }) => {
       MODEL_MENU_CONFIG[0]
     ).value;
     setSelectedKeys(targetKey);
-  });
+  }, []);
 };

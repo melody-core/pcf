@@ -8,6 +8,7 @@ import { PAGE_MENU_KEYS } from "../../../effect";
 
 export const useToolBarProp = ({
   tableActionRef,
+  userinfo,
 }): ((
   action: ActionType,
   rows: {

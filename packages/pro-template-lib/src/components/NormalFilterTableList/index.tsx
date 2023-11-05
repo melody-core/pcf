@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-12-23 23:14:01
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2023-10-17 01:29:37
+ * @LastEditTime: 2023-11-05 23:04:59
  * @FilePath: /melodyLCP/packages/pro-template-lib/src/components/NormalFilterTableList/index.tsx
  * @Description: update here
  */
@@ -19,6 +19,7 @@ import { NormalFilterTableListProps } from './type';
 import { PAGE_CONFIG } from '../../common/type';
 import { NORMAL_FILTER_TABLE_PAGE_CONFIG } from './effects/const';
 
+console.log('123123');
 export const NormalFilterTableList: FC<NormalFilterTableListProps> & {
   PAGE_CONFIG: PAGE_CONFIG;
 } = ({ modelConfig, actionConfig }) => {

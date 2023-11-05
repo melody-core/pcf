@@ -9,6 +9,7 @@ import { MODEL_MENU_KEYS } from "../../../effect";
 export const useToolBarProp = ({
   tableActionRef,
   dataType,
+  userinfo,
 }): ((
   action: ActionType,
   rows: {
@@ -20,6 +21,7 @@ export const useToolBarProp = ({
   const result = [
     <Button
       key="button"
+      disabled={userinfo?.level <= 5}
       icon={<PlusOutlined />}
       onClick={() =>
         navigate(

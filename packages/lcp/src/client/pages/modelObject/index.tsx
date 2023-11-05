@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-09-16 16:16:07
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2023-02-02 14:32:14
+ * @LastEditTime: 2023-11-05 22:50:28
  * @FilePath: /melodyLCP/packages/lcp/src/client/pages/modelObject/index.tsx
  * @Description: update here
  */
@@ -15,6 +15,7 @@ import { observer } from "mobx-react";
 import modelObjectStore from "../../store/modelObject";
 import { Outlet, useNavigate } from "react-router-dom";
 import { MODEL_MENU_CONFIG, useInitMenuSelected } from "./effect";
+import globalStore from "../../store/global";
 
 import styles from "./index.module.css";
 

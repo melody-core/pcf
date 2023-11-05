@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2023-02-03 11:35:37
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2023-11-01 21:03:03
+ * @LastEditTime: 2023-11-05 21:53:20
  * @FilePath: /melodyLCP/packages/lcp/src/client/pages/ProjectObject/views/ProjectOnline/index.tsx
  * @Description: update here
  */
@@ -16,7 +16,7 @@ import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 // import { PROJECT_CONFIG_MENU_LIST } from "./effects/const";
 import { DocLinkIcon } from "../../../../components";
 import { useProject } from "../../commonHooks";
-import { getMenuData } from "./effects";
+import { getMenuData, useMenuInit } from "./effects";
 
 const { Header, Sider, Content, Footer } = Layout;
 
@@ -27,6 +27,10 @@ export const ProjectOnline = () => {
   const { project } = useParams();
   const { projectData } = useProject({ name: project });
   getMenuData(projectData?.menuConfig?.data || []);
+  const { initPath, defaultKeys } = useMenuInit({
+    MenuTreeData: projectData?.menuConfig?.data,
+    project,
+  });
 
   // const cuSelectKeys = [
   //   (
@@ -35,6 +39,7 @@ export const ProjectOnline = () => {
   //     ) || PROJECT_CONFIG_MENU_LIST[0]
   //   ).key,
   // ];
+  console.log("defaultKeys", defaultKeys);
   return (
     <Layout className={styles["app-wrap"]}>
       <Header className={styles["flex-wrap"]}>
@@ -59,7 +64,9 @@ export const ProjectOnline = () => {
           <Menu
             style={{ height: "100%" }}
             mode="inline"
-            // selectedKeys={cuSelectKeys}
+            key={initPath + defaultKeys?.length}
+            defaultOpenKeys={defaultKeys}
+            selectedKeys={[initPath]}
             items={projectData?.menuConfig?.data || []}
             onClick={(item) => {
               navigate(`/pro/${project}${item.key}`);
