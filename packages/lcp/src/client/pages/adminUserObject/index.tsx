@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2023-11-01 21:47:00
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2023-11-01 22:40:55
+ * @LastEditTime: 2024-02-28 19:56:06
  * @FilePath: /melodyLCP/packages/lcp/src/client/pages/adminUserObject/index.tsx
  * @Description: update here
  * export c
@@ -24,6 +24,7 @@ import { xFetch } from "../../utils";
 import Bread from "../../components/Bread";
 import { PlusOutlined } from "@ant-design/icons";
 import { ADMIN_USER_OPTIONS } from "./effects/const";
+import { getProjectList } from "../../../api/projectApi";
 
 export const AdminUserObject = observer(
   ({
@@ -145,6 +146,58 @@ export const AdminUserObject = observer(
                       required: true,
                     },
                   ],
+                },
+              },
+              {
+                valueType: "dependency",
+                name: ["level"],
+                columns: ({ level }) => {
+                  if (level === ADMIN_USER_OPTIONS[0].value) {
+                    return [
+                      {
+                        valueType: "select",
+                        dataIndex: "pros",
+                        title: "请选择可管理的项目",
+                        formItemProps: {
+                          rules: [
+                            {
+                              required: true,
+                            },
+                          ],
+                        },
+                        fieldProps: {
+                          mode: "multiple",
+                        },
+                        request: async () => {
+                          try {
+                            const result = await xFetch(
+                              getProjectList({
+                                sort: {},
+                                params: {},
+                              })
+                            );
+                            const { data } = result || {};
+                            return (data?.data || []).map((item) => ({
+                              value: item._id,
+                              label: item.title,
+                            })) as any[];
+                          } catch (error) {
+                            return [];
+                          }
+                          // return [];
+                        },
+                        // request: async () => {
+                        //   const result = await xFetch(getProjectList({}));
+                        //   const { data, success } = result || {};
+                        //   return (data?.data || []).map((item) => ({
+                        //     value: item._id,
+                        //     label: item.title,
+                        //   }));
+                        // },
+                      },
+                    ];
+                  }
+                  return [];
                 },
               },
             ]}

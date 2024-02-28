@@ -2,13 +2,14 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-07-28 19:02:59
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2023-11-05 22:57:27
+ * @LastEditTime: 2024-02-28 20:19:45
  * @FilePath: /melodyLCP/packages/lcp/src/client/pages/ProjectObject/views/PageList/index.tsx
  * @Description: update here
  */
 
-import React, { FC, useRef } from "react";
+import React, { FC, useEffect, useRef } from "react";
 import { observer } from "mobx-react";
+import globalStore from "../../../../store/global";
 import { ProTable, BetaSchemaForm } from "@ant-design/pro-components";
 import pageObjectStore from "../../../../store/pageObject";
 import {
@@ -18,7 +19,7 @@ import {
   useToolBarProp,
 } from "./effects";
 import { INIT_COLUMN_LIST } from "./effects/const";
-import globalStore from "../../../../store/global";
+
 // import { getErrorInfoByID } from './../../../../../api/errorObject'
 import { useNavigate } from "react-router-dom";
 import Bread from "../../../../components/Bread";
@@ -40,7 +41,10 @@ const List = observer(
       selectedKeys,
       userinfo,
     });
-    const mergeRequest = useRequestProps();
+    const { _id, request } = useRequestProps({
+      userinfo,
+    });
+
     const mergeEditable = useEditableProps();
     const mergeToolBarRender = useToolBarProp({
       tableActionRef,
@@ -49,12 +53,13 @@ const List = observer(
     return (
       <>
         <ProTable
+          key={_id || "n"}
           title={() => <Bread lvs={["应用管理", "应用列表"]} />}
           actionRef={tableActionRef}
           columns={mergeColumns}
           rowKey="_id"
           dateFormatter="string"
-          request={mergeRequest}
+          request={request}
           scroll={{
             x: "max-content",
           }}

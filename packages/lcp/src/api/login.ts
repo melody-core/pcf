@@ -11,6 +11,7 @@ const ADMIN_USER_MODEL_SCHEMA = {
   password: String,
   headerImgUrl: String,
   level: Number,
+  pros: Array,
 };
 
 const adminUserSchema = new mongoose.Schema(ADMIN_USER_MODEL_SCHEMA, {
@@ -30,10 +31,14 @@ const CreateNextUser = z
     phone: z.string(),
     password: z.string(),
     headerImgUrl: z.string(),
+    level: z.number(),
+    pros: z.array(z.string()),
   })
   .partial({
     headerImgUrl: true,
     phone: true,
+    level: true,
+    pros: true,
   });
 
 // update
@@ -61,6 +66,20 @@ export const DeleteAdminUser = z.object({
   _id: z.string(),
   // headerImgUrl: z.string(),
 });
+
+// --admin --
+// export const createAdminUser = Api(
+//   Post("/api/adminUser/admin"),
+//   Validate(CreateNextUser),
+//   async (createItemParams) => {
+//     console.log("createItemParams:", createItemParams);
+//     const result = await adminUserModel.create({
+//       ...(createItemParams || {}),
+//       // level: 7,
+//     });
+//     return result;
+//   }
+// );
 
 // 次级管理员
 export const createNextUser = Api(

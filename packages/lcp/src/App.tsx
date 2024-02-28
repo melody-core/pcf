@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-06-06 16:46:18
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2023-11-05 22:45:39
+ * @LastEditTime: 2024-02-28 13:13:46
  * @FilePath: /melodyLCP/packages/lcp/src/App.tsx
  * @Description: update here
  */
@@ -15,15 +15,21 @@ import globalStore from "./client/store/global";
 
 import styles from "./index.module.less";
 import { DocLinkIcon } from "./client/components";
-import { updateAdminUser, findAdminUsers, loginAdminUser } from "./api/login";
+import {
+  updateAdminUser,
+  findAdminUsers,
+  // createAdminUser,
+  loginAdminUser,
+} from "./api/login";
 import { xFetch } from "./client/utils";
 import UserIcon from "./client/components/UserIcon";
 const { Header, Footer } = Layout;
 
 // findAdminUsers().then(console.log);
 
-// updateAdminUser({
-//   cookie: localStorage.getItem("cookie"),
+// createAdminUser({
+//   username: "admin",
+//   password: "xiaotijiang666",
 //   level: 9,
 // }).then(() => findAdminUsers().then(console.log));
 
@@ -37,9 +43,12 @@ const App = observer(
   }) => {
     const navigate = useNavigate();
     useEffect(() => {
+      const params = new URLSearchParams({
+        callback: globalThis.location.href,
+      });
       const cookie = localStorage.getItem("cookie");
       if (!cookie) {
-        navigate("/login");
+        navigate(`/login?${params.toString()}`);
         return;
       }
       xFetch(
@@ -53,12 +62,12 @@ const App = observer(
             setUserinfo(data?.userinfo);
             localStorage.setItem("cookie", cookie);
           } else {
-            navigate("/login");
+            navigate(`/login?${params.toString()}`);
             return;
           }
         })
         .catch(() => {
-          navigate("/login");
+          navigate(`/login?${params.toString()}`);
           return;
         });
     }, []);

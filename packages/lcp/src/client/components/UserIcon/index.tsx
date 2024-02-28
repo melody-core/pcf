@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2022-06-06 15:21:55
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2023-10-15 15:07:29
+ * @LastEditTime: 2024-02-28 19:51:57
  * @FilePath: /melodyLCP/packages/lcp/src/client/components/UserIcon/index.tsx
  * @Description: update here
  */
@@ -30,6 +30,10 @@ export const UserIcon: FC<UserIconProps> = observer(
   }) => {
     const { username, headerImgUrl } = userinfo || {};
     const navigate = useNavigate();
+
+    const params = new URLSearchParams({
+      callback: globalThis.location.href,
+    });
     return (
       <div className={styles["user-icon-wrap"]}>
         <Dropdown
@@ -55,7 +59,7 @@ export const UserIcon: FC<UserIconProps> = observer(
                   icon: <LogoutOutlined />,
                   onClick: () => {
                     localStorage.removeItem("cookie");
-                    navigate("/login");
+                    navigate(`/login?${params.toString()}`);
                   },
                 },
               ]}

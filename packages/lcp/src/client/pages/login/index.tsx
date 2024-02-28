@@ -2,7 +2,7 @@
  * @Author: 六弦(melodyWxy)
  * @Date: 2023-10-15 14:14:53
  * @LastEditors: 六弦(melodyWxy)
- * @LastEditTime: 2023-10-15 14:39:38
+ * @LastEditTime: 2024-02-28 12:46:45
  * @FilePath: /melodyLCP/packages/lcp/src/client/pages/login/index.tsx
  * @Description: update here
  */
@@ -25,6 +25,7 @@ export const LoginForm = observer(
     },
   }) => {
     const navigate = useNavigate();
+    const callback = new URL(window.location.href).searchParams.get("callback");
     return (
       <div className={styles["login_page_wrap"]}>
         <BetaSchemaForm
@@ -61,7 +62,8 @@ export const LoginForm = observer(
             if (success) {
               setUserinfo(data?.userinfo);
               localStorage.setItem("cookie", data?.cookie);
-              navigate("/");
+              // navigate("/");
+              location.href = callback;
             }
           }}
         />
